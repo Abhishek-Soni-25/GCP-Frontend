@@ -17,7 +17,7 @@
             <!-- First-card -->
             <div class="card-one">
                 <div class="image-one">
-                    <img :src="require('./newsarticle_one.jpeg')" alt="Sample Image" />
+                    <img :src="require('@/assets/homepage/newsarticle_one.jpeg')" alt="Sample Image" />
                 </div>
                 <div class="image-one-description">
                     <h5>BRANDING</h5>
@@ -29,7 +29,7 @@
             <!-- Second-card -->
             <div class="card-two">
                 <div class="image-two">
-                    <img :src="require('./newsarticle_two.jpeg')" alt="Sample Image" />
+                    <img :src="require('@/assets/homepage/newsarticle_two.jpeg')" alt="Sample Image" />
                 </div>
                 <div class="image-two-description">
                     <h5>TIKTOK</h5>
@@ -47,7 +47,7 @@
             <!-- Third-card -->
             <div class="card-three">
                 <div class="image-three">
-                    <img :src="require('./newsarticle_three.jpeg')" alt="Sample Image" />
+                    <img :src="require('@/assets/homepage/newsarticle_three.jpeg')" alt="Sample Image" />
                 </div>
                 <div class="image-three-description">
                     <h5>DESIGNING</h5>
@@ -59,7 +59,7 @@
             <!-- Fourth-card -->
             <div class="card-four">
                 <div class="image-four">
-                    <img :src="require('./newsarticle_four.jpeg')" alt="Sample Image" />
+                    <img :src="require('@/assets/homepage/newsarticle_four.jpeg')" alt="Sample Image" />
                 </div>
                 <div class="image-four-description">
                     <h5>FB</h5>
