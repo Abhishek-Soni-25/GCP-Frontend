@@ -17,7 +17,13 @@
   
       <!-- Brand Box -->
       <div class="brand-txt">TRUSTED BY AMAZING BRANDS</div>
-      <div class="brand-box"></div>
+      <div class="brand-box">
+        <img src="@/assets/homepage/Hero/1.png"><span class="box-txt">Dabur</span>
+        <img src="@/assets/homepage/Hero/2.png"><span class="box-txt">Amul</span>
+        <img src="@/assets/homepage/Hero/3.png"><span class="box-txt">Britannia</span>
+        <img src="@/assets/homepage/Hero/4.png"><span class="box-txt">Mother Dairy</span>
+        <img src="@/assets/homepage/Hero/5.png"><span class="box-txt">GSK</span>
+      </div>
   
       <!-- Divider Line -->
       <div class="line"></div>
@@ -60,7 +66,7 @@ export default {
 <style scoped>
 /* Hero Section Styles */
 .hero {
-  background: #000000;
+  background: #111204;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -72,8 +78,10 @@ export default {
 
 .hero-section{ 
   width: 100%; 
-  height: 60%;
-  background: radial-gradient(ellipse 280px 170px at center, #A1CDFF99 , #000000);
+  height: 24vw;
+  background: radial-gradient(ellipse 160px 120px at center, #A1CDFF99 , #111204);
+  backdrop-filter: blur(134.36666870117188px);
+  opacity: 0px;
 }
 
 .hero-section, .hero-section2 {
@@ -111,20 +119,7 @@ export default {
     font-weight: bold;
     letter-spacing: -0.98px;
   }
-
-
-   .brand-txt {
-    color: #ffffff;
-    font-family: "Outfit-Bold", Helvetica;
-    font-size: 17.8px;
-    font-weight: 700;
-    left: auto;
-    letter-spacing: 1.69px;
-    line-height: 9.3px;
-    top: auto;
-    width: auto;
-  }
-
+  
 .hero-content {
   flex: 1;
   max-width: 600px;
@@ -153,16 +148,46 @@ export default {
   background: #F0E002;
 }
 
+
+   .brand-txt {
+    color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 17.8px;
+    font-weight: 700;
+    left: auto;
+    letter-spacing: 1.69px;
+    line-height: 9.3px;
+    top: auto;
+    width: auto;
+  }
+  img { 
+    margin-right: 0px; /* Space between image and text */ 
+    size: 80px;
+    padding-inline: 2%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+
 /* Brand Box */
 .brand-box {
   flex: 1;
+  text-align: center;
   width: 90%;
   background-color: #222222;
   border: 1px solid #333;
-  padding: 35px;
-  margin: 0 5%;
+  padding: 2px;
+  margin: 0 4%;
   border-radius: 20px;
 }
+.box-txt{ 
+  color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 17.8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding-right: 2%;
+  }
 
 /* Divider Line */
 .line {
