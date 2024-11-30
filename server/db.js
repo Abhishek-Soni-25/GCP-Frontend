@@ -1,23 +1,20 @@
 // server/db.js
-
 const { Sequelize } = require("sequelize");
-require("dotenv").config();
 
-// Database credentials
+// Hardcode the database credentials directly here
 const sequelize = new Sequelize(
-    process.env.DB_NAME,      
-    process.env.DB_USER,      
-    process.env.DB_PASSWORD,  
+    'gcd_frontend',  // Database name (hardcoded)
+    'root',           // Database user (hardcoded)
+    '9069076975',     // Database password (hardcoded)
     {
-        host: process.env.DB_HOST, 
-        dialect: "mysql",          
+        host: 'localhost',  // Database host (hardcoded)
+        dialect: 'mysql',   // Dialect (MySQL)
     }
 );
 
 // Testing of database connection
 sequelize.authenticate()
-    .then(() => console.log("Database connected...")) 
-    .catch((err) => console.error("Error connecting to the database:", err)); 
-
+    .then(() => console.log("Database connected..."))
+    .catch((err) => console.error("Error connecting to the database:", err));
 
 module.exports = sequelize;
