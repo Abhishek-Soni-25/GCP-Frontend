@@ -5,17 +5,17 @@
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
-    <!-- Render the NewsArticle component -->
-
-     <AppBrand /> 
-
+    <!-- Render the component -->
+    <Hero />
+    <AppBrand /> 
     <NewsArticle />
     
   </div>
 </template>
 
 <script>
-// Import the NewsArticle component
+// Import the component
+import Hero from '@/components/Homepage/Hero.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 
@@ -25,9 +25,10 @@ import axios from 'axios';
 export default {
   name: 'HomePageView',
   components: {
+    Hero,
     AppBrand,
     NewsArticle 
-     // Register NewsArticle component
+    // Register component
   },
   data() {
     return {
