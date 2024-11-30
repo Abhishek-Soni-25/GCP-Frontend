@@ -5,7 +5,8 @@
 
     <!-- <button class="btn px-3" v-if="visibleCount < images.length" @click="loadMore"</button> >Load More</button> -->
 
-    <button class="btn px-3">Load more</button>
+     <button class="buttonload">
+  <i class="fa fa-spinner "></i> Load More</button>
 
     <div class="brand_image">
     <div class="row mt-5" style="max-width: 1300px; margin-top: 20px">
@@ -94,7 +95,7 @@ export default {
   computed: {
     
     visibleImages() {
-      
+        
       if (this.images && Array.isArray(this.images)) {
         return this.images.slice(0, this.visibleCount);
       }
@@ -118,6 +119,8 @@ export default {
 
 <style scoped>
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css');
+/* Add icon library  */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 .container{
   background-color:rgb(255,255,255);
@@ -128,7 +131,7 @@ h2 {
 }
 
 p {
-  /* color: #666; */
+  
   color: black;
 }
 
@@ -142,10 +145,14 @@ img {
   margin: 0 auto;
   margin-top: 50px;
 }
-
-.btn{
-    background-color: #f0f0f0;
-    border-radius: 40px;
-    border: 1px solid rgb(0, 0, 0);
- }
+ 
+.buttonload {
+  background-color:white; 
+  border: 1px sold rgba(168, 159, 159, 0.22); 
+  color: black; 
+  padding: 10px 15px; 
+  font-size: 16px;
+  border-radius: 7px;
+  
+}
 </style>
