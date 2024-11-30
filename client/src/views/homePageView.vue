@@ -6,13 +6,18 @@
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
     <!-- Render the NewsArticle component -->
+
+     <AppBrand /> 
+
     <NewsArticle />
+    
   </div>
 </template>
 
 <script>
 // Import the NewsArticle component
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
+import AppBrand from '@/components/Homepage/AppBrand.vue';
 
 // Import Axios
 import axios from 'axios';
@@ -20,7 +25,9 @@ import axios from 'axios';
 export default {
   name: 'HomePageView',
   components: {
-    NewsArticle,  // Register NewsArticle component
+    AppBrand,
+    NewsArticle 
+     // Register NewsArticle component
   },
   data() {
     return {
