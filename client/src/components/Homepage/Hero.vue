@@ -60,7 +60,7 @@ export default {
 <style scoped>
 /* Hero Section Styles */
 .hero {
-  background: radial-gradient(ellipse 70% 40% at center, #565656, #000000);
+  background: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -70,11 +70,18 @@ export default {
   align-items: center;
 }
 
+.hero-section{ 
+  width: 100%; 
+  height: 60%;
+  background: radial-gradient(ellipse 280px 170px at center, #A1CDFF99 , #000000);
+}
+
 .hero-section, .hero-section2 {
   display: flex;
   align-items: center;
   align-content: center;
-  justify-content: space-between;
+  align-self: center;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -98,7 +105,7 @@ export default {
   
   .hero-content .text-wrapper-4 {
     font-size: 57.1px;
-    color: #efe002;
+    color: #F0E002;
     font-family: "Plus Jakarta Sans-ExtraBoldItalic", Helvetica;
     font-style: italic;
     font-weight: bold;
@@ -137,29 +144,29 @@ export default {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  background: #fff700;
+  background: #F0E002;
   transition: all 0.3s ease;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cta-button:hover {
-  background: #fff700;
+  background: #F0E002;
 }
 
 /* Brand Box */
 .brand-box {
   flex: 1;
   width: 90%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #222222;
   border: 1px solid #333;
   padding: 35px;
   margin: 0 5%;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 /* Divider Line */
 .line {
-  border-bottom: 3px solid #fff700;
+  border-bottom: 3px solid #F0E002;
   margin: 20px 0;
   width: 90%;
 }
@@ -173,12 +180,12 @@ export default {
 .hero-section2 h5 {
   font-size: 0.8rem;
   font-weight: bold;
-  color: #dbe20f;
+  color: #F0E002;
   margin-bottom: 10px;
 }
 
 .big {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: bold;
   color: #ffffff;
   margin-bottom: 15px;
@@ -195,9 +202,9 @@ export default {
   .hero-content .text-wrapper-4, .text-wrapper-3 { font-size: calc(57.1px * 0.8); /* Adjust if necessary */ } 
   .brand-txt { font-size: calc(17.8px * 0.8); line-height: calc(9.3px * 0.8); } 
   .hero-section2 h5 { font-size: calc(1.5rem * 0.8); /* Reduce by 20% */ } 
-  .big { font-size: calc(1.7rem * 0.8); } /* Reduce by 20% */
+  .big { font-size: calc(2rem * 0.8); } /* Reduce by 20% */
 
-  .hero-section, .hero-ection2 {
+  .hero-section, .hero-section2 {
     flex-direction: column;
     gap: 15px;
   }
@@ -206,7 +213,7 @@ export default {
     font-size: 2rem;
   }
 
-  .hero-content p, .big, .normal {
+  .hero-content p, .normal {
     font-size: 1rem;
   }
 
