@@ -16,31 +16,31 @@
         </div>
   
       <!-- Brand Box -->
-      <div class="brand-txt">TRUSTED BY AMAZING BRANDS</div>
-      <div class="brand-box">
-        <img src="@/assets/homepage/Hero/1.png"><span class="box-txt">Dabur</span>
-        <img src="@/assets/homepage/Hero/2.png"><span class="box-txt">Amul</span>
-        <img src="@/assets/homepage/Hero/3.png"><span class="box-txt">Britannia</span>
-        <img src="@/assets/homepage/Hero/4.png"><span class="box-txt">Mother Dairy</span>
-        <img src="@/assets/homepage/Hero/5.png"><span class="box-txt">GSK</span>
-      </div>
+        <div class="brand-txt">TRUSTED BY AMAZING BRANDS</div>
+        <div class="brand-box">
+          <img src="@/assets/homepage/Hero/1.png"><span class="box-txt">Dabur</span>
+          <img src="@/assets/homepage/Hero/2.png"><span class="box-txt">Amul</span>
+          <img src="@/assets/homepage/Hero/3.png"><span class="box-txt">Britannia</span>
+          <img src="@/assets/homepage/Hero/4.png"><span class="box-txt">Mother Dairy</span>
+          <img src="@/assets/homepage/Hero/5.png"><span class="box-txt">GSK</span>
+        </div>
   
       <!-- Divider Line -->
-      <div class="line"></div>
+        <div class="line"></div>
   
       <!-- Second Hero Section -->
-      <div class="hero-section2">
-        <div class="half">
-          <h5>How we Work</h5>
-          <p class="big">Get a dedicated design team at a fraction of the cost.</p>
+        <div class="hero-section2">
+          <div class="half">
+            <h5>How we Work</h5>
+            <p class="big">Get a dedicated design team at a fraction of the cost.</p>
+          </div>
+          <div class="half">
+            <p class="normal">
+              Grow your brand with high-quality design for a flat monthly fee. Work with senior designers. Subscribe and make as many requests as you need - no limits.
+            </p>
+            <button class="cta-button" @click="exploreMore">See More</button>
+          </div>
         </div>
-        <div class="half">
-          <p class="normal">
-            Grow your brand with high-quality design for a flat monthly fee. Work with senior designers. Subscribe and make as many requests as you need - no limits.
-          </p>
-          <button class="cta-button" @click="exploreMore">See More</button>
-        </div>
-      </div>
     </div>
   </template>
 
@@ -82,15 +82,32 @@ export default {
   background: radial-gradient(ellipse 160px 120px at center, #A1CDFF99 , #111204);
   backdrop-filter: blur(134.36666870117188px);
   opacity: 0px;
+  padding: 1px;
 }
 
-.hero-section, .hero-section2 {
+.hero-section{
+  flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   align-content: center;
   align-self: center;
+  justify-content: space-between;
   justify-content: center;
   gap: 20px;
+  padding: 1px;
+}
+.hero-section2 {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
+  padding: 1px;
 }
 
   .hero-content .building-brand-image {
@@ -157,8 +174,9 @@ export default {
     left: auto;
     letter-spacing: 1.69px;
     line-height: 9.3px;
-    top: auto;
+    top: 10px;
     width: auto;
+    padding: 1px;
   }
   img { 
     margin-right: 0px; /* Space between image and text */ 
@@ -173,6 +191,8 @@ export default {
 .brand-box {
   flex: 1;
   text-align: center;
+  align-items: center;
+  align-content: center;
   width: 90%;
   background-color: #222222;
   border: 1px solid #333;
@@ -185,6 +205,7 @@ export default {
     font-family: "Outfit-Bold", Helvetica;
     font-size: 17.8px;
     font-weight: 700;
+    margin: 1px;
     letter-spacing: 1px;
     padding-right: 2%;
   }
@@ -244,6 +265,16 @@ export default {
 
   .hero-carousel {
     max-width: 100%;
+  }
+  .brand-box{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  img {
+    max-width: 70px;
+    max-height: 70px;
+    text-align: center;
   }
 }
 </style>
