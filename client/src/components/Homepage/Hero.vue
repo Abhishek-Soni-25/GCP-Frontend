@@ -1,29 +1,22 @@
 <template>
     <div class="hero">
       <!-- Hero Section -->
-      <div class="hero-section">
-        <!-- Hero Content -->
-        <div class="hero-content">
-          <h1>Build Your Brand Image Passionately</h1>
-          <p>
-            Empowering businesses to reach new heights with innovative strategies and creative solutions.
-          </p>
-          <button class="cta-button" @click="exploreMore">Explore More</button>
+        <div class="hero-section">
+            <!-- Hero Content -->
+            <div class="hero-content">
+              <p class="building-brand-image">
+              <span class="text-wrapper-3">
+                Building Brand Image
+              </span><br />
+              <span class="text-wrapper-4">Passionately</span>
+            </p>
+                <p>Empowering businesses to reach new heights with innovative strategies and creative solutions.</p>
+                <button class="cta-button" @click="exploreMore">Explore More</button>
+            </div>
         </div>
-  
-        <!-- Hero Image Carousel -->
-        <div class="hero-carousel">
-          <div class="carousel-image-container">
-            <img :src="images[currentImageIndex]" alt="Hero Image" loading="lazy" />
-          </div>
-          <div class="carousel-controls">
-            <button @click="prevImage" aria-label="Previous image">❮</button>
-            <button @click="nextImage" aria-label="Next image">❯</button>
-          </div>
-        </div>
-      </div>
   
       <!-- Brand Box -->
+      <div class="brand-txt">TRUSTED BY AMAZING BRANDS</div>
       <div class="brand-box"></div>
   
       <!-- Divider Line -->
@@ -61,48 +54,74 @@ export default {
       this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
     }
   },
-  data() {
-    return {
-      images: [
-        require('../../assets/homepage/newsarticle_four.jpeg'),
-        require('../../assets/homepage/newsarticle_two.jpeg'),
-        require('../../assets/homepage/newsarticle_three.jpeg')
-      ],
-      currentImageIndex: 0
-    };
-  }
 };
 </script>
 
 <style scoped>
 /* Hero Section Styles */
 .hero {
-  background: radial-gradient(ellipse at center, #47578c, #1e53af, #000000);
+  background: radial-gradient(ellipse 70% 40% at center, #565656, #000000);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 30px;
   box-sizing: border-box;
+  align-items: center;
 }
 
 .hero-section, .hero-section2 {
   display: flex;
   align-items: center;
+  align-content: center;
   justify-content: space-between;
   gap: 20px;
 }
+
+  .hero-content .building-brand-image {
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 57.1px;
+    font-weight: 700;
+    left: auto;
+    letter-spacing: -1.71px;
+    line-height: 59.8px;
+    text-align: center;
+    top: 7%;
+    width: auto;
+  }
+  .hero-content .text-wrapper-3 {
+    font-size: 57.1px;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: -0.98px;
+  }
+  
+  .hero-content .text-wrapper-4 {
+    font-size: 57.1px;
+    color: #efe002;
+    font-family: "Plus Jakarta Sans-ExtraBoldItalic", Helvetica;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: -0.98px;
+  }
+
+
+   .brand-txt {
+    color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 17.8px;
+    font-weight: 700;
+    left: auto;
+    letter-spacing: 1.69px;
+    line-height: 9.3px;
+    top: auto;
+    width: auto;
+  }
 
 .hero-content {
   flex: 1;
   max-width: 600px;
   text-align: center;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: #f6ff00;
 }
 
 .hero-content p {
@@ -118,57 +137,19 @@ export default {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  background: linear-gradient(90deg, #fff700, #42b300);
+  background: #fff700;
   transition: all 0.3s ease;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cta-button:hover {
-  background: linear-gradient(90deg, #42b300, #fff700);
-}
-
-/* Carousel Styles */
-.hero-carousel {
-  flex: 1;
-  position: relative;
-  max-width: 600px;
-}
-
-.carousel-image-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-}
-
-.carousel-controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-}
-
-.carousel-controls button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  font-size: 1.5rem;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.carousel-controls button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background: #fff700;
 }
 
 /* Brand Box */
 .brand-box {
   flex: 1;
+  width: 90%;
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid #333;
   padding: 35px;
@@ -180,6 +161,7 @@ export default {
 .line {
   border-bottom: 3px solid #fff700;
   margin: 20px 0;
+  width: 90%;
 }
 
 /* Second Hero Section */
@@ -189,13 +171,15 @@ export default {
 }
 
 .hero-section2 h5 {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
   color: #dbe20f;
   margin-bottom: 10px;
 }
 
 .big {
   font-size: 1.7rem;
+  font-weight: bold;
   color: #ffffff;
   margin-bottom: 15px;
 }
@@ -206,8 +190,14 @@ export default {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .hero-section, .hero-section2 {
+@media (max-width: 568px) {
+  .hero-content .building-brand-image { font-size: calc(57.1px * 0.8); /* Reduce by 20% */ line-height: calc(59.8px * 0.8); } 
+  .hero-content .text-wrapper-4, .text-wrapper-3 { font-size: calc(57.1px * 0.8); /* Adjust if necessary */ } 
+  .brand-txt { font-size: calc(17.8px * 0.8); line-height: calc(9.3px * 0.8); } 
+  .hero-section2 h5 { font-size: calc(1.5rem * 0.8); /* Reduce by 20% */ } 
+  .big { font-size: calc(1.7rem * 0.8); } /* Reduce by 20% */
+
+  .hero-section, .hero-ection2 {
     flex-direction: column;
     gap: 15px;
   }
