@@ -7,6 +7,8 @@
 
 <script>
 // No need to import HelloWorld here anymore as the routing will handle it
+// removed udit singh's merged code 
+
 export default {
   name: 'App'
 }

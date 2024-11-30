@@ -17,7 +17,8 @@ app.use('/api', apiRoutes);
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('Hello from the Express server!');
+  const baseUrl = req.protocol + "://" + req.get("host");
+  res.send("Base URL is: " + baseUrl);
 });
 
 // Start server
