@@ -180,8 +180,9 @@ export default {
   }
   img { 
     margin-right: 0px; /* Space between image and text */ 
-    size: 80px;
-    padding-inline: 2%;
+    width: 8%;
+    min-width: 50px;
+    padding-inline: 1%;
     padding-top: 5px;
     padding-bottom: 5px;
   }
@@ -203,11 +204,11 @@ export default {
 .box-txt{ 
   color: #ffffff;
     font-family: "Outfit-Bold", Helvetica;
-    font-size: 17.8px;
+    font-size: 100%;
     font-weight: 700;
     margin: 1px;
     letter-spacing: 1px;
-    padding-right: 2%;
+    padding-right: 1%;
   }
 
 /* Divider Line */
