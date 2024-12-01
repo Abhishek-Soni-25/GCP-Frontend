@@ -6,9 +6,9 @@
 
     <!-- Render the component -->
     <Hero />
-    <AppBrand /> 
+    <AppBrand />
     <NewsArticle />
-    
+    <FAQ />
   </div>
 </template>
 
@@ -20,13 +20,15 @@ import AppBrand from '@/components/Homepage/AppBrand.vue';
 
 // Import Axios
 import axios from 'axios';
+import FAQ from '@/components/Homepage/FAQ.vue';
 
 export default {
   name: 'HomePageView',
   components: {
     Hero,
     AppBrand,
-    NewsArticle 
+    NewsArticle,
+    FAQ
     // Register component
   },
   data() {
