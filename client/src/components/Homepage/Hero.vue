@@ -186,26 +186,6 @@ background: #F0E002;
     padding-top: 5px;
     padding-bottom: 5px;
   }
-=======
- .brand-txt {
-  color: #ffffff;
-  font-family: "Outfit-Bold", Helvetica;
-  font-size: 17.8px;
-  font-weight: 700;
-  left: auto;
-  letter-spacing: 1.69px;
-  line-height: 9.3px;
-  top: 10px;
-  width: auto;
-  padding: 1px;
-}
-img { 
-  margin-right: 0px; /* Space between image and text */ 
-  size: 80px;
-  padding-inline: 2%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
 
 
 /* Brand Box */
@@ -230,28 +210,6 @@ img {
     letter-spacing: 1px;
     padding-right: 1%;
   }
-=======
-flex: 1;
-text-align: center;
-align-items: center;
-align-content: center;
-width: 90%;
-background-color: #222222;
-border: 1px solid #333;
-padding: 2px;
-margin: 0 4%;
-border-radius: 20px;
-}
-.box-txt{ 
-color: #ffffff;
-  font-family: "Outfit-Bold", Helvetica;
-  font-size: 17.8px;
-  font-weight: 700;
-  margin: 1px;
-  letter-spacing: 1px;
-  padding-right: 2%;
-}
->>>>>>> cea8b9f35595efdbcea33f35e6057b1a64d4b13a
 
 /* Divider Line */
 .line {
