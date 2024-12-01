@@ -1,20 +1,54 @@
 // server/db.js
-const { Sequelize } = require("sequelize");
 
-// Hardcode the database credentials directly here
+const { Sequelize } = require("sequelize");
+const mysql = require("mysql2/promise");
+const fs = require("fs");
+const path = require("path");
+require("dotenv").config();
+
 const sequelize = new Sequelize(
-    'gcd_frontend',  // Database name (hardcoded)
-    'root',           // Database user (hardcoded)
-    '9069076975',     // Database password (hardcoded)
-    {
-        host: 'localhost',  // Database host (hardcoded)
-        dialect: 'mysql',   // Dialect (MySQL)
-    }
+  process.env.DB_NAME, //'gcd_frontend',  // Database name (hardcoded)
+  process.env.DB_USER, //'root',           // Database user (hardcoded)
+  process.env.DB_PASSWORD, //'9069076975',     // Database password (hardcoded)
+  {
+    host: process.env.DB_HOST, //'localhost',  // Database host (hardcoded)
+    dialect: "mysql", // Dialect (MySQL)
+  }
 );
 
-// Testing of database connection
-sequelize.authenticate()
-    .then(() => console.log("Database connected..."))
-    .catch((err) => console.error("Error connecting to the database:", err));
+// Checks for existence of database and models.
+async function initializeDatabase() {
+  try {
 
-module.exports = sequelize;
+    // Ensure the database exists
+    const connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+    });
+    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\`;`);
+    console.log("Database ensured.");
+    await connection.end();
+
+    // Dynamically import all models
+    const models = {};
+    const modelsDir = path.join(__dirname, "models");
+    fs.readdirSync(modelsDir)
+      .filter((file) => file.endsWith(".js"))
+      .forEach((file) => {
+        const model = require(path.join(modelsDir, file));
+        models[model.name] = model;
+      });
+
+    // Sync all models
+    await sequelize.sync({ alter: true }); 
+    console.log("All tables have been created or updated.");
+
+    return sequelize;
+  } catch (err) {
+    console.error("Error initializing database:", err);
+    throw err;
+  }
+}
+
+module.exports = { sequelize, initializeDatabase };
