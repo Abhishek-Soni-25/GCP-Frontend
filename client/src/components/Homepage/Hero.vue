@@ -200,7 +200,7 @@ export default {
   padding: 2px;
   margin: 0 4%;
   border-radius: 20px;
-}
+} 
 .box-txt{ 
   color: #ffffff;
     font-family: "Outfit-Bold", Helvetica;
