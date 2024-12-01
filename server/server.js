@@ -5,6 +5,7 @@ const cors = require('cors');
 const apiRoutes = require('./routes/api'); // Import API routes
 const app = express();
 const port = process.env.PORT || 7000;
+const { initializeDatabase } = require("./db");
 
 // Enable CORS
 app.use(cors());
@@ -19,6 +20,15 @@ app.use('/api', apiRoutes);
 app.get('/', (req, res) => {
   const baseUrl = req.protocol + "://" + req.get("host");
   res.send("Base URL is: " + baseUrl);
+});
+
+// Initializes database existence.
+initializeDatabase()
+  .then((sequelize) => {
+    console.log("App is ready to use the database.");
+})
+.catch((err) => {
+  console.error("Failed to initialize database:", err);
 });
 
 // Start server

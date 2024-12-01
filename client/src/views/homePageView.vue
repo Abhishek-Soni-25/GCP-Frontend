@@ -1,15 +1,14 @@
 <template>
   <div>
-    <h1>Welcome to the Home Page</h1>
-
+ 
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
     <!-- Render the component -->
     <Hero />
-    <AppBrand /> 
+    <AppBrand />
     <NewsArticle />
-    
+    <FAQ />
   </div>
 </template>
 
@@ -21,13 +20,15 @@ import AppBrand from '@/components/Homepage/AppBrand.vue';
 
 // Import Axios
 import axios from 'axios';
+import FAQ from '@/components/Homepage/FAQ.vue';
 
 export default {
   name: 'HomePageView',
   components: {
     Hero,
     AppBrand,
-    NewsArticle 
+    NewsArticle,
+    FAQ
     // Register component
   },
   data() {

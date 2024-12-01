@@ -2,7 +2,7 @@
 
 const { DataTypes } = require("sequelize");
 
-const sequelize = require("../db");
+const { sequelize } = require("../db");
 
 // "FAQ" model
 const FAQModel = sequelize.define("FAQ", {
