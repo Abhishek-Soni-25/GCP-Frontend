@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Welcome to the Home Page</h1>
-
+ 
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
