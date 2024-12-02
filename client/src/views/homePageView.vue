@@ -7,6 +7,7 @@
     <!-- Render the component -->
     <Hero />
     <AppBrand />
+    <Dream />
     <NewsArticle />
     <FAQ />
   </div>
@@ -15,6 +16,7 @@
 <script>
 // Import the component
 import Hero from '@/components/Homepage/Hero.vue';
+import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 
@@ -27,6 +29,7 @@ export default {
   components: {
     Hero,
     AppBrand,
+    Dream,
     NewsArticle,
     FAQ
     // Register component
