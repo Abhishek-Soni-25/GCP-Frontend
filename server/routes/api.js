@@ -59,13 +59,12 @@ router.post("/contactus", async (req, res) => {
 
   try {
     // Save to the database
-    const newContact = await ContactUsModel.create({
+    await ContactUsModel.create({
         name, email, phone, country, message
     });
 
     return res.status(200).json({
         message: "Contact details submitted successfully.",
-        data: newContact,
     });
   } catch (error) {
     console.error("Error saving contact details:", error);
