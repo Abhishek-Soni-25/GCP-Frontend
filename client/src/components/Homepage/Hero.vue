@@ -166,49 +166,50 @@ background: #F0E002;
 }
 
 
- .brand-txt {
-  color: #ffffff;
-  font-family: "Outfit-Bold", Helvetica;
-  font-size: 17.8px;
-  font-weight: 700;
-  left: auto;
-  letter-spacing: 1.69px;
-  line-height: 9.3px;
-  top: 10px;
-  width: auto;
-  padding: 1px;
-}
-img { 
-  margin-right: 0px; /* Space between image and text */ 
-  size: 80px;
-  padding-inline: 2%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+   .brand-txt {
+    color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 17.8px;
+    font-weight: 700;
+    left: auto;
+    letter-spacing: 1.69px;
+    line-height: 9.3px;
+    top: 10px;
+    width: auto;
+    padding: 1px;
+  }
+  img { 
+    margin-right: 0px; /* Space between image and text */ 
+    width: 8%;
+    min-width: 50px;
+    padding-inline: 1%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 
 
 /* Brand Box */
 .brand-box {
-flex: 1;
-text-align: center;
-align-items: center;
-align-content: center;
-width: 90%;
-background-color: #222222;
-border: 1px solid #333;
-padding: 2px;
-margin: 0 4%;
-border-radius: 20px;
-}
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  width: 90%;
+  background-color: #222222;
+  border: 1px solid #333;
+  padding: 2px;
+  margin: 0 4%;
+  border-radius: 20px;
+} 
 .box-txt{ 
-color: #ffffff;
-  font-family: "Outfit-Bold", Helvetica;
-  font-size: 17.8px;
-  font-weight: 700;
-  margin: 1px;
-  letter-spacing: 1px;
-  padding-right: 2%;
-}
+  color: #ffffff;
+    font-family: "Outfit-Bold", Helvetica;
+    font-size: 100%;
+    font-weight: 700;
+    margin: 1px;
+    letter-spacing: 1px;
+    padding-right: 1%;
+  }
 
 /* Divider Line */
 .line {
