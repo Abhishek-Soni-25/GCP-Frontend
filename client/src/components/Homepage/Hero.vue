@@ -10,7 +10,7 @@
             </span><br />
             <span class="text-wrapper-4">Passionately</span>
           </p>
-              <p>Empowering businesses to reach new heights with innovative strategies and creative solutions.</p>
+              <p>We increase revenue and ensure sustainable long-term growth for your business through powerful Webflow websites.</p>
               <button class="cta-button" @click="exploreMore">Explore More</button>
           </div>
       </div>
@@ -52,14 +52,8 @@ methods: {
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
-  },
-  nextImage() {
-    this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-  },
-  prevImage() {
-    this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
   }
-},
+}
 };
 </script>
 
@@ -99,6 +93,7 @@ padding: 1px;
 }
 .hero-section2 {
 flex: 1;
+width: 90%;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -186,7 +181,6 @@ background: #F0E002;
     padding-top: 5px;
     padding-bottom: 5px;
   }
-
 
 /* Brand Box */
 .brand-box {
