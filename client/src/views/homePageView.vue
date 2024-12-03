@@ -8,6 +8,7 @@
     <Hero />
     <AppBrand />
     <Dream />
+    <NewTestimonials/>
     <NewsArticle />
     <FAQ />
   </div>
@@ -19,6 +20,7 @@ import Hero from '@/components/Homepage/Hero.vue';
 import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
+import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
 
 // Import Axios
 import axios from 'axios';
@@ -30,6 +32,7 @@ export default {
     Hero,
     AppBrand,
     Dream,
+    NewTestimonials,
     NewsArticle,
     FAQ
     // Register component
