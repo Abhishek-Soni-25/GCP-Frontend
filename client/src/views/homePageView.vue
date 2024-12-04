@@ -1,6 +1,8 @@
 <template>
   <div>
- 
+    <!-- Include the header component -->
+    <Header />
+
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
@@ -8,9 +10,12 @@
     <Hero />
     <AppBrand />
     <Dream />
-    <NewTestimonials/>
+    <NewTestimonials />
     <NewsArticle />
     <FAQ />
+    
+    <!-- Include the footer component -->
+    <Footer />
   </div>
 </template>
 
@@ -21,10 +26,14 @@ import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
+import FAQ from '@/components/Homepage/FAQ.vue';
 
 // Import Axios
 import axios from 'axios';
-import FAQ from '@/components/Homepage/FAQ.vue';
+
+// Import the header and footer components
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'HomePageView',
@@ -34,8 +43,9 @@ export default {
     Dream,
     NewTestimonials,
     NewsArticle,
-    FAQ
-    // Register component
+    FAQ,
+    Header,  // Added Header component
+    Footer   // Added Footer component
   },
   data() {
     return {
