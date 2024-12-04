@@ -6,7 +6,7 @@
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
-    <!-- Render the component -->
+    <!-- Render the components -->
     <Hero />
     <AppBrand />
     <Dream />
@@ -20,20 +20,16 @@
 </template>
 
 <script>
-// Import the component
+// Import components
 import Hero from '@/components/Homepage/Hero.vue';
 import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
 import FAQ from '@/components/Homepage/FAQ.vue';
-
-// Import Axios
-import axios from 'axios';
-
-// Import the header and footer components
 import Header from '@/components/Homepage/Header.vue';
 import Footer from '@/components/Homepage/Footer.vue';
+import axios from 'axios';
 
 export default {
   name: 'HomePageView',
@@ -44,33 +40,36 @@ export default {
     NewTestimonials,
     NewsArticle,
     FAQ,
-    Header,  // Added Header component
-    Footer   // Added Footer component
+    Header,
+    Footer,
   },
   data() {
     return {
-      message: null, // This will hold the message fetched from the API
+      message: null,
     };
   },
   methods: {
-    // Method to fetch data from the API
     fetchMessage() {
-      axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
-        .then(response => {
-          this.message = response.data.message; // Set the message data from the API
+      axios
+        .get('/api/message')
+        .then((response) => {
+          console.log('API Response:', response.data); // Debug log
+          this.message = response.data.message;
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching the message:', error);
         });
     },
   },
   created() {
-    // Call the fetchMessage method when the component is created
     this.fetchMessage();
   },
 };
 </script>
 
 <style scoped>
-/* You can add styles specific to this page */
+/* Temporary styles for debugging */
+header, footer {
+  border: 1px solid red; /* Debug border */
+}
 </style>
