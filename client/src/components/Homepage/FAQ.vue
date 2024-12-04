@@ -22,27 +22,30 @@
             </div>
         </div>
 
+
         <div class="user-faq">
-            <div class="user-form">
-                <form @submit.prevent="handleSubmit">
-                    <textarea name="" id="" autocomplete="off" placeholder="Ask us what you want to know"></textarea>
-
-
-                </form>
-            </div>
-            <div class="form-details">
-                <div class="form-description">
-                    <h4>What do you want to know? We will answer within 48 hours.</h4>
+            <form @submit.prevent="handleSubmit">
+                <div class="user-form">
+                    <textarea v-model="userQuestion" placeholder="Ask us what you want to know..." required>
+                </textarea>
                 </div>
+                <div class="form-details">
+                    <div class="form-description">
+                        <h4>We will answer your questions via email within 48 hours.</h4>
+                    </div>
 
-                <!-- Submit button -->
-                <button type="submit" class="submit-button">Submit</button>
-            </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="submit-button" :disabled="!userQuestion.trim()">Send</button>
+                </div>
+            </form>
         </div>
     </div>
-</template>
 
+</template>
 <script>
+import axios from "axios";
+const port = process.env.PORT || 7000;
+
 export default {
     name: "FAQ",
     data() {
@@ -53,19 +56,39 @@ export default {
                 { question: "How does reactivity work?", answer: "Vue tracks dependencies and updates efficiently." },
                 { question: "Is Vue.js suitable for large projects?", answer: "Yes, Vue can be scaled with Vuex and Vue Router." },
                 { question: "How can I use Vue with other libraries?", answer: "Vue works seamlessly with other libraries and APIs." },
+
             ],
+            userQuestion: "", // Input for the user question
         };
+    },
+    computed: {
+        // Determines if the submit button should be disabled
+        isSubmitDisabled() {
+            return !this.userQuestion.trim();
+        },
     },
     methods: {
         toggleAccordion(index) {
             this.activeIndex = this.activeIndex === index ? null : index;
         },
-        handleSubmit() {
-            alert("Your question has been submitted!");
-        }
+        async handleSubmit() {
+            if (this.isSubmitDisabled) return; // Safeguard against invalid submissions
+            try {
+                const response = await axios.post(`http://localhost:${port}/api/submit-faq`, {
+                    question: this.userQuestion,
+                });
+                alert("Your question has been submitted successfully!");
+                console.log(response.data);
+                this.userQuestion = ""; // Clear the textarea after submission
+            } catch (error) {
+                console.error("There was an error submitting your question:", error);
+                alert("Something went wrong. Please try again later.");
+            }
+        },
     },
 };
 </script>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Love+Light&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -189,8 +212,8 @@ body {
     padding: 2%;
 }
 
-.user-faq .user-form form textarea {
-    width: 85%;
+.user-faq .user-form textarea {
+    width: 100%;
     height: 10vh;
     max-width: 600px;
     resize: none;
@@ -207,6 +230,11 @@ body {
     justify-content: center;
 }
 
+.form-description {
+    width: 18vw;
+
+}
+
 .form-description h4 {
     font-size: 16px;
     text-align: center;
@@ -216,9 +244,10 @@ body {
 }
 
 .form-details {
-    width: 85%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: self-start;
 }
 
 
@@ -230,14 +259,18 @@ body {
     background-color: #F0E002;
     color: #111204;
     border: none;
-    border-radius: 10px;
+    border-radius: 40px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
     font-family: Outfit;
 }
 
+.submit-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 
+}
 
 @media (max-width: 768px) {
     .faq-main {
@@ -250,6 +283,11 @@ body {
 
     .submit-button {
         height: 7vh;
+    }
+
+    .form-description {
+        width: auto;
+        flex-wrap: wrap
     }
 }
 </style>
