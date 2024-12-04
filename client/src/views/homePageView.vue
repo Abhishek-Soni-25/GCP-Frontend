@@ -1,35 +1,37 @@
 <template>
-  <div>
-    <!-- Include the header component -->
+  <div class="main-container">
+    <!-- Render the Header component -->
     <Header />
 
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
-    <!-- Render the components -->
+    <!-- Render other components -->
     <Hero />
     <AppBrand />
     <Dream />
     <NewTestimonials />
     <NewsArticle />
     <FAQ />
-    
-    <!-- Include the footer component -->
+
+    <!-- Render the Footer component -->
     <Footer />
   </div>
 </template>
 
 <script>
-// Import components
+// Import the component
 import Header from '@/components/Homepage/Header.vue';
 import Hero from '@/components/Homepage/Hero.vue';
 import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
-import FAQ from '@/components/Homepage/FAQ.vue';
-import axios from 'axios';
 import Footer from '@/components/Homepage/Footer.vue';
+
+// Import Axios
+import axios from 'axios';
+import FAQ from '@/components/Homepage/FAQ.vue';
 
 export default {
   name: 'HomePageView',
@@ -41,35 +43,42 @@ export default {
     NewTestimonials,
     NewsArticle,
     FAQ,
-    Footer,
+    Footer
   },
   data() {
     return {
-      message: null,
+      message: null, // This will hold the message fetched from the API
     };
   },
   methods: {
+    // Method to fetch data from the API
     fetchMessage() {
-      axios
-        .get('/api/message')
-        .then((response) => {
-          console.log('API Response:', response.data); // Debug log
-          this.message = response.data.message;
+      axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
+        .then(response => {
+          this.message = response.data.message; // Set the message data from the API
         })
-        .catch((error) => {
+        .catch(error => {
           console.error('Error fetching the message:', error);
         });
     },
   },
   created() {
+    // Call the fetchMessage method when the component is created
     this.fetchMessage();
   },
 };
 </script>
 
 <style scoped>
-/* Temporary styles for debugging */
-header, footer {
-  border: 1px solid red; /* Debug border */
+/* Ensuring the footer stays at the bottom */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the container takes up full height */
 }
+
+footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
 </style>
