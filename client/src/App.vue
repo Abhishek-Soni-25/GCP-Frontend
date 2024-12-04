@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
+import Header from '@/components/Homepage/Header.vue';
+import Footer from '@/components/Homepage/Footer.vue';
 
 export default {
   name: 'App',
@@ -25,6 +25,16 @@ export default {
 </script>
 
 <style>
-/* Add any global styles here */
-</style>
+/* Global layout styles */
+#app {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Full-page layout */
+  display: flex;
+  flex-direction: column;
+}
 
+router-view {
+  flex: 1; /* Makes the main content expand between Header and Footer */
+}
+</style>
