@@ -31,6 +31,10 @@ const ContactUsModel = sequelize.define("contactus", {
         type: DataTypes.TEXT,       
         allowNull: false,             
     },
-});
+},
+{
+    timestamps: true,
+}
+);
 
 module.exports = ContactUsModel; 
