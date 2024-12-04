@@ -4,7 +4,6 @@ const cors = require('cors');
 const apiRoutes = require('./routes/api'); // Import API routes
 const app = express();
 const port = process.env.PORT || 7000;
-const { initializeDatabase } = require("./db");
 
 // Enable CORS
 app.use(cors());
@@ -26,15 +25,6 @@ app.get('/', (req, res) => {
     }
   )
 });
-
-// Initializes database existence.
-initializeDatabase()
-  .then((sequelize) => {
-    console.log("App is ready to use the database.");
-  })
-  .catch((err) => {
-    console.error("Failed to initialize database:", err);
-  });
 
 // Serve the built Vue.js app
 if (process.env.NODE_ENV === 'production') {

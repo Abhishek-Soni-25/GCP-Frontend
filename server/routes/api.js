@@ -21,8 +21,8 @@ router.post("/submit-faq", async (req, res) => {
   }
 
   try {
-      const newFAQ = await FAQModel.create({ query });
-      res.status(201).json({ message: "FAQ submitted successfully", faq: newFAQ });
+      await FAQModel.create({ query });
+      res.status(201).json({ message: "FAQ submitted successfully"});
   } catch (err) {
       console.error("Error saving FAQ:", err);
       res.status(500).json({ error: "Failed to save FAQ" }); 
