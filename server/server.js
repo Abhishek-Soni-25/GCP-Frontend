@@ -1,6 +1,5 @@
-// server/server.js
-
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const apiRoutes = require('./routes/api'); // Import API routes
 const app = express();
@@ -12,14 +11,40 @@ app.use(cors());
 // Middleware for parsing JSON
 app.use(express.json());
 
-// Use API routes
+// Use API routes (like /api)
 app.use('/api', apiRoutes);
 
 // Root route
 app.get('/', (req, res) => {
   const baseUrl = req.protocol + "://" + req.get("host");
-  res.send("Base URL is: " + baseUrl);
+  res.json(
+    {
+      'message':`${baseUrl}/api/message`,
+      'contactus':`${baseUrl}/api/contactus`,
+      'faq':`${baseUrl}/api/submit-faq`
+    }
+  )
 });
+
+// Initializes database existence.
+initializeDatabase()
+  .then((sequelize) => {
+    console.log("App is ready to use the database.");
+  })
+  .catch((err) => {
+    console.error("Failed to initialize database:", err);
+  });
+
+// Serve the built Vue.js app
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder to serve the Vue.js build
+  app.use(express.static(path.join(__dirname, 'dist')));
+
+  // Catch-all route for handling all frontend routes by serving index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+}
 
 // Start server
 app.listen(port, () => {
