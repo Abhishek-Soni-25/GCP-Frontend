@@ -1,12 +1,7 @@
 <template>
   <div id="app">
-    <!-- Include the header component -->
     <Header />
-    
-    <!-- This will dynamically render the active route component -->
     <router-view />
-    
-    <!-- Include the footer component -->
     <Footer />
   </div>
 </template>
@@ -25,16 +20,13 @@ export default {
 </script>
 
 <style>
-/* Global layout styles */
 #app {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh; /* Full-page layout */
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 router-view {
-  flex: 1; /* Makes the main content expand between Header and Footer */
+  flex: 1; /* Ensures content between Header and Footer takes available space */
 }
 </style>
