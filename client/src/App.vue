@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <!-- The router-view will render the active route component -->
+    <!-- Include the header component -->
+    <Header />
+    
+    <!-- This will dynamically render the active route component -->
     <router-view />
+    
+    <!-- Include the footer component -->
+    <Footer />
   </div>
 </template>
 
 <script>
-// No need to import HelloWorld here anymore as the routing will handle it
-// removed udit singh's merged code 
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 export default {
-  name: 'App'
-}
+  name: 'App',
+  components: {
+    Header,
+    Footer,
+  },
+};
 </script>
 
 <style>
-/* You can add your global styles here */
+/* Add any global styles here */
 </style>
+
