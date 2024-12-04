@@ -26,15 +26,6 @@ app.get('/', (req, res) => {
   )
 });
 
-// Initializes database existence.
-initializeDatabase()
-  .then((sequelize) => {
-    console.log("App is ready to use the database.");
-  })
-  .catch((err) => {
-    console.error("Failed to initialize database:", err);
-  });
-
 // Serve the built Vue.js app
 if (process.env.NODE_ENV === 'production') {
   // Set static folder to serve the Vue.js build
