@@ -21,15 +21,15 @@
 
 <script>
 // Import components
+import Header from '@/components/Homepage/Header.vue';
 import Hero from '@/components/Homepage/Hero.vue';
 import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
 import FAQ from '@/components/Homepage/FAQ.vue';
-import Header from '@/components/Homepage/Header.vue';
-import Footer from '@/components/Homepage/Footer.vue';
 import axios from 'axios';
+import Footer from '@/components/Homepage/Footer.vue';
 
 export default {
   name: 'HomePageView',
