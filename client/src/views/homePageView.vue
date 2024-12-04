@@ -32,8 +32,8 @@ import FAQ from '@/components/Homepage/FAQ.vue';
 import axios from 'axios';
 
 // Import the header and footer components
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
+import Header from '@/components/Homepage/Header.vue';
+import Footer from '@/components/Homepage/Footer.vue';
 
 export default {
   name: 'HomePageView',
