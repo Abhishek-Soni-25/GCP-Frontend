@@ -34,13 +34,13 @@ import Footer from '@/components/Homepage/Footer.vue';
 export default {
   name: 'HomePageView',
   components: {
+    Header,
     Hero,
     AppBrand,
     Dream,
     NewTestimonials,
     NewsArticle,
     FAQ,
-    Header,
     Footer,
   },
   data() {
