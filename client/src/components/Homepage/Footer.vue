@@ -47,7 +47,7 @@
       <hr class="border-secondary my-4" />
       <div class="text-center">
         <small>
-          © 2023 Companyname - All Rights Reserved
+          © 2024 Companyname - All Rights Reserved
         </small>
       </div>
     </div>
