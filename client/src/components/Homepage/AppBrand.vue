@@ -1,6 +1,7 @@
 <template>
-  <div class="container text-center mt-2" >
-    <h1 class="fw-bold">Our Beautiful Brands</h1>
+  <div class="main">
+  <div class="container text-center " >
+    <h1 class="fw-bold ">Our Beautiful Brands</h1>
     <p>We help our client s to grow their bottom line with clear and <br>professional website</p>
 
     <!-- <button class="btn px-3" v-if="visibleCount < images.length" @click="loadMore"</button> >Load More</button> -->
@@ -52,6 +53,7 @@
       
     </div>
   </div>
+</div>
 
    <!-- This is the code which will be shown when we click on the button. his only desgn page  -->
 
@@ -122,11 +124,29 @@ export default {
 /* Add icon library  */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
+.main
+{
+  width: 100%;
+  /* background: linear-gradient(65deg, white, #ccc9c9); */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+  /* background: linear-gradient(130deg, white, #ccc9c9); */
+  background-color: #f9f9f9f9;
+}
+
 .container{
-  background-color:rgb(255,255,255);
+  /* background-color:rgb(255,255,255); */
+  /* background: linear-gradient(130deg, white, #ccc9c9); */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+  width: 100%;
+  /* margin-top: 1px */
+  background-color: #f9f9f9f9;
  
 }
-h2 {
+/* .fw-bold
+{
+  margin-top: 50px;
+} */
+h1 {
   margin-bottom: 10px;
 }
 
@@ -143,7 +163,13 @@ img {
   
   width: 90%;
   margin: 0 auto;
-  margin-top: 50px;
+  padding: 10px;
+  /* margin-top: 50px; */
+  /* background-color: yellow; */
+  /* background: linear-gradient(to right, red, yellow); */
+  /* background: radial-gradient(circle, blue, green); */
+  /* background: linear-gradient(65deg, white, #F9F9F9); */
+  /* margin-bottom: 2px; */
 }
  
 .buttonload {
