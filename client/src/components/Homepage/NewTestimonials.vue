@@ -18,10 +18,10 @@
             :key="index"
             class="container_card"
             :style="{ transform: `translateX(-${currentIndex * 100}%)`, transition: 'transform 0.5s ease' }"
-          >
-            <div class="container_card_content">
+            @mouseenter="stopAutoSlide">
+            <div class="container_card_content" >
               <img :src="testimonial.companyLogo" alt="Company Logo" class="company-logo" />
-              <h4>{{ testimonial.title }}</h4>
+              <h4 style="font-weight: bold;">{{ testimonial.title }}</h4>
               <p style="text-align: justify;">{{ testimonial.description }}</p>
               <h4 style="font-weight: bold;">{{ testimonial.name }}</h4>
               <p class="position">{{ testimonial.position }}</p>
@@ -76,26 +76,58 @@ export default {
       currentIndex: 0,
     };
   },
+  mounted() {
+    // Start the auto-slide when the component is mounted
+    this.startAutoSlide();
+  },
   methods: {
     goPrev() {
       this.currentIndex =
         (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
+        this.restartAutoSlide();
     },
     goNext() {
       this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+      this.restartAutoSlide();
+    },
+    startAutoSlide() {
+      // Automatically move to the next slide every 3 seconds
+      this.autoSlideInterval = setInterval(() => {
+        this.goNext();
+      }, 3000);
+    },
+    stopAutoSlide() {
+      // Stop the auto-slide
+      if (this.autoSlideInterval) {
+        clearInterval(this.autoSlideInterval);
+        this.autoSlideInterval = null;
+        this.autoSlideInterval = null;
+      }
+    },
+    restartAutoSlide() {
+      // Stop and restart the auto-slide
+      this.stopAutoSlide();
+      this.startAutoSlide();
     },
   },
+  beforeDestroy() {
+    // Clean up the interval when the component is destroyed
+    this.stopAutoSlide();
+  },
+  
+
+  
 };
 </script>
 
 
 <style scoped>
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css');
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-}
+} */
 
 .sectioon_container {
   text-align: center;
@@ -158,8 +190,8 @@ body {
 }
 
 .slider-btn:hover {
-  background: rgb(55, 53, 53);
-  color: #fff;
+  background:#F9F9F9
+  /* color: #fff; */
 }
 
 .card_main {
@@ -168,21 +200,24 @@ body {
   width: 100%;
   overflow: hidden;
   height: auto;
-  border-radius: 10px;
-  /* background-color: #000; */
-  border-radius: 18px;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+  /* background-color: cadetblue; */
+  border-radius: 30px;
 }
 
 .container_card {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   flex: 0 0 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   /* width: 100%; */
-  border-radius: 18px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px
+  border-radius: 10px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  /* margin: 30px; */
 }
 
 .container_card_content {
@@ -191,7 +226,7 @@ body {
   box-sizing: border-box;
   text-align: left;
   /* background-color: aqua; */
-  border-radius: 18px;
+  /* border-radius: 18px; */
   
 }
 
@@ -254,6 +289,13 @@ body {
     font-size: 20px;
   }
 
+  .testimonial-slider{
+    width: 100%;
+  }
+.card_main
+{
+  width: 100%;
+}
   .container_card {
     flex-direction: column;
     align-items: center;
