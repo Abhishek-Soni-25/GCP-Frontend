@@ -24,7 +24,7 @@
 
 
         <div class="user-faq">
-            <form @submit.prevent="handleSubmit">
+            <form onsubmit="handleSubmit()">
                 <div class="user-form">
                     <textarea v-model="userQuestion" placeholder="Ask us what you want to know..." required>
                 </textarea>
