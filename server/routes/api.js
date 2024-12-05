@@ -21,7 +21,7 @@ router.get('/message', async(req, res) => {
 
     // If no FAQs are found
     if (faqs.length === 0) {
-      return res.status(404).json({ message: "No visible FAQs found." });
+      return res.status(404).json({ message: "No FAQs with visibility true is found." });
     }
 
     res.status(200).json({ faqs: faqs });
@@ -35,7 +35,6 @@ router.get('/message', async(req, res) => {
 router.post('/message', async(req,res) => {
   const { query, answer, visibility } = req.body;
 
-  // Check if the necessary data is provided
   if (!query || !answer || !visibility ) {
     return res.status(400).json({ error: "Query, answer, and visibility are required" });
   }
