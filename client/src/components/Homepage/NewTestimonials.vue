@@ -18,10 +18,10 @@
             :key="index"
             class="container_card"
             :style="{ transform: `translateX(-${currentIndex * 100}%)`, transition: 'transform 0.5s ease' }"
-          >
-            <div class="container_card_content">
+            @mouseenter="stopAutoSlide">
+            <div class="container_card_content" >
               <img :src="testimonial.companyLogo" alt="Company Logo" class="company-logo" />
-              <h4>{{ testimonial.title }}</h4>
+              <h4 style="font-weight: bold;">{{ testimonial.title }}</h4>
               <p style="text-align: justify;">{{ testimonial.description }}</p>
               <h4 style="font-weight: bold;">{{ testimonial.name }}</h4>
               <p class="position">{{ testimonial.position }}</p>
@@ -76,49 +76,81 @@ export default {
       currentIndex: 0,
     };
   },
+  mounted() {
+    // Start the auto-slide when the component is mounted
+    this.startAutoSlide();
+  },
   methods: {
     goPrev() {
       this.currentIndex =
         (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
+        this.restartAutoSlide();
     },
     goNext() {
       this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+      this.restartAutoSlide();
+    },
+    startAutoSlide() {
+      // Automatically move to the next slide every 3 seconds
+      this.autoSlideInterval = setInterval(() => {
+        this.goNext();
+      }, 3000);
+    },
+    stopAutoSlide() {
+      // Stop the auto-slide
+      if (this.autoSlideInterval) {
+        clearInterval(this.autoSlideInterval);
+        this.autoSlideInterval = null;
+        this.autoSlideInterval = null;
+      }
+    },
+    restartAutoSlide() {
+      // Stop and restart the auto-slide
+      this.stopAutoSlide();
+      this.startAutoSlide();
     },
   },
+  beforeDestroy() {
+    // Clean up the interval when the component is destroyed
+    this.stopAutoSlide();
+  },
+  
+
+  
 };
 </script>
 
 
 <style scoped>
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css');
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-}
+} */
 
 .sectioon_container {
   text-align: center;
-  margin: 50px;
+  padding: 20px;
 }
 
 .testimonial-header h2 {
   font-size: 16px;
   color: #777;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-transform: uppercase;
 }
 
 .testimonial-header h1 {
-  font-size: 30px;
+  font-size: 32px;
   color: #000;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .testimonial-header p {
   font-size: 14px;
-  color: black;
+  color: #333;
   margin-bottom: 30px;
 }
 
@@ -128,18 +160,16 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  max-width: 1450px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  gap: 10px;
-  border-radius: 30px;
 }
 
 .slider-btn {
-  background: hsl(0, 0%, 96%);
+  background: white;
   border: none;
   font-size: 30px;
-  color: rgb(7, 0, 0);
+  color: black;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -148,6 +178,8 @@ body {
   justify-content: center;
   cursor: pointer;
   /* font-weight: bold; */
+  
+  
 }
 .right-btn {
   font-weight: bold;
@@ -158,25 +190,34 @@ body {
 }
 
 .slider-btn:hover {
-  background: rgb(55, 53, 53);
+  background:#F9F9F9
+  /* color: #fff; */
 }
 
 .card_main {
   display: flex;
+  transition: transform 0.5s ease-in-out;
   width: 100%;
   overflow: hidden;
-  height: 60vh;
+  height: auto;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+  /* background-color: cadetblue; */
   border-radius: 30px;
 }
 
 .container_card {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   flex: 0 0 100%;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  /* width: 100%; */
+  border-radius: 10px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  /* margin: 30px; */
 }
 
 .container_card_content {
@@ -184,92 +225,107 @@ body {
   padding: 20px;
   box-sizing: border-box;
   text-align: left;
-  margin-bottom: 50px;
+  /* background-color: aqua; */
+  /* border-radius: 18px; */
+  
 }
+
 
 .company-logo {
   width: 80px;
+  margin-bottom: 15px;
 }
 
 .container_card_pofilephoto {
-  width: 35%;
-  padding: 30px;
+  width: 40%;
+  /* height: 100%; */
+  /* padding: 20px; */
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: yellow; */
+  border-radius: 18px;
 }
 
 .profile-img {
-  width: 100%;
-  height: 100%;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
   border-radius: 50%;
+  /* margin: 10px; */
+  /* border: 2px solid #ddd; */
+  /* margin-right: 50px; */
+  padding: 10px;
 }
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
-  .card_main {
-    height: 100%;
+  .testimonial-header h1 {
+    font-size: 24px;
   }
 
-  .container_card {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .container_card_content,
-  .container_card_pofilephoto {
-    width: 100%;
-  }
-
-  .container_card_pofilephoto {
-    height: auto;
+  .container_card_content {
+    padding: 15px;
+    /* text-align: justify; */
   }
 
   .profile-img {
-    width: 250px;
-    height: 250px;
-    margin-bottom: 100px;
+    width: 200px;
+    height: 200px;
+    /* margin-left: 50px; */
   }
 
   .slider-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    font-weight: bold;
   }
+  
 }
 
 @media screen and (max-width: 480px) {
   .testimonial-header h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
-  /* .sectioon_container
-  {
-    height: 230vh;
-  } */
-  .card_main{
-    height: 230vh;
+
+  .testimonial-slider{
+    width: 100%;
   }
-.container_card
+.card_main
 {
-  height: 230vh;
+  width: 100%;
 }
-  
+  .container_card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .container_card_content {
+    width: 100%;
+    padding: 10px;
+  }
+
   .container_card_pofilephoto {
-    height: 300px;
+    /* margin-top: 10px; */
+    /* height: 40%; */
+    width: 100%;
   }
 
   .profile-img {
-    /* width: 150px;
-    height: 200px; */
-    width: 100%;
-    height: 50%;
-    margin-bottom: 50px;
+    width: 210px;
+    height: 200px;
+    margin: 8px;
   }
 
   .slider-btn {
-    width: 15px;
-    height: 30px;
-    font-size: 15px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    font-weight: bold;
   }
 }
+
 </style>

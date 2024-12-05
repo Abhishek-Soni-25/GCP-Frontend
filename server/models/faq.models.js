@@ -15,6 +15,10 @@ const FAQModel = sequelize.define("FAQ", {
         type: DataTypes.STRING,       
         allowNull: false,             
     },
-});
+},
+{
+    timestamps: true, 
+}
+);
 
 module.exports = FAQModel; 
