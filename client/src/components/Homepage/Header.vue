@@ -1,8 +1,8 @@
 <template>
-  <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm custom-navbar">
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm custom-navbar">
     <div class="container">
       <a href="#" class="navbar-brand">
-        <img src="@/assets/logo.png" alt="Logo" style="height: 50px" />
+        <img src="@/assets/logo.png" alt="Logo" class="brand-logo" />
       </a>
       <button
         class="navbar-toggler"
@@ -50,55 +50,55 @@ export default {
 <style scoped>
 /* Navbar Styling */
 .custom-navbar {
-  border-bottom: 3px solid #f8f9fa;
+  background: radial-gradient(ellipse 160px 120px at center, #111204, #111204);
+  backdrop-filter: blur(134.37px);
   transition: all 0.3s ease-in-out;
-  background: linear-gradient(to right, #ffffff, #f8f9fa);
 }
 
-.custom-navbar:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  border-bottom: 3px solid #007bff;
-}
-
+/* Logo Zoom Effect */
 .brand-logo {
   height: 50px;
   transition: transform 0.3s ease;
 }
 
 .brand-logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.2); /* Zoom effect */
 }
 
 /* Navbar Links Styling */
 .navbar-nav .nav-link {
   font-weight: 500;
   font-size: 16px;
-  color: #000;
-  transition: color 0.3s ease, background 0.3s ease;
+  color: #f8f9fa; /* Text color for visibility */
+  transition: color 0.3s ease, box-shadow 0.3s ease;
   padding: 8px 12px;
   border-radius: 5px;
 }
 
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: #fff;
-  background: #007bff;
+.navbar-nav .nav-link:hover {
+  color: #f3f6f9;
+  box-shadow: inset 0 -2px 0 #17a2b8; /* Bottom border effect using box-shadow */
 }
 
+.navbar-nav .nav-link.active {
+  color: #17a2b8;
+}
+
+/* Navbar Items Margin */
 .navbar-nav .nav-item {
   margin: 0 10px;
 }
 
 /* Navbar Button Animation */
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f8f9fa' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248,249,250,0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
   .custom-navbar {
     border-bottom: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
   }
 
   .navbar-nav .nav-link {
