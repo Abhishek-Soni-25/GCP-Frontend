@@ -12,8 +12,16 @@ const FAQModel = sequelize.define("FAQ", {
         primaryKey: true,             
     },
     query: {
-        type: DataTypes.STRING,       
+        type: DataTypes.TEXT,       
         allowNull: false,             
+    },
+    answer: {
+        type : DataTypes.TEXT,
+        allowNull: true,
+    },
+    visibility:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
 },
 {
