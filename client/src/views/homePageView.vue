@@ -1,26 +1,33 @@
 <template>
-  <div>
- 
+  <div class="main-container">
+    <!-- Render the Header component -->
+    <Header />
+
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
-    <!-- Render the component -->
+    <!-- Render other components -->
     <Hero />
     <AppBrand />
     <Dream />
-    <NewTestimonials/>
+    <NewTestimonials />
     <NewsArticle />
     <FAQ />
+
+    <!-- Render the Footer component -->
+    <Footer />
   </div>
 </template>
 
 <script>
 // Import the component
+import Header from '@/components/Homepage/Header.vue';
 import Hero from '@/components/Homepage/Hero.vue';
 import Dream from '@/components/Homepage/Dream.vue';
 import NewsArticle from '@/components/Homepage/NewsArticle.vue';
 import AppBrand from '@/components/Homepage/AppBrand.vue';
 import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
+import Footer from '@/components/Homepage/Footer.vue';
 
 // Import Axios
 import axios from 'axios';
@@ -29,13 +36,14 @@ import FAQ from '@/components/Homepage/FAQ.vue';
 export default {
   name: 'HomePageView',
   components: {
+    Header,
     Hero,
     AppBrand,
     Dream,
     NewTestimonials,
     NewsArticle,
-    FAQ
-    // Register component
+    FAQ,
+    Footer
   },
   data() {
     return {
@@ -62,5 +70,15 @@ export default {
 </script>
 
 <style scoped>
-/* You can add styles specific to this page */
+/* Ensuring the footer stays at the bottom */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the container takes up full height */
+}
+
+footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
 </style>

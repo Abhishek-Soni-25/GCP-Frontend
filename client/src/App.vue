@@ -1,19 +1,28 @@
 <template>
   <div id="app">
-    <!-- The router-view will render the active route component -->
+    
     <router-view />
+   
   </div>
 </template>
 
 <script>
-// No need to import HelloWorld here anymore as the routing will handle it
-// removed udit singh's merged code 
 
 export default {
-  name: 'App'
-}
+  name: 'App',
+  components: {
+  },
+};
 </script>
 
 <style>
-/* You can add your global styles here */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-view {
+  flex: 1; /* Ensures content between Header and Footer takes available space */
+}
 </style>
