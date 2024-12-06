@@ -7,12 +7,59 @@ const router = express.Router();
 const FAQModel = require("../models/faq.models");
 const ContactUsModel = require("../models/contactus.models");
 
-// A sample API route
-router.get('/message', (req, res) => {
-  res.json({ message: 'Hello from the API route!' }); 
+// GET API to fetch all FAQs with visibility true
+// Responds with a list of FAQ queries and answers
+router.get('/message', async(req, res) => {
+  try {
+    
+    const faqs = await FAQModel.findAll({
+      where: {
+        visibility: true,  
+      },
+      attributes: ['query', 'answer'], 
+    });
+
+    // If no FAQs are found
+    if (faqs.length === 0) {
+      return res.status(404).json({ message: "No FAQs with visibility true is found." });
+    }
+
+    res.status(200).json({ faqs: faqs });
+  } catch (err) {
+    console.error("Error fetching visible FAQs:", err);
+    res.status(500).json({ error: "Failed to fetch visible FAQs" });
+  } 
 });
 
-// POST route to submit a new FAQ
+// POST API to update an existing FAQ entry based on the provided query
+router.post('/message', async(req,res) => {
+  const { query, answer, visibility } = req.body;
+
+  if (!query || !answer || !visibility ) {
+    return res.status(400).json({ error: "Query, answer, and visibility are required" });
+  }
+
+  try {
+    
+    const faq = await FAQModel.findOne({ where: { query } });
+
+    if (!faq) {
+      return res.status(404).json({ message: "FAQ not found for the provided query" });
+    }
+
+    faq.answer = answer;
+    faq.visibility = visibility;
+
+    await faq.save();
+
+    res.status(200).json({ message: "FAQ updated successfully"});
+  } catch (err) {
+    console.error("Error updating FAQ:", err);
+    res.status(500).json({ error: "Failed to update FAQ" });
+  }
+});
+
+// POST API to submit a new FAQ
 router.post("/submit-faq", async (req, res) => {
   const { query } = req.body;
 
@@ -29,7 +76,7 @@ router.post("/submit-faq", async (req, res) => {
   }
 });
 
-// POST route to submit contact-us details
+// POST API to submit contact-us details
 router.post("/contactus", async (req, res) => {
 
   const {name, email, phone, country, message} = req.body;
