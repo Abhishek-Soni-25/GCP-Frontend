@@ -18,7 +18,8 @@
             :key="index"
             class="container_card"
             :style="{ transform: `translateX(-${currentIndex * 100}%)`, transition: 'transform 0.5s ease' }"
-            @mouseenter="stopAutoSlide">
+            >
+            <!-- @mouseenter="stopAutoSlide" -->
             <div class="container_card_content" >
               <img :src="testimonial.companyLogo" alt="Company Logo" class="company-logo" />
               <h4 style="font-weight: bold;">{{ testimonial.title }}</h4>

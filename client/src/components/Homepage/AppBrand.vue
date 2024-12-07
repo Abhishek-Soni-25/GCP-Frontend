@@ -7,7 +7,7 @@
     <!-- <button class="btn px-3" v-if="visibleCount < images.length" @click="loadMore"</button> >Load More</button> -->
 
      <button class="buttonload">
-  <i class="fa fa-spinner "></i> Load More</button>
+    <i class="fa fa-spinner "></i> Load More</button>
 
     <div class="brand_image">
     <div class="row mt-5" style="max-width: 1300px; margin-top: 20px">
@@ -131,6 +131,8 @@ export default {
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
   /* background: linear-gradient(130deg, white, #ccc9c9); */
   background-color: #f9f9f9f9;
+  /* background-color: rgb(193, 18, 18); */
+  /* height: 50%; */
 }
 
 .container{
@@ -138,8 +140,12 @@ export default {
   /* background: linear-gradient(130deg, white, #ccc9c9); */
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
   width: 100%;
+  
+  padding-top: 1px;
   /* margin-top: 1px */
   background-color: #f9f9f9f9;
+  /* background-color: violet; */
+  /* margin-top: 50px; */
  
 }
 /* .fw-bold
@@ -148,6 +154,7 @@ export default {
 } */
 h1 {
   margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 p {
