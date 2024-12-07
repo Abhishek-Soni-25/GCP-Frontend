@@ -1,9 +1,11 @@
 <template>
   <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm custom-navbar">
     <div class="container">
+      <!-- Logo -->
       <a href="#" class="navbar-brand">
         <img src="@/assets/logo.png" alt="Logo" class="brand-logo" />
       </a>
+      <!-- Toggler Button -->
       <button
         class="navbar-toggler"
         type="button"
@@ -15,6 +17,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- Navbar Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -44,6 +47,15 @@
 <script>
 export default {
   name: "Header",
+  mounted() {
+    // Ensure Bootstrap JS components work when Vue updates the DOM
+    const bootstrapCollapse = new window.bootstrap.Collapse(
+      document.querySelector('#navbarNav'),
+      {
+        toggle: false,
+      }
+    );
+  },
 };
 </script>
 
@@ -55,21 +67,26 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-/* Logo Zoom Effect */
+/* Logo Styling */
 .brand-logo {
-  height: 50px;
+  height: 65px;
   transition: transform 0.3s ease;
 }
 
 .brand-logo:hover {
-  transform: scale(1.2); /* Zoom effect */
+  transform: scale(1.2);
+}
+
+/* Adjusted Logo Positioning */
+.navbar-brand {
+  margin-left: -80px; /* Moves the logo further left */
 }
 
 /* Navbar Links Styling */
 .navbar-nav .nav-link {
   font-weight: 500;
   font-size: 16px;
-  color: #f8f9fa; /* Text color for visibility */
+  color: #f8f9fa;
   transition: color 0.3s ease, box-shadow 0.3s ease;
   padding: 8px 12px;
   border-radius: 5px;
@@ -77,7 +94,7 @@ export default {
 
 .navbar-nav .nav-link:hover {
   color: #f3f6f9;
-  box-shadow: inset 0 -2px 0 #17a2b8; /* Bottom border effect using box-shadow */
+  box-shadow: inset 0 -2px 0 #17a2b8;
 }
 
 .navbar-nav .nav-link.active {
