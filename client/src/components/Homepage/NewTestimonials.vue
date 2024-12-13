@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app">
+  <div>
     <section class="sectioon_container">
       <div class="testimonial-header">
         <h2>TESTIMONIAL</h2>
