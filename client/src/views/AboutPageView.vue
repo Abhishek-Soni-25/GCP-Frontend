@@ -7,8 +7,10 @@
         <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
         <!-- Render other components -->
-
+        <Packtech/>,
+        <!-- <NotFound/>, -->
         <Work />
+        
         <!-- Render the Footer component -->
         <Footer />
     </div>
@@ -22,6 +24,8 @@ import Footer from '@/components/Homepage/Footer.vue';
 // Import Axios
 import axios from 'axios';
 import Work from '@/components/About/Work.vue';
+import Packtech from '@/components/About/Packtech.vue';
+// import NotFound from '@/components/About/NotFound.vue';
 
 
 export default {
@@ -29,6 +33,8 @@ export default {
     components: {
         Header,
         Work,
+        Packtech,
+        // NotFound,
         Footer
     },
     data() {
