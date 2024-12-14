@@ -8,7 +8,7 @@
 
         <!-- Render other components -->
         <Packtech/>,
-        <!-- <NotFound/>, -->
+        <NotFound/>,
         <Work />
         
         <!-- Render the Footer component -->
@@ -25,7 +25,7 @@ import Footer from '@/components/Homepage/Footer.vue';
 import axios from 'axios';
 import Work from '@/components/About/Work.vue';
 import Packtech from '@/components/About/Packtech.vue';
-// import NotFound from '@/components/About/NotFound.vue';
+import NotFound from '@/components/About/NotFound.vue';
 
 
 export default {
@@ -34,7 +34,7 @@ export default {
         Header,
         Work,
         Packtech,
-        // NotFound,
+        NotFound,
         Footer
     },
     data() {
