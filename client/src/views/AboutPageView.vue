@@ -7,7 +7,7 @@
         <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
         <!-- Render other components -->
-
+        <Aboutmain />
         <Work />
         <!-- Render the Footer component -->
         <Footer />
@@ -21,6 +21,7 @@ import Footer from '@/components/Homepage/Footer.vue';
 
 // Import Axios
 import axios from 'axios';
+import Aboutmain from '@/components/About/Aboutmain.vue';
 import Work from '@/components/About/Work.vue';
 
 
@@ -28,6 +29,7 @@ export default {
     name: 'HomePageView',
     components: {
         Header,
+        Aboutmain,
         Work,
         Footer
     },
