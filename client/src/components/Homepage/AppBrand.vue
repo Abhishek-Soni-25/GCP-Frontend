@@ -1,4 +1,4 @@
-<template>
+<template background: linear-gradient(130deg, white, #ccc9c9);>
   <div class="main">
   <div class="container text-center " >
     <h1 class="fw-bold ">Our Beautiful Brands</h1>
@@ -130,23 +130,17 @@ export default {
   /* background: linear-gradient(65deg, white, #ccc9c9); */
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
   /* background: linear-gradient(130deg, white, #ccc9c9); */
-  background-color: #f9f9f9f9;
+  background-color: #ccc9c9;
   /* background-color: rgb(193, 18, 18); */
   /* height: 50%; */
+  background: linear-gradient(130deg, white, #ccc9c9); 
 }
 
 .container{
-  /* background-color:rgb(255,255,255); */
-  /* background: linear-gradient(130deg, white, #ccc9c9); */
-  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(130deg, white, #ccc9c9);
   width: 100%;
-  
   padding-top: 1px;
   /* margin-top: 1px */
-  background-color: #f9f9f9f9;
-  /* background-color: violet; */
-  /* margin-top: 50px; */
- 
 }
 /* .fw-bold
 {
