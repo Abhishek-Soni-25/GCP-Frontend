@@ -17,7 +17,7 @@
 <script>
 // Import the component
 import Header from '@/components/Homepage/Header.vue';
-import contactUS from '@/components/Homepage/contactUS.vue';
+import contactUS from '@/components/Contactus/contactUS.vue';
 import Footer from '@/components/Homepage/Footer.vue';
 
 // Import Axios
