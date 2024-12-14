@@ -22,29 +22,24 @@
             </div>
         </div>
 
-
         <div class="user-faq">
-            <form onsubmit="handleSubmit()">
+            <form @submit.prevent="handleSubmit">
                 <div class="user-form">
-                    <textarea v-model="userQuestion" placeholder="Ask us what you want to know..." required>
-                </textarea>
+                    <textarea v-model="userQuestion" placeholder="Ask us what you want to know..." required></textarea>
                 </div>
                 <div class="form-details">
                     <div class="form-description">
                         <h4>We will answer your questions via email within 48 hours.</h4>
                     </div>
-
-                    <!-- Submit button -->
                     <button type="submit" class="submit-button" :disabled="!userQuestion.trim()">Send</button>
                 </div>
             </form>
         </div>
     </div>
-
 </template>
+
 <script>
 import axios from "axios";
-const port = process.env.PORT || 7000;
 
 export default {
     name: "FAQ",
@@ -56,38 +51,37 @@ export default {
                 { question: "How does reactivity work?", answer: "Vue tracks dependencies and updates efficiently." },
                 { question: "Is Vue.js suitable for large projects?", answer: "Yes, Vue can be scaled with Vuex and Vue Router." },
                 { question: "How can I use Vue with other libraries?", answer: "Vue works seamlessly with other libraries and APIs." },
-
             ],
-            userQuestion: "", // Input for the user question
+            userQuestion: "", // User's question input
         };
-    },
-    computed: {
-        // Determines if the submit button should be disabled
-        isSubmitDisabled() {
-            return !this.userQuestion.trim();
-        },
     },
     methods: {
         toggleAccordion(index) {
             this.activeIndex = this.activeIndex === index ? null : index;
         },
         async handleSubmit() {
-            if (this.isSubmitDisabled) return; // Safeguard against invalid submissions
+            if (!this.userQuestion.trim()) return; // Prevent empty submissions
+
             try {
-                const response = await axios.post(`http://localhost:${port}/api/submit-faq`, {
-                    question: this.userQuestion,
+                const response = await axios.post("https://gcp.agratasinfotech.com/api/submit-faq", {
+                    query: this.userQuestion,
                 });
+
+                // Show success message
                 alert("Your question has been submitted successfully!");
-                console.log(response.data);
-                this.userQuestion = ""; // Clear the textarea after submission
+                console.log("Response:", response.data);
+
+                // Clear the input field
+                this.userQuestion = "";
             } catch (error) {
-                console.error("There was an error submitting your question:", error);
+                console.error("Submission error:", error);
                 alert("Something went wrong. Please try again later.");
             }
         },
     },
 };
 </script>
+
 
 
 <style scoped>
