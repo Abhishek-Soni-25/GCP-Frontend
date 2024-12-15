@@ -1,58 +1,51 @@
 <template>
-  <footer class="bg-dark text-white pt-5 custom-footer">
+  <footer class="bg-dark text-white py-5">
     <div class="container">
       <!-- Top Section -->
       <div class="row">
         <!-- Left Section -->
-        <div class="col-md-6">
-          <div class="d-flex align-items-center mb-3">
-            <a href="/" class="footer-logo-link">
-              <img
-                src="@/assets/logo.png"
-                alt="Logo"
-                class="footer-logo"
-              />
-            </a>
+        <div class="col-md-6 mb-4">
+          <div class="d-flex align-items-center">
+            <router-link to="/" class="d-inline-block">
+              <img src="@/assets/logo.png" alt="Logo" class="img-fluid" style="height: 60px;" />
+            </router-link>
           </div>
-          <p class="mb-2">
+          <p class="mt-3">
             Address: Plot No-91, B-Block, Phase 2, <br />
             Roorkee Road, Modipuram, Meerut, 250001
           </p>
         </div>
 
         <!-- Right Section -->
-        <div class="col-md-6 text-md-end">
-          <!-- Email -->
-          <div class="mb-3">
-            <a
-              href="mailto:info@gripchain.com"
-              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end"
-            >
+        <div class="col-md-6 text-md-end mb-4">
+          <p class="mb-2">
+            <a href="mailto:info@gripchain.com"
+              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end">
               <i class="bi bi-envelope-fill me-2"></i> info@gripchain.com
             </a>
-          </div>
-          <!-- Phone -->
-          <div class="mb-3">
-            <a
-              href="tel:+00112313435"
-              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end"
-            >
+          </p>
+          <p class="mb-2">
+            <a href="tel:+00112313435"
+              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end">
               <i class="bi bi-telephone-fill me-2"></i> (001) 1231 3435
             </a>
-          </div>
-          <!-- Social Icons -->
+          </p>
           <div class="d-flex justify-content-md-end">
-            <a href="https://www.facebook.com" class="text-white text-decoration-none me-3 social-icon facebook">
-              <i class="bi bi-facebook"></i>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+              class="text-white text-decoration-none me-3">
+              <i class="bi bi-facebook fs-4"></i>
             </a>
-            <a href="https://www.instagram.com" class="text-white text-decoration-none me-3 social-icon instagram">
-              <i class="bi bi-instagram"></i>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+              class="text-white text-decoration-none me-3">
+              <i class="bi bi-instagram fs-4"></i>
             </a>
-            <a href="https://www.linkedin.com" class="text-white text-decoration-none me-3 social-icon linkedin">
-              <i class="bi bi-linkedin"></i>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="text-white text-decoration-none me-3">
+              <i class="bi bi-linkedin fs-4"></i>
             </a>
-            <a href="https://www.x.com" class="text-white text-decoration-none social-icon twitter">
-              <i class="bi bi-twitter"></i> <!-- Changed X to Twitter icon -->
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
+              class="text-white text-decoration-none">
+              <i class="bi bi-twitter fs-4"></i>
             </a>
           </div>
         </div>
@@ -64,25 +57,25 @@
       <!-- Bottom Section -->
       <div class="row">
         <!-- Pages Links -->
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
           <ul class="list-inline mb-0">
-            <li class="list-inline-item me-4">
-              <a href="#" class="text-white text-decoration-none page-link">Home</a>
+            <li class="list-inline-item me-3">
+              <router-link to="/" class="text-white text-decoration-none">Home</router-link>
             </li>
-            <li class="list-inline-item me-4">
-              <a href="#" class="text-white text-decoration-none page-link">About</a>
+            <li class="list-inline-item me-3">
+              <router-link to="/about" class="text-white text-decoration-none">About</router-link>
             </li>
-            <li class="list-inline-item me-4">
-              <a href="#" class="text-white text-decoration-none page-link">Products</a>
+            <li class="list-inline-item me-3">
+              <router-link to="/products" class="text-white text-decoration-none">Products</router-link>
             </li>
-            <li class="list-inline-item me-4">
-              <a href="#" class="text-white text-decoration-none page-link">Services</a>
+            <li class="list-inline-item me-3">
+              <router-link to="/services" class="text-white text-decoration-none">Services</router-link>
             </li>
-            <li class="list-inline-item me-4">
-              <a href="#" class="text-white text-decoration-none page-link">Contact</a>
+            <li class="list-inline-item me-3">
+              <router-link to="/contact" class="text-white text-decoration-none">Contact</router-link>
             </li>
             <li class="list-inline-item">
-              <a href="#" class="text-white text-decoration-none page-link">FAQ</a>
+              <router-link to="/faq" class="text-white text-decoration-none">FAQ</router-link>
             </li>
           </ul>
         </div>
@@ -93,7 +86,6 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom-space"></div>
   </footer>
 </template>
 
@@ -115,10 +107,6 @@ footer {
 }
 
 /* Logo Hover Effect */
-.footer-logo {
-  height: 60px;
-  transition: transform 0.3s ease;
-}
 
 .footer-logo:hover {
   transform: scale(1.1);
@@ -189,3 +177,5 @@ footer {
   }
 }
 </style>
+
+
