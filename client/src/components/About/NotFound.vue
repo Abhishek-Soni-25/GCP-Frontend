@@ -55,6 +55,7 @@ export default {
   border-radius: 10px;
   margin-bottom: 0; /* Removed bottom margin */
   
+  
 }
 
 .contact-heading {
