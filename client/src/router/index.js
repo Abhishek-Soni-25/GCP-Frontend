@@ -4,7 +4,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePageView from "../views/homePageView.vue";
 import Contactusview from "../views/contactusview.vue";
 import AboutPageView from "@/views/AboutPageView.vue";
-import ProductPageView from "@/views/ProductPageView.vue";
 
 const routes = [
   {
@@ -21,11 +20,6 @@ const routes = [
     path: "/about",
     name: "About",
     component: AboutPageView, // This is where the About component is now rendered
-  },
-  {
-    path: "/products",
-    name: "Product",
-    component: ProductPageView, // This is where the About component is now rendered
   },
   // You can add more routes if needed
 ];

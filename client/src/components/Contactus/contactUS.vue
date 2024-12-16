@@ -66,7 +66,7 @@
       <p class="number"> <i class="fa fa-phone" aria-hidden="true"></i> +91 99682 02373 </p>
       <!-- Embed Map --> 
       <iframe 
-      src="https://www.google.com/maps/embed?location=46.414382,10.013988" 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7011.473250746932!2d77.51834674617187!3d28.51757074230436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb96bfa06d15%3A0xab0da81e0ebc8e87!2z67aA7ISx7J2464-E6rO17J6lIFNpdGUgNQ!5e0!3m2!1sen!2sin!4v1734197879784!5m2!1sen!2sin" 
       class="map-show" 
       style="border:0;" 
       allowfullscreen="" 
