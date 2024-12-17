@@ -7,6 +7,7 @@ import AboutPageView from "@/views/AboutPageView.vue";
 import FaqPageView from "@/views/FaqPageView.vue";
 import productpageview from "@/views/productpageview.vue";
 
+
 const routes = [
   {
     path: "/",
@@ -23,6 +24,7 @@ const routes = [
     name: "About",
     component: AboutPageView, // This is where the About component is now rendered
   },
+
   {
     path: "/faq",
     name: "FAQ",
