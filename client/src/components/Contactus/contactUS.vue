@@ -1,85 +1,114 @@
 <template>
   <div>
     <p class="m-head">Get In Touch</p>
-    <p class="m-txt">We are here for you! How can we help?</p> 
-  </div>  
-  <div class="main">
+    <p class="m-txt">We are here for you! How can we help?</p>
+    <div class="main">
+      <div class="form">
+        <!-- Form -->
+        <form @submit.prevent="handleSubmit">
+          <!-- Name Field -->
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            v-model="formData.name"
+            :class="{'input-error': !formData.name && submitted}"
+            aria-label="Enter Your Name"
+          />
+          <span v-if="submitted && !formData.name" class="error-message">
+            Name is required.
+          </span>
 
-    <div class="form">
-      <!--Form-->
-      <form @submit.prevent="handleSubmit">
-        <input
-          type="text"
-          placeholder="Enter Your Name"
-          v-model="formData.name"
-          :class="{'input-error': !formData.name && submitted}"
-        />
-        <input
-          type="email"
-          placeholder="Enter your email address"
-          v-model="formData.email"
-          @input="validateEmail"
-          :class="{'input-error': (!formData.email && submitted) || !emailValid}"
-        />
-        <input
-          type="text"
-          placeholder="Enter your phone number"
-          v-model="formData.phone"
-          @input="validatePhone"
-          :class="{'input-error': (!formData.phone && submitted) || !phoneValid}"
-        />
-        <select
-          v-model="formData.country"
-          :class="{'input-error': !formData.country && submitted}"
-        >
-          <option value="">Select Your Country</option>
-          <option value="India">India</option>
-          <option value="USA">USA</option>
-          <option value="Canada">Canada</option>
-          <option value="UK">UK</option>
-          <option value="Australia">Australia</option>
-          <option value="Germany">Germany</option>
-          <option value="France">France</option>
-          <option value="France">South Korea</option>
-          <option value="Italy">Italy</option>
-          <option value="China">China</option>
-          <option value="Japan">Japan</option>
-        </select>
-        <textarea
-          placeholder="Message..."
-          v-model="formData.message"
-          :class="{'input-error': !formData.message && submitted}"
-        ></textarea>
-        <button type="submit">Submit</button>
-      </form>
-      <!-- Error Message -->
-      <p v-if="submitted && hasEmptyFields" class="error-message">
-        Please fill out all the fields.
-      </p>
-    </div>
-    <div class="map">
-      <p class="company">GRIP CHAIN PACKTECH PVT LTD.</p> 
-      <p class="address"> <i class="fa fa-map-marker" aria-hidden="true"></i>
-        K-77 SITE V KASNA,SURAJPUR INDUSTRIAL AREA,
-        Greater Noida, Gautam Buddha Nagar, Uttar Pradesh, India-201306
-      </p> 
-      <p class="number"> <i class="fa fa-phone" aria-hidden="true"></i> +91 99682 02373 </p>
-      <!-- Embed Map --> 
-      <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7011.473250746932!2d77.51834674617187!3d28.51757074230436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb96bfa06d15%3A0xab0da81e0ebc8e87!2z67aA7ISx7J2464-E6rO17J6lIFNpdGUgNQ!5e0!3m2!1sen!2sin!4v1734197879784!5m2!1sen!2sin" 
-      class="map-show" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy">
-      </iframe>
+          <!-- Email Field -->
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            v-model="formData.email"
+            @input="validateEmail"
+            :class="{'input-error': (!formData.email && submitted) || !emailValid}"
+            aria-label="Enter your email address"
+          />
+          <span v-if="submitted && (!formData.email || !emailValid)" class="error-message">
+            {{ !formData.email ? "Email is required." : "Enter a valid email address." }}
+          </span>
+
+          <!-- Country Field -->
+          <select
+            v-model="formData.country"
+            @change="setCountryCode"
+            :class="{'input-error': !formData.country && submitted}"
+            aria-label="Select Your Country"
+          >
+            <option value="">Select Your Country</option>
+            <option v-for="(code, country) in countryCodes" :key="country" :value="country">
+              {{ country }}
+            </option>
+          </select>
+          <span v-if="submitted && !formData.country" class="error-message">
+            Country selection is required.
+          </span>
+
+          <!-- Phone Field -->
+          <input
+            type="text"
+            placeholder="Enter your phone number"
+            v-model="formData.phone"
+            @input="validatePhone"
+            :class="{'input-error': (!formData.phone && submitted) || !phoneValid}"
+            aria-label="Enter your phone number"
+          />
+          <span v-if="submitted && (!formData.phone || !phoneValid)" class="error-message">
+            {{ !formData.phone ? "Phone number is required." : "Enter a valid phone number." }}
+          </span>
+
+          <!-- Message Field -->
+          <textarea
+            placeholder="Message..."
+            v-model="formData.message"
+            :class="{'input-error': !formData.message && submitted}"
+            aria-label="Enter your message"
+          ></textarea>
+          <span v-if="submitted && !formData.message" class="error-message">
+            Message is required.
+          </span>
+
+          <!-- Submit Button -->
+          <button type="submit" :disabled="hasEmptyFields || !emailValid || !phoneValid">
+            Submit
+          </button>
+        </form>
+
+        <!-- Overall Error Message -->
+        <p v-if="submitted && hasEmptyFields" class="error-message">
+          Please fill out all required fields.
+        </p>
+      </div>
+
+      <!-- Contact Info & Map -->
+      <div class="map">
+        <p class="company">GRIP CHAIN PACKTECH PVT LTD.</p>
+        <p class="address">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          K-77 SITE V KASNA, SURAJPUR INDUSTRIAL AREA, Greater Noida, Gautam Buddha Nagar,
+          Uttar Pradesh, India-201306
+        </p>
+        <p class="number">
+          <i class="fa fa-phone" aria-hidden="true"></i> +91 99682 02373
+        </p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7011.473250746932!2d77.51834674617187!3d28.51757074230436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb96bfa06d15%3A0xab0da81e0ebc8e87!2z67aA7ISx7J2464-E6rO17J6lIFNpdGUgNQ!5e0!3m2!1sen!2sin!4v1734197879784!5m2!1sen!2sin"
+          class="map-show"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   </div>
 </template>
 
-
 <script>
-export default { 
-  name: 'Contactus',
+export default {
+  name: "Contactus",
   data() {
     return {
       formData: {
@@ -89,13 +118,25 @@ export default {
         country: "",
         message: "",
       },
-      emailValid: true, // Tracks the validity of the email input
-      phoneValid: true, // Tracks the validity of the phone number
-      submitted: false, // Flag to track if the form was submitted
+      countryCodes: {
+        India: "+91",
+        USA: "+1",
+        Canada: "+1",
+        UK: "+44",
+        Australia: "+61",
+        Germany: "+49",
+        France: "+33",
+        "South Korea": "+82",
+        Italy: "+39",
+        China: "+86",
+        Japan: "+81",
+      },
+      emailValid: true,
+      phoneValid: true,
+      submitted: false,
     };
   },
   computed: {
-    // Check if there are any empty fields
     hasEmptyFields() {
       return !(
         this.formData.name &&
@@ -107,46 +148,28 @@ export default {
     },
   },
   methods: {
-    // Handle form submission
     handleSubmit() {
       this.submitted = true;
-
-      // Validate phone and email before submission
-      this.validatePhone();
       this.validateEmail();
-
-      // Check for empty fields or invalid inputs
-      if (
-        !this.formData.name ||
-        !this.formData.email ||
-        !this.formData.phone ||
-        !this.formData.country ||
-        !this.formData.message ||
-        !this.emailValid ||
-        !this.phoneValid
-      ) {
-        return; // Prevent form submission if there are validation errors
-      }
-
+      this.validatePhone();
+      if (this.hasEmptyFields || !this.emailValid || !this.phoneValid) return;
       alert("Your response has been recorded.");
-      // You can add further logic for form submission here
     },
-    // Validate email format
+    setCountryCode() {
+      if (this.formData.country) {
+        this.formData.phone = this.countryCodes[this.formData.country];
+      }
+    },
     validateEmail() {
-      const emailRegex =
-        /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/; // Basic email structure with valid domain
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
       this.emailValid = emailRegex.test(this.formData.email);
     },
-    // Validate phone number (only numeric input)
     validatePhone() {
-      const phoneRegex = /^[0-9]+$/; // Allow only numeric characters
+      const phoneRegex = /^\+?[0-9]+$/;
       this.phoneValid = phoneRegex.test(this.formData.phone);
-      if (!this.phoneValid) {
-        this.formData.phone = this.formData.phone.replace(/\D/g, ""); // Remove non-numeric characters
-      }
     },
   },
-}
+};
 </script>
 
 <style scoped>
