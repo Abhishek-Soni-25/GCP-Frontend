@@ -56,10 +56,6 @@ export default {
   transition: transform 0.3s ease;
 }
 
-.brand-logo:hover {
-  transform: scale(1.2);
-}
-
 /* Adjusted Logo Positioning */
 .navbar-brand {
   margin-left: -80px;
