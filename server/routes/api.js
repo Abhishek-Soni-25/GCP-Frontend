@@ -98,7 +98,7 @@ router.post("/contactus", async (req, res) => {
   }
 
   // Validate phone number
-  const phoneRegex = /^\+\d{1,3}\d{10}$/;
+  const phoneRegex = /^\d{1,3}\d{10}$/;
   phoneNumber = phone.replace(/[\s\-\(\)]/g, "");
   if (!phoneRegex.test(phoneNumber)) {
     return res.status(400).json({ error: "Invalid phone number" });
