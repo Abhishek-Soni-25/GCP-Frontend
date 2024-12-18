@@ -6,9 +6,10 @@
     <!-- Render the API response in a paragraph -->
     <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
-   
+
     <!-- Render other components -->
-    <ProductDesc />
+    <!-- <ProductDesc /> -->
+    <AppProduct />
 
     <!-- Render the Footer component -->
     <Footer />
@@ -18,17 +19,19 @@
 <script>
 // Import the component
 import Header from '@/components/Homepage/Header.vue';
-import ProductDesc from '@/components/Product/ProductDesc.vue';
+// import ProductDesc from '@/components/Product/ProductDesc.vue';
 import Footer from '@/components/Homepage/Footer.vue';
-
+import AppProduct from '@/components/ProductPage/AppProduct.vue';
 // Import Axios
 import axios from 'axios';
 
+
 export default {
-  name: 'Contactusview',
+  name: 'Productview',
   components: {
     Header,
-    ProductDesc,
+    // ProductDesc,
+    AppProduct,
     Footer
   },
   data() {
@@ -36,22 +39,22 @@ export default {
       message: null, // This will hold the message fetched from the API
     };
   },
-  methods: {
-    // Method to fetch data from the API
-    fetchMessage() {
-      axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
-        .then(response => {
-          this.message = response.data.message; // Set the message data from the API
-        })
-        .catch(error => {
-          console.error('Error fetching the message:', error);
-        });
-    },
-  },
-  created() {
-    // Call the fetchMessage method when the component is created
-    this.fetchMessage();
-  },
+  // methods: {
+  //   // Method to fetch data from the API
+  //   fetchMessage() {
+  //     axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
+  //       .then(response => {
+  //         this.message = response.data.message; // Set the message data from the API
+  //       })
+  //       .catch(error => {
+  //         console.error('Error fetching the message:', error);
+  //       });
+  //   },
+  // },
+  // created() {
+  //   // Call the fetchMessage method when the component is created
+  //   this.fetchMessage();
+  // },
 };
 </script>
 
@@ -60,11 +63,12 @@ export default {
 .main-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures the container takes up full height */
+  min-height: 100vh;
+  /* Ensures the container takes up full height */
 }
 
 footer {
-  margin-top: auto; /* Pushes the footer to the bottom */
+  margin-top: auto;
+  /* Pushes the footer to the bottom */
 }
-
 </style>
