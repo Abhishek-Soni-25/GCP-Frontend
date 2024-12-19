@@ -28,6 +28,9 @@ const routes = [
     component: FaqPageView,
   },
   {
+    path: '/products',
+    name: "Products",
+    component: productpageview, // This is where the About component is now rendered
     path: "/products/productdetails",
     name: "Productdetails",
     component: productpageview,
