@@ -1,41 +1,45 @@
-// src/router/index.js
-
 import { createRouter, createWebHistory } from "vue-router";
 import HomePageView from "../views/homePageView.vue";
 import Contactusview from "../views/contactusview.vue";
 import AboutPageView from "@/views/AboutPageView.vue";
 import FaqPageView from "@/views/FaqPageView.vue";
 import productpageview from "@/views/productpageview.vue";
-
+import ServicesPageView from "@/views/ServicesPageView.vue"; // Import the Services component
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: HomePageView, // This is where the NewsArticle component is now rendered
+    component: HomePageView,
   },
   {
     path: "/contact",
     name: "Contact",
-    component: Contactusview, // This is where the Contact component is now rendered
+    component: Contactusview,
   },
   {
     path: "/about",
     name: "About",
-    component: AboutPageView, // This is where the About component is now rendered
+    component: AboutPageView,
   },
-
   {
     path: "/faq",
     name: "FAQ",
-    component: FaqPageView, // This is where the About component is now rendered
+    component: FaqPageView,
   },
   {
     path: '/products',
     name: "Products",
     component: productpageview, // This is where the About component is now rendered
+    path: "/products/productdetails",
+    name: "Productdetails",
+    component: productpageview,
   },
-  // You can add more routes if needed
+  {
+    path: "/services", // Add the Services route
+    name: "Services",
+    component: ServicesPageView,
+  },
 ];
 
 const router = createRouter({
