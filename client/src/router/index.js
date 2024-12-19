@@ -31,9 +31,6 @@ const routes = [
     path: '/products',
     name: "Products",
     component: productpageview, // This is where the About component is now rendered
-    path: "/products/productdetails",
-    name: "Productdetails",
-    component: productpageview,
   },
   {
     path: "/services", // Add the Services route
