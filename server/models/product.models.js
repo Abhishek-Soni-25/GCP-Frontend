@@ -37,7 +37,7 @@ const ProductModel = sequelize.define("Product", {
     },
     images: {
         type: DataTypes.JSON, 
-        allowNull: true,
+        allowNull: false,
     },
 },
 {
