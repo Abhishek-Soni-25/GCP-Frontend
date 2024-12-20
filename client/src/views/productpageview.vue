@@ -22,8 +22,6 @@ import Header from '@/components/Homepage/Header.vue';
 // import ProductDesc from '@/components/Product/ProductDesc.vue';
 import Footer from '@/components/Homepage/Footer.vue';
 import AppProduct from '@/components/ProductPage/AppProduct.vue';
-// Import Axios
-import axios from 'axios';
 
 
 export default {
@@ -39,22 +37,7 @@ export default {
       message: null, // This will hold the message fetched from the API
     };
   },
-  // methods: {
-  //   // Method to fetch data from the API
-  //   fetchMessage() {
-  //     axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
-  //       .then(response => {
-  //         this.message = response.data.message; // Set the message data from the API
-  //       })
-  //       .catch(error => {
-  //         console.error('Error fetching the message:', error);
-  //       });
-  //   },
-  // },
-  // created() {
-  //   // Call the fetchMessage method when the component is created
-  //   this.fetchMessage();
-  // },
+
 };
 </script>
 

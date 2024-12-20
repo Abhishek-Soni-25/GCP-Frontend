@@ -10,7 +10,7 @@
             <div class="accordion">
                 <div v-for="(item, index) in faqs" :key="index" class="accordion-item">
                     <div class="accordion-header" @click="toggleAccordion(index)">
-                        <h2>{{ item.question }}</h2>
+                        <h2>{{ item.query }}</h2>
                         <div class="arrow-icon">
                             <span class="arrow" :class="activeIndex === index ? 'up' : 'down'"></span>
                         </div>
@@ -46,12 +46,7 @@ export default {
     data() {
         return {
             activeIndex: null,
-            faqs: [
-                { question: "What is Vue.js?", answer: "Vue.js is a progressive JavaScript framework for building UI." },
-                { question: "How does reactivity work?", answer: "Vue tracks dependencies and updates efficiently." },
-                { question: "Is Vue.js suitable for large projects?", answer: "Yes, Vue can be scaled with Vuex and Vue Router." },
-                { question: "How can I use Vue with other libraries?", answer: "Vue works seamlessly with other libraries and APIs." },
-            ],
+            faqs: [], // Will store fetched FAQs
             userQuestion: "", // User's question input
         };
     },
@@ -78,11 +73,21 @@ export default {
                 alert("Something went wrong. Please try again later.");
             }
         },
+        async fetchFaqs() {
+            try {
+                const response = await axios.get("https://gcp.agratasinfotech.com/api/message");
+                this.faqs = response.data.faqs; // Store fetched FAQs in `faqs` data
+            } catch (error) {
+                console.error("Error fetching FAQs:", error);
+                alert("Failed to fetch FAQs. Please try again later.");
+            }
+        }
     },
+    mounted() {
+        this.fetchFaqs(); // Fetch FAQs when the component is mounted
+    }
 };
 </script>
-
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Love+Light&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -244,7 +249,6 @@ body {
     align-items: self-start;
 }
 
-
 .submit-button {
     width: 100%;
     max-width: 150px;
@@ -263,7 +267,6 @@ body {
 .submit-button:disabled {
     cursor: not-allowed;
     opacity: 0.6;
-
 }
 
 @media (max-width: 768px) {
