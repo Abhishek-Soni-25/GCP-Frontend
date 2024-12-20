@@ -4,6 +4,7 @@ import Contactusview from "../views/contactusview.vue";
 import AboutPageView from "@/views/AboutPageView.vue";
 import FaqPageView from "@/views/FaqPageView.vue";
 import productpageview from "@/views/productpageview.vue";
+import productdetails from "@/components/ProductPage/ProductDesc.vue";
 import ServicesPageView from "@/views/ServicesPageView.vue"; // Import the Services component
 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
     path: '/products',
     name: "Products",
     component: productpageview, // This is where the About component is now rendered
+    },{
+    path: '/products/:id',
+    name: "Productdetails",
+    component: productdetails, // This is where the About component is now rendered
   },
   {
     path: "/services", // Add the Services route

@@ -7,6 +7,7 @@
       <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
       <Servicesmain />
+      <Services2 />
 
       <!-- Render the Footer component -->
       <Footer />
@@ -17,6 +18,7 @@
 // Import the component
 import Header from '@/components/Homepage/Header.vue';
 import Servicesmain from '@/components/Servicespage/Servicesmain.vue';
+import Services2 from '@/components/Servicespage/Services2.vue';
 import Footer from '@/components/Homepage/Footer.vue';
 
 // Import Axios
@@ -27,6 +29,7 @@ export default {
   components: {
       Header,
       Servicesmain,
+      Services2,
       Footer
   },
   data() {
