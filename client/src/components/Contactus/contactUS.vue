@@ -7,37 +7,23 @@
         <!-- Form -->
         <form @submit.prevent="handleSubmit">
           <!-- Name Field -->
-          <input
-            type="text"
-            placeholder="Enter Your Name"
-            v-model="formData.name"
-            :class="{'input-error': !formData.name && submitted}"
-            aria-label="Enter Your Name"
-          />
+          <input type="text" placeholder="Enter Your Name" v-model="formData.name"
+            :class="{ 'input-error': !formData.name && submitted }" aria-label="Enter Your Name" />
           <span v-if="submitted && !formData.name" class="error-message">
             Name is required.
           </span>
 
           <!-- Email Field -->
-          <input
-            type="email"
-            placeholder="Enter your email address"
-            v-model="formData.email"
-            @input="validateEmail"
-            :class="{'input-error': (!formData.email && submitted) || !emailValid}"
-            aria-label="Enter your email address"
-          />
+          <input type="email" placeholder="Enter your email address" v-model="formData.email" @input="validateEmail"
+            :class="{ 'input-error': (!formData.email && submitted) || !emailValid }"
+            aria-label="Enter your email address" />
           <span v-if="submitted && (!formData.email || !emailValid)" class="error-message">
             {{ !formData.email ? "Email is required." : "Enter a valid email address." }}
           </span>
 
           <!-- Country Field -->
-          <select
-            v-model="formData.country"
-            @change="setCountryCode"
-            :class="{'input-error': !formData.country && submitted}"
-            aria-label="Select Your Country"
-          >
+          <select v-model="formData.country" @change="setCountryCode"
+            :class="{ 'input-error': !formData.country && submitted }" aria-label="Select Your Country">
             <option value="">Select Your Country</option>
             <option v-for="(code, country) in countryCodes" :key="country" :value="country">
               {{ country }}
@@ -48,25 +34,16 @@
           </span>
 
           <!-- Phone Field -->
-          <input
-            type="text"
-            placeholder="Enter your phone number"
-            v-model="formData.phone"
-            @input="validatePhone"
-            :class="{'input-error': (!formData.phone && submitted) || !phoneValid}"
-            aria-label="Enter your phone number"
-          />
+          <input type="text" placeholder="Enter your phone number" v-model="formData.phone" @input="validatePhone"
+            :class="{ 'input-error': (!formData.phone && submitted) || !phoneValid }"
+            aria-label="Enter your phone number" />
           <span v-if="submitted && (!formData.phone || !phoneValid)" class="error-message">
             {{ !formData.phone ? "Phone number is required." : "Enter a valid phone number." }}
           </span>
 
           <!-- Message Field -->
-          <textarea
-            placeholder="Message..."
-            v-model="formData.message"
-            :class="{'input-error': !formData.message && submitted}"
-            aria-label="Enter your message"
-          ></textarea>
+          <textarea placeholder="Message..." v-model="formData.message"
+            :class="{ 'input-error': !formData.message && submitted }" aria-label="Enter your message"></textarea>
           <span v-if="submitted && !formData.message" class="error-message">
             Message is required.
           </span>
@@ -96,11 +73,7 @@
         </p>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7011.473250746932!2d77.51834674617187!3d28.51757074230436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb96bfa06d15%3A0xab0da81e0ebc8e87!2z67aA7ISx7J2464-E6rO17J6lIFNpdGUgNQ!5e0!3m2!1sen!2sin!4v1734197879784!5m2!1sen!2sin"
-          class="map-show"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-        ></iframe>
+          class="map-show" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -152,8 +125,16 @@ export default {
       this.submitted = true;
       this.validateEmail();
       this.validatePhone();
-      if (this.hasEmptyFields || !this.emailValid || !this.phoneValid) return;
+
+      if (this.hasEmptyFields || !this.emailValid || !this.phoneValid) {
+        return;
+      }
+
+      // If validation passes
       alert("Your response has been recorded.");
+
+      // Reset the form
+      this.resetForm();
     },
     setCountryCode() {
       if (this.formData.country) {
@@ -168,13 +149,25 @@ export default {
       const phoneRegex = /^\+?[0-9]+$/;
       this.phoneValid = phoneRegex.test(this.formData.phone);
     },
+    resetForm() {
+      this.formData = {
+        name: "",
+        email: "",
+        phone: "",
+        country: "",
+        message: "",
+      };
+      this.emailValid = true;
+      this.phoneValid = true;
+      this.submitted = false;
+    },
   },
+
 };
 </script>
 
 <style scoped>
-
-.m-head{
+.m-head {
   font-family: Outfit;
   font-size: 38px;
   font-weight: 700;
@@ -186,7 +179,7 @@ export default {
   padding-top: 25px;
 }
 
-.m-txt{
+.m-txt {
   font-family: Outfit;
   font-size: 24px;
   font-weight: 400;
@@ -198,7 +191,7 @@ export default {
   padding-left: 5%;
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -210,16 +203,25 @@ export default {
   padding-bottom: 20px;
 }
 
-.form, .map{
+.form,
+.map {
   display: flex;
   flex-direction: column;
 }
-.form{  width: 60%;  } .map{  width: 40%;  }
 
-.map-show{
+.form {
+  width: 60%;
+}
+
+.map {
+  width: 40%;
+}
+
+.map-show {
   width: 100%;
   height: 300px;
-  margin-right: 8px; /* Adds some space between the icon and the text */ 
+  margin-right: 8px;
+  /* Adds some space between the icon and the text */
 }
 
 .company {
@@ -233,7 +235,7 @@ export default {
   text-decoration-skip-ink: none;
 }
 
-.address{
+.address {
   font-family: Outfit;
   font-size: 17.53px;
   font-weight: 400;
@@ -244,7 +246,7 @@ export default {
   text-decoration-skip-ink: none;
 }
 
-.number{
+.number {
   font-family: Outfit;
   font-size: 17.53px;
   font-weight: 400;
@@ -279,7 +281,8 @@ form button {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Box shadow for inputs */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  /* Box shadow for inputs */
 }
 
 form input.input-error,
@@ -295,7 +298,8 @@ form button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); /* Box shadow for button */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  /* Box shadow for button */
 }
 
 form button:hover {
@@ -319,12 +323,19 @@ form textarea {
 }
 
 /* Responsive Design for smaller screens */
-/*@media (max-width: 768px)*/ 
+/*@media (max-width: 768px)*/
 
 
-@media (max-width: 450px) { 
-  .main { flex-direction: column; } 
-  .form, .map { width: 100%; /* Each div takes full width */ } 
+@media (max-width: 450px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .form,
+  .map {
+    width: 100%;
+    /* Each div takes full width */
+  }
 
   .form {
     padding: 15px;
@@ -339,5 +350,4 @@ form textarea {
     font-size: 16px;
   }
 }
-
 </style>
