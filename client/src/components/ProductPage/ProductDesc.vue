@@ -30,9 +30,9 @@
         <p class="qty">{{ product.quantity }}</p>
         <p class="rating">{{ product.rating }}★</p>
         <div class="p-box">
-          <p class="price">₹ {{ product.price }}</p>
-          <p class="MRP">₹ {{ product.mrp }}</p>
-          <p class="discount">{{ product.off }}% off</p>
+          <p class="price">₹ {{ product.amount }}</p>
+          <p class="MRP">₹ {{ product.original }}</p>
+          <p class="discount">{{ product.discount }}% off</p>
         </div>
         
         <div class="offer">
@@ -77,36 +77,115 @@
   </div>
 </template>
 
-
 <script>
 export default {
+  name: 'ProductDetails',
   data() {
     return {
-      searchQuery: "",
-      product: {
-        id: 1,
-        name: 'Prockage Self-Locking Box Craft Paper 3 Ply Corrugated',
-        quantity: 'Pack of 25 Brown',
-        rating: '4.1',
-        price: '200',
-        mrp: '400',
-        off: '50',
-        image: require('@/assets/Productlist/boxxx.jpg'),
-        isFavorite: false
-      },
+      product: null, // To store the specific product details
     };
   },
-  methods: {
-    filterProducts() {
-      // Filtering logic here if needed
-    },
-    toggleHeart() {
-      this.product.isFavorite = !this.product.isFavorite;
-    },
+  created() {
+    // Initial product data
+    const initialProducts = [
+            {
+              id: 1,
+              image: require('@/assets/product/p1.jpeg'),
+              name: "Fundoosh Energy ",
+              description: "250 ml",
+              rating: 3.8,
+              amount: 121,
+              original: 300,
+              discount: 55,
+              delivery: "Free Delivery",
+            },
+            {
+              id: 2,
+              image: require('@/assets/product/p2.jpeg'),
+              name: "Fundoosh SPICY NIMBU Shikanji",
+              description: "200 ml",
+              rating: 4.0,
+              amount: 135,
+              original: 500,
+              discount: 44,
+              delivery: "Free Delivery",
+            },
+            {
+              id: 3,
+              image: require('@/assets/product/p3.jpeg'),
+              name: "JUST Orange",
+              description: "400 ml",
+              rating: 4.5,
+              amount: 120,
+              original: 400,
+              discount: 32,
+              delivery: "Free Delivery",
+            },
+            {
+              id: 4,
+              image: require('@/assets/product/p4.jpeg'),
+              name: "Eco-Friendly Kraft Paper Bags",
+              description: "400 ml",
+              rating:3.7,
+              amount: 193,
+              original: 1000,
+              discount: 84,
+              delivery: "Free Delivery",
+            },
+            {
+              id: 5,
+              image: require('@/assets/product/p5.jpeg'),
+              name: "NEW Ice Club ENERGY Drink",
+              description: "200 * 150 ml",
+              rating: 4.2,
+              amount: 120,
+              original: 200,
+              discount: 14,
+              delivery: "Free Delivery",
+            },
+            {
+              id: 6,
+              image: require('@/assets/product/p6.jpeg'),
+              name: "JOY",
+              description: "150 ml",
+              rating: 3.8,
+              amount: 30,
+              original: 90,
+              discount: 14,
+              delivery: "Free Delivery",
+            },
+            {
+              id: 7,
+              image: require('@/assets/product/p7.jpeg'),
+              name: "JOY Fruitca",
+              description: "400 * 4 ml",
+              rating: 4.1,
+              amount: 580,
+              original: 1700,
+              discount: 74,
+              delivery: "Delivery Charge 45+",
+            },
+            {
+              id: 8,
+              image: require('@/assets/product/p8.jpeg'),
+              name: "CITY-DA ZEERA",
+              description: "300 ml",
+              rating: 4.0,
+              amount: 120,
+              original: 500,
+              discount: 94,
+              delivery: "Free Delivery",
+            },
+          ];
+
+    // Get the product ID from the route path
+    const productId = parseInt(this.$route.params.id, 10);
+
+    // Find the product by ID
+    this.product = initialProducts.find((p) => p.id === productId) || null;
   },
 };
 </script>
-
 
 <style scoped>
 .product-search {
@@ -191,10 +270,12 @@ export default {
 
 .product-image {
   width: 100%;
+  max-height: 800px;
   border-color: #EBEBEB;
   border-style: solid ;
   border-radius: 10px;
   border-width: 3px;
+  object-fit: contain;
 }
 
 .button-container {
@@ -242,7 +323,7 @@ export default {
   color: #ffffff;
   background-color: #388E3C;
   border-radius: 5px;
-  width: 8%;
+  width: 56px;
   padding-left: 9px;
   margin-bottom: 12px;
   font-size: 16px;
@@ -342,6 +423,10 @@ export default {
 
 @media (max-width:720px) {
   .single-product{flex-direction: column;}
+}
+@media (max-width:455px ) {
+  .row-kit{ flex-direction: column;}
+  .cart-button, .buy-button { width: 150px;}
 }
 
 </style>

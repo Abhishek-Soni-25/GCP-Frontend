@@ -8,9 +8,8 @@
 
 
     <!-- Render other components -->
-    <!-- <ProductDesc /> -->
-    <AppProduct />
-
+    <AppProduct/>
+      
     <!-- Render the Footer component -->
     <Footer />
   </div>
@@ -19,7 +18,6 @@
 <script>
 // Import the component
 import Header from '@/components/Homepage/Header.vue';
-// import ProductDesc from '@/components/Product/ProductDesc.vue';
 import Footer from '@/components/Homepage/Footer.vue';
 import AppProduct from '@/components/ProductPage/AppProduct.vue';
 // Import Axios
@@ -30,31 +28,14 @@ export default {
   name: 'Productview',
   components: {
     Header,
-    // ProductDesc,
     AppProduct,
     Footer
   },
   data() {
-    return {
-      message: null, // This will hold the message fetched from the API
-    };
+      return {
+          message: null, // This will hold the message fetched from the API
+      };
   },
-  // methods: {
-  //   // Method to fetch data from the API
-  //   fetchMessage() {
-  //     axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
-  //       .then(response => {
-  //         this.message = response.data.message; // Set the message data from the API
-  //       })
-  //       .catch(error => {
-  //         console.error('Error fetching the message:', error);
-  //       });
-  //   },
-  // },
-  // created() {
-  //   // Call the fetchMessage method when the component is created
-  //   this.fetchMessage();
-  // },
 };
 </script>
 

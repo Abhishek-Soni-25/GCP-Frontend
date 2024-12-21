@@ -7,6 +7,7 @@
         <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
 
         <!-- Render other components -->
+        <Aboutmain />
         <Packtech />,
         <NotFound />
 
