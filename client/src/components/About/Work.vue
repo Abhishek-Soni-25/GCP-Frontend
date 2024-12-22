@@ -13,7 +13,7 @@
             <div class="card text-center border-0 bg-black text-white" style="width: 18rem;">
                 <div class="d-flex justify-content-center align-items-center rounded-circle bg-secondary overflow-hidden p-4"
                     style="width: 150px; height: 150px; margin: 0 auto;">
-                    <img :src="require('@/assets/About/carton-box.png')" class="img-fluid" alt="Card Image 1">
+                    <img :src="require('@/assets/About/choice_icon.png')" class="img-fluid" alt="Card Image 1">
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">Choose Your Packaging</h4>
@@ -30,7 +30,7 @@
             <div class="card text-center border-0 bg-black text-white" style="width: 18rem;">
                 <div class="d-flex justify-content-center align-items-center rounded-circle bg-secondary overflow-hidden p-4"
                     style="width: 150px; height: 150px; margin: 0 auto;">
-                    <img :src="require('@/assets/About/carton-box.png')" class="img-fluid" alt="Card Image 2">
+                    <img :src="require('@/assets/About/refresh_icon.png')" class="img-fluid" alt="Card Image 2">
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">Packaging in process</h4>
@@ -70,7 +70,8 @@
             <div class=" d-flex justify-content-center flex-wrap gap-4">
                 <!-- Blog Card 1 -->
                 <div class="card text-left shadow border-0" style="width: 18rem; background-color: #D9D9D9;">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Blog Image 1">
+                    <img :src="require('@/assets/About/girl_image.jpg')" class="card-img-top p-3 rounded"
+                        alt="Blog Image 1">
                     <div class="card-body">
                         <h3 class="card-title">Perfect Packaging</h3>
                         <p class="card-text" style="color: #595959;">Lorem ipsum dolor sit amet consectetur
@@ -83,7 +84,8 @@
                 </div>
                 <!-- Blog Card 2 -->
                 <div class="card text-left shadow border-0" style="width: 18rem; background-color: #D9D9D9;">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Blog Image 2">
+                    <img :src="require('@/assets/About/girl_image.jpg')" class="card-img-top p-3 rounded"
+                        alt="Blog Image 2">
                     <div class="card-body">
                         <h3 class="card-title">Perfect Packaging</h3>
                         <p class="card-text" style="color: #595959;">Lorem ipsum dolor sit amet consectetur
@@ -95,7 +97,8 @@
                 </div>
                 <!-- Blog Card 3 -->
                 <div class="card text-left shadow border-0" style="width: 18rem; background-color: #D9D9D9;">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Blog Image 3">
+                    <img :src="require('@/assets/About/girl_image.jpg')" class="card-img-top p-3 rounded"
+                        alt="Blog Image 3">
                     <div class="card-body">
                         <h3 class="card-title">Perfect Packaging</h3>
                         <p class="card-text" style="color: #595959;">Lorem ipsum dolor sit amet consectetur
