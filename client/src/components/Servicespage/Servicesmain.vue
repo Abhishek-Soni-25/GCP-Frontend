@@ -78,7 +78,6 @@ export default {
     width: 100%; 
     height: 100%;
     background: #11120400;
-    opacity: 0px;
     padding: 1px;
     z-index: 10;
     margin-top: 60px;
