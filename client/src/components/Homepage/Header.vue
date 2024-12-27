@@ -4,9 +4,9 @@
   >
     <div class="container">
       <!-- Logo -->
-      <a href="#" class="navbar-brand">
+      <router-link to="/" class="navbar-brand">
         <img src="@/assets/logo.png" alt="Logo" class="brand-logo" />
-      </a>
+      </router-link>
       <!-- Toggler Button -->
       <button
         class="navbar-toggler"
