@@ -7,25 +7,52 @@
         <!-- Form -->
         <form @submit.prevent="handleSubmit">
           <!-- Name Field -->
-          <input type="text" placeholder="Enter Your Name" v-model="formData.name"
-            :class="{ 'input-error': !formData.name && submitted }" aria-label="Enter Your Name" />
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            v-model="formData.name"
+            :class="{ 'input-error': !formData.name && submitted }"
+            aria-label="Enter Your Name"
+          />
           <span v-if="submitted && !formData.name" class="error-message">
             Name is required.
           </span>
 
           <!-- Email Field -->
-          <input type="email" placeholder="Enter your email address" v-model="formData.email" @input="validateEmail"
-            :class="{ 'input-error': (!formData.email && submitted) || !emailValid }"
-            aria-label="Enter your email address" />
-          <span v-if="submitted && (!formData.email || !emailValid)" class="error-message">
-            {{ !formData.email ? "Email is required." : "Enter a valid email address." }}
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            v-model="formData.email"
+            @input="validateEmail"
+            :class="{
+              'input-error': (!formData.email && submitted) || !emailValid,
+            }"
+            aria-label="Enter your email address"
+          />
+          <span
+            v-if="submitted && (!formData.email || !emailValid)"
+            class="error-message"
+          >
+            {{
+              !formData.email
+                ? "Email is required."
+                : "Enter a valid email address."
+            }}
           </span>
 
           <!-- Country Field -->
-          <select v-model="formData.country" @change="setCountryCode"
-            :class="{ 'input-error': !formData.country && submitted }" aria-label="Select Your Country">
+          <select
+            v-model="formData.country"
+            @change="setCountryCode"
+            :class="{ 'input-error': !formData.country && submitted }"
+            aria-label="Select Your Country"
+          >
             <option value="">Select Your Country</option>
-            <option v-for="(code, country) in countryCodes" :key="country" :value="country">
+            <option
+              v-for="(code, country) in countryCodes"
+              :key="country"
+              :value="country"
+            >
               {{ country }}
             </option>
           </select>
@@ -34,22 +61,43 @@
           </span>
 
           <!-- Phone Field -->
-          <input type="text" placeholder="Enter your phone number" v-model="formData.phone" @input="validatePhone"
-            :class="{ 'input-error': (!formData.phone && submitted) || !phoneValid }"
-            aria-label="Enter your phone number" />
-          <span v-if="submitted && (!formData.phone || !phoneValid)" class="error-message">
-            {{ !formData.phone ? "Phone number is required." : "Enter a valid phone number." }}
+          <input
+            type="text"
+            placeholder="Enter your phone number"
+            v-model="formData.phone"
+            @input="validatePhone"
+            :class="{
+              'input-error': (!formData.phone && submitted) || !phoneValid,
+            }"
+            aria-label="Enter your phone number"
+          />
+          <span
+            v-if="submitted && (!formData.phone || !phoneValid)"
+            class="error-message"
+          >
+            {{
+              !formData.phone
+                ? "Phone number is required."
+                : "Enter a valid phone number."
+            }}
           </span>
 
           <!-- Message Field -->
-          <textarea placeholder="Message..." v-model="formData.message"
-            :class="{ 'input-error': !formData.message && submitted }" aria-label="Enter your message"></textarea>
+          <textarea
+            placeholder="Message..."
+            v-model="formData.message"
+            :class="{ 'input-error': !formData.message && submitted }"
+            aria-label="Enter your message"
+          ></textarea>
           <span v-if="submitted && !formData.message" class="error-message">
             Message is required.
           </span>
 
           <!-- Submit Button -->
-          <button type="submit" :disabled="hasEmptyFields || !emailValid || !phoneValid">
+          <button
+            type="submit"
+            :disabled="hasEmptyFields || !emailValid || !phoneValid"
+          >
             Submit
           </button>
         </form>
@@ -65,21 +113,27 @@
         <p class="company">GRIP CHAIN PACKTECH PVT LTD.</p>
         <p class="address">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
-          K-77 SITE V KASNA, SURAJPUR INDUSTRIAL AREA, Greater Noida, Gautam Buddha Nagar,
-          Uttar Pradesh, India-201306
+          K-77 SITE V KASNA, SURAJPUR INDUSTRIAL AREA, Greater Noida, Gautam
+          Buddha Nagar, Uttar Pradesh, India-201306
         </p>
         <p class="number">
           <i class="fa fa-phone" aria-hidden="true"></i> +91 99682 02373
         </p>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7011.473250746932!2d77.51834674617187!3d28.51757074230436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb96bfa06d15%3A0xab0da81e0ebc8e87!2z67aA7ISx7J2464-E6rO17J6lIFNpdGUgNQ!5e0!3m2!1sen!2sin!4v1734197879784!5m2!1sen!2sin"
-          class="map-show" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          class="map-show"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Contactus",
   data() {
@@ -107,21 +161,12 @@ export default {
       emailValid: true,
       phoneValid: true,
       submitted: false,
+      isSubmitting: false,
+      submissionSuccess: null,
     };
   },
-  computed: {
-    hasEmptyFields() {
-      return !(
-        this.formData.name &&
-        this.formData.email &&
-        this.formData.phone &&
-        this.formData.country &&
-        this.formData.message
-      );
-    },
-  },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       this.submitted = true;
       this.validateEmail();
       this.validatePhone();
@@ -130,11 +175,27 @@ export default {
         return;
       }
 
-      // If validation passes
-      alert("Your response has been recorded.");
-
-      // Reset the form
-      this.resetForm();
+      this.isSubmitting = true;
+      try {
+        const response = await axios.post(
+          "https://gcp.agratasinfotech.com/api/contactus",
+          this.formData
+        );
+        if (response.status === 200) {
+          alert("Your response has been recorded.");
+          this.resetForm();
+          this.submissionSuccess = true;
+        } else {
+          alert("Failed to submit. Please try again later.");
+          this.submissionSuccess = false;
+        }
+      } catch (error) {
+        console.error("Submission error:", error);
+        alert("An error occurred while submitting the form. Please try again.");
+        this.submissionSuccess = false;
+      } finally {
+        this.isSubmitting = false;
+      }
     },
     setCountryCode() {
       if (this.formData.country) {
@@ -162,7 +223,6 @@ export default {
       this.submitted = false;
     },
   },
-
 };
 </script>
 
@@ -257,7 +317,6 @@ export default {
   text-decoration-skip-ink: none;
 }
 
-
 .form {
   margin-right: 20px;
   padding: 20px;
@@ -324,7 +383,6 @@ form textarea {
 
 /* Responsive Design for smaller screens */
 /*@media (max-width: 768px)*/
-
 
 @media (max-width: 450px) {
   .main {

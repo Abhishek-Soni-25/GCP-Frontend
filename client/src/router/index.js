@@ -5,8 +5,8 @@ import AboutPageView from "@/views/AboutPageView.vue";
 import FaqPageView from "@/views/FaqPageView.vue";
 import productpageview from "@/views/productpageview.vue";
 import productdetails from "@/components/ProductPage/ProductDesc.vue";
-import ServicesPageView from "@/views/ServicesPageView.vue"; // Import the Services component
-
+import ServicesPageView from "@/views/ServicesPageView.vue";
+import Blogview from "@/views/Blogview.vue";
 const routes = [
   {
     path: "/",
@@ -29,18 +29,24 @@ const routes = [
     component: FaqPageView,
   },
   {
-    path: '/products',
+    path: "/products",
     name: "Products",
     component: productpageview,
-    },{
-    path: '/products/:id',
+  },
+  {
+    path: "/products/:id",
     name: "Productdetails",
-    component: productdetails, 
+    component: productdetails,
   },
   {
     path: "/services", // Add the Services route
     name: "Services",
     component: ServicesPageView,
+  },
+  {
+    path: "/blog", // Add the Services route
+    name: "blog",
+    component: Blogview,
   },
 ];
 

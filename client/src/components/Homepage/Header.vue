@@ -1,24 +1,54 @@
 <template>
-  <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm custom-navbar">
+  <header
+    class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm custom-navbar"
+  >
     <div class="container">
       <!-- Logo -->
       <a href="#" class="navbar-brand">
         <img src="@/assets/logo.png" alt="Logo" class="brand-logo" />
       </a>
       <!-- Toggler Button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Navbar Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"> <router-link to="/" class="nav-link" exact>Home</router-link> </li>
-          <li class="nav-item"> <router-link to="/about" class="nav-link" exact>About</router-link> </li>
-          <li class="nav-item"> <router-link to="/products" class="nav-link" exact>Products</router-link> </li>
-          <li class="nav-item"> <router-link to="/services" class="nav-link" exact>Services</router-link> </li>
-          <li class="nav-item"> <router-link to="/contact" class="nav-link" exact>Contact</router-link> </li>
-          <li class="nav-item"> <router-link to="/faq" class="nav-link" exact>FAQ</router-link> </li>
+          <li class="nav-item">
+            <router-link to="/" class="nav-link" exact>Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/about" class="nav-link" exact>About</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/products" class="nav-link" exact
+              >Products</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link to="/services" class="nav-link" exact
+              >Services</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link to="/contact" class="nav-link" exact
+              >Contact</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link to="/faq" class="nav-link" exact>FAQ</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/blog" class="nav-link" exact>Blog</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -30,15 +60,13 @@ export default {
   name: "Header",
   mounted() {
     if (window.bootstrap) {
-      new window.bootstrap.Collapse(
-        document.querySelector("#navbarNav"),
-        { toggle: false }
-      );
+      new window.bootstrap.Collapse(document.querySelector("#navbarNav"), {
+        toggle: false,
+      });
     } else {
       console.error("Bootstrap is not loaded properly.");
     }
   },
-
 };
 </script>
 
