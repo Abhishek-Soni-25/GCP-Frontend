@@ -5,10 +5,14 @@
     <!-- service Section -->
       <div class="service-section">
         <span class="text-wrapper-4">Product</span><br />
-        <span class="text-wrapper-3">Designs that reflect the soul of your product.<i class="fa fa-star floating-star-1"></i></span>
+        <span class="text-wrapper-3">Designs that reflect the soul of your product.
+          <i class="floating-star-1">
+                <img src="../../assets/Star.png" class="floating-star" width="80" height="80">
+              </i>  
+        </span>
         <p class="service-txt">
-          <i class="fa fa-star floating-star-3"></i>
-          <i class="fa fa-star floating-star-2"></i>
+          <i class="floating-star-3"><img src="../../assets/Star.png" class="floating-star" width="50" height="50"></i>
+          <i class="floating-star-2"><img src="../../assets/Star.png" class="floating-star" width="30" height="30"></i>
         </p>
       </div>
   </div>
@@ -54,23 +58,17 @@ export default {
   .floating-star-1 { 
     position: absolute;
     right: 0px;
-    top: -30px;
-    font-size: 40px; /* Size of the icon */ 
-    color: gold; /* Color of the icon */ 
+    top: -55px;
     z-index: 10; /* Ensure it is on top */ 
   }
   .floating-star-2 { 
     position: absolute;
     right: 0px ;
-    font-size: 15px; /* Size of the icon */ 
-    color: gold; /* Color of the icon */ 
     z-index: 10; /* Ensure it is on top */ 
   }
   .floating-star-3 { 
     position: absolute;
     left: 0px;
-    font-size: 11px; /* Size of the icon */ 
-    color: gold; /* Color of the icon */ 
     z-index: 10; /* Ensure it is on top */ 
   }
 

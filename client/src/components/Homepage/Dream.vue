@@ -9,7 +9,7 @@
           <span class="text-wrapper-3">We Create...</span>
         </p>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          Our mission is to redefine creativity by providing exceptional design solutions tailored to your unique needs. We aim to inspire, innovate, and empower businesses to tell their stories through impactful visuals.
         </p>
         <button class="cta-button" @click="exploreMore"><i class="fa fa-spinner"></i> Load More</button>
       </div>
@@ -26,30 +26,30 @@
       </div>
       <div class="half">
         <p class="normal">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy when an unknown printer took a galley of type and scrambled.        </p>
+          Experience seamless collaboration and unmatched expertise with a dedicated design team at your fingertips. Elevate your brand with designs that truly reflect your vision and values.
+        </p>
         <button class="cta-button" @click="exploreMore">See More</button>
       </div>
     </div>
   </div>
 
   <div class="matrix-main">
-  <div class="matrix-container">
-    <div
-      v-for="(cell, index) in cells"
-      :key="index"
-      :class="['cell', getBorderClass(index)]"
-    >
-    <div class="icon">
-      <img :src="cell.logolink" :alt="`Logo ${index + 1}`" class="icon" />    </div>
-      <div class="headline">{{ cell.headline }}</div>
-      <div class="message">{{ cell.message }}</div>
+    <div class="matrix-container">
+      <div
+        v-for="(cell, index) in cells"
+        :key="index"
+        :class="['cell', getBorderClass(index)]"
+      >
+        <div class="icon">
+          <img :src="cell.logolink" :alt="`Logo ${index + 1}`" class="icon" />
+        </div>
+        <div class="headline">{{ cell.headline }}</div>
+        <div class="message">{{ cell.message }}</div>
+      </div>
     </div>
   </div>
-</div>
-
-
-
 </template>
+
 
 <script>
 export default {
@@ -86,15 +86,15 @@ export default {
   data() {
     return {
       cells: [
-      { logolink: require('@/assets/homepage/Dream/logo1.png'), headline: "1. Any volume is possible", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo2.png'), headline: "2. Fastest Product Launch Technology", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo3.png'), headline: "3. 3D Prototyping and Digi Sleeve Mock-Ups", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo4.png'), headline: "4. Lower layers of corporate bureaucracy", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo5.png'), headline: "5. Order auto-information system", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo6.png'), headline: "6. Great value for money", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo7.png'), headline: "7. Customized for you", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo8.png'), headline: "8. Creative paying", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
-      { logolink: require('@/assets/homepage/Dream/logo9.png'), headline: "9. Expert turnovers", message: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." },
+      { logolink: require('@/assets/homepage/Dream/logo1.png'), headline: "1. Any volume is possible", message: "No matter the scale, we deliver solutions tailored to meet any production volume efficiently and effectively." },
+      { logolink: require('@/assets/homepage/Dream/logo2.png'), headline: "2. Fastest Product Launch Technology", message: "Accelerate your time to market with cutting-edge technology that ensures swift and seamless product launches." },
+      { logolink: require('@/assets/homepage/Dream/logo3.png'), headline: "3. 3D Prototyping and Digi Sleeve Mock-Ups", message: "Visualize your concepts with precision through advanced 3D prototyping and digital mock-ups for optimal decision-making." },
+      { logolink: require('@/assets/homepage/Dream/logo4.png'), headline: "4. Lower layers of corporate bureaucracy", message: "Streamline your processes and eliminate unnecessary hurdles for a more agile and efficient workflow." },
+      { logolink: require('@/assets/homepage/Dream/logo5.png'), headline: "5. Order auto-information system", message: "Stay informed at every step with an intelligent system that provides real-time updates on your orders." },
+      { logolink: require('@/assets/homepage/Dream/logo6.png'), headline: "6. Great value for money", message: "Achieve unparalleled quality and innovation without breaking the bank, ensuring exceptional value in every project." },
+      { logolink: require('@/assets/homepage/Dream/logo7.png'), headline: "7. Customized for you", message: "Receive tailor-made solutions that align perfectly with your unique goals and requirements." },
+      { logolink: require('@/assets/homepage/Dream/logo8.png'), headline: "8. Creative paying", message: "Innovative payment solutions designed to suit your financial needs and business objectives." },
+      { logolink: require('@/assets/homepage/Dream/logo9.png'), headline: "9. Expert turnovers", message: "Leverage our expertise to achieve smooth transitions and exceptional results every time." }
     ],
     };
   },

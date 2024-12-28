@@ -1,18 +1,21 @@
 <template>
   <div class="hero">
-    <!-- <img src="path/to/your/image.png" class="floating-image"> -->
     <div class="elliptical-gradient"></div>
     <!-- Hero Section -->
       <div class="hero-section">
             <span class="text-wrapper-3">
               Building Brand Image
             </span>
-            <span class="text-wrapper-4">Passionately <i class="fa fa-star floating-star-1"></i></span>
+            <span class="text-wrapper-4">Passionately 
+              <i class="floating-star-1">
+                <img src="../../assets/Star.png" class="floating-star" width="80" height="80">
+              </i>  
+            </span>
               <p class="hero-txt">We increase revenue and ensure sustainable long-term growth for your business through powerful Webflow websites.</p>
               <button class="cta-button" @click="exploreMore">
-                <i class="fa fa-star floating-star-3"></i>
+                <i class="floating-star-3"><img src="../../assets/Star.png" class="floating-star" width="50" height="50"></i>
                 Explore More 
-                <i class="fa fa-star floating-star-2"></i>
+                <i class="floating-star-2"><img src="../../assets/Star.png" class="floating-star" width="30" height="30"></i>
               </button>
       </div>
 
@@ -131,24 +134,18 @@ export default {
   position: absolute;
   left: 100%;
   margin-left: 5px;
-  font-size: 40px; /* Size of the icon */ 
-  color: gold; /* Color of the icon */ 
   z-index: 10; /* Ensure it is on top */ 
 }
 .floating-star-2 { 
   position: absolute;
   left: 100%;
   margin-left: 10vw;
-  font-size: 15px; /* Size of the icon */ 
-  color: gold; /* Color of the icon */ 
   z-index: 10; /* Ensure it is on top */ 
 }
 .floating-star-3 { 
   position: absolute;
   right: 100%;
   margin-right: 10vw;
-  font-size: 11px; /* Size of the icon */ 
-  color: gold; /* Color of the icon */ 
   z-index: 10; /* Ensure it is on top */ 
 }
 
