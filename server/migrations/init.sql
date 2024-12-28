@@ -38,6 +38,4 @@ CREATE TABLE IF NOT EXISTS `Products` (
     `original_price` VARCHAR(20) NOT NULL,               
     `categories` JSON NOT NULL,                           
     `images` JSON NOT NULL,                                        
-    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
 );
