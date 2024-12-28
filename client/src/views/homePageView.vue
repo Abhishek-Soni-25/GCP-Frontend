@@ -4,7 +4,8 @@
     <Header />
 
     <!-- Render the API response in a paragraph -->
-    <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
+    <p v-if="message">{{ message }}</p>
+    <!-- This will display the message from the API -->
 
     <!-- Render other components -->
     <Hero />
@@ -21,29 +22,27 @@
 
 <script>
 // Import the component
-import Header from '@/components/Homepage/Header.vue';
-import Hero from '@/components/Homepage/Hero.vue';
-import Dream from '@/components/Homepage/Dream.vue';
-import NewsArticle from '@/components/Homepage/NewsArticle.vue';
-import AppBrand from '@/components/Homepage/AppBrand.vue';
-import NewTestimonials from '@/components/Homepage/NewTestimonials.vue';
-import Footer from '@/components/Homepage/Footer.vue';
+import Header from "@/components/Homepage/Header.vue";
+import Hero from "@/components/Homepage/Hero.vue";
+import Dream from "@/components/Homepage/Dream.vue";
+// import NewsArticle from '@/components/Homepage/NewsArticle.vue';
+import AppBrand from "@/components/Homepage/AppBrand.vue";
+import NewTestimonials from "@/components/Homepage/NewTestimonials.vue";
+import Footer from "@/components/Homepage/Footer.vue";
 
-// Import Axios
-import axios from 'axios';
-import FAQ from '@/components/Homepage/FAQ.vue';
+import FAQ from "@/components/Homepage/FAQ.vue";
 
 export default {
-  name: 'HomePageView',
+  name: "HomePageView",
   components: {
     Header,
     Hero,
     AppBrand,
     Dream,
     NewTestimonials,
-    NewsArticle,
+    // NewsArticle,
     FAQ,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -80,5 +79,4 @@ export default {
 footer {
   margin-top: auto; /* Pushes the footer to the bottom */
 }
-
 </style>
