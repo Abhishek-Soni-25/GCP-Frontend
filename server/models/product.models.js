@@ -39,9 +39,6 @@ const ProductModel = sequelize.define("Product", {
         type: DataTypes.JSON, 
         allowNull: false,
     },
-},
-{
-    timestamps: true, 
 }
 );
 

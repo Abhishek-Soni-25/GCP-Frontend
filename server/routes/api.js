@@ -136,6 +136,12 @@ router.post('/product', upload.array('images'), async (req, res) => {
     const parsedCategories = typeof categories === 'string' ? JSON.parse(categories) : categories;
 
     const imagePaths = req.files.map(file => file.path);
+
+    if (Array.isArray(parsedCategories) && parsedCategories.length !== imagePaths.length) {
+      return res.status(400).json({
+          message: 'The number of images must match the number of categories'
+      });
+    }
   try {
     await ProductModel.create({
       name, title, stock, mrp, original_price, 
@@ -151,22 +157,20 @@ router.post('/product', upload.array('images'), async (req, res) => {
 });
 
 // GET API to fetch all product details
-router.get('/product/:id', async(req, res)=>{
-
-  const { id } = req.params;
-
+router.get('/product', async(req, res)=>{
   try {
-    const product = await ProductModel.findByPk(id);
+    
+    const products = await ProductModel.findAll();
 
-    if (!product) {
-      return res.status(404).json({ message: "Product not found." });
+    if (products.length === 0) {
+        return res.status(404).json({ message: "No products found." });
     }
 
-    res.status(200).json({ product });
+    res.status(200).json({ products });
   } catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).json({ message: "Internal server error", error: err.message });
-  }
+}
 })
 
 module.exports = router;
