@@ -5,11 +5,15 @@
     <!-- about Section -->
       <div class="about-section">
         <span class="text-wrapper-4">About</span><br />
-        <span class="text-wrapper-3">Innovating packaging, sustaining tomorrow.<i class="fa fa-star floating-star-1"></i></span>
+        <span class="text-wrapper-3">Innovating packaging, sustaining tomorrow.
+          <i class="floating-star-1">
+            <img src="../../assets/Star.png" class="floating-star" width="80" height="80">
+          </i>  
+        </span>
         <p class="about-txt">
-          <i class="fa fa-star floating-star-3"></i>
+          <i class="floating-star-3"><img src="../../assets/Star.png" class="floating-star" width="50" height="50"></i>
           Discover, design and buy packaging that respects the planet
-          <i class="fa fa-star floating-star-2"></i>
+          <i class="floating-star-2"><img src="../../assets/Star.png" class="floating-star" width="30" height="30"></i>
         </p>
       </div>
       <div class="box-container">
@@ -46,32 +50,36 @@
       </div>
   </div>
   <div class="vm">
-    <div class="vm-box-container">
-      <div class="vm-box"><div class="box-top"><img class="vm-image" alt="Vision" src="../../assets/About/vision.png" /></div>
-        <p class="vm-box-txt">Our Vision</p>
-        <p class="p2">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </p>
-      </div>
-      <div class="vm-box">
-        <div class="box-top"><img class="vm-image" alt="Mission" src="../../assets/About/target.png" /></div>
-          <p class="vm-box-txt">Our Mission</p>
-          <p class="p2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        <div class="vm-box-container">
+          <div class="vm-box">
+            <div class="box-top"><img class="vm-image" alt="Vision" src="../../assets/About/vision.png" /></div>
+            <p class="vm-box-txt">Our Vision</p>
+            <p class="p2">
+              To be a global leader in innovative printing and packaging solutions that inspire and empower businesses worldwide.
+            </p>
+          </div>
+          <div class="vm-box">
+            <div class="box-top"><img class="vm-image" alt="Mission" src="../../assets/About/target.png" /></div>
+            <p class="vm-box-txt">Our Mission</p>
+            <p class="p2">
+              To deliver high-quality, sustainable, and creative packaging solutions that exceed customer expectations and drive success.
+            </p>
+          </div>
+        </div>
+        <div class="vm-main">
+          <p class="vm-txt-head">Excellence In Printing And Packaging</p>
+          <p class="vm-txt">
+            We are committed to providing exceptional printing and packaging services that combine innovative designs, quality materials, and sustainable practices to meet diverse industry needs.
           </p>
+          <div class="vm-partner">
+            <p>Our Partners:</p>
+            <p><img class="partner-icon" src="../../assets/About/mcd.png">MC Donald’s</p>
+            <p><img class="partner-icon" src="../../assets/About/nest.png">Nestle</p>
+            <p><img class="partner-icon" src="../../assets/About/OF.png">Organic Food</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="vm-main">
-      <p class="vm-txt-head">Excellence In Printing And Packaging</p>
-      <p class="vm-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
-      <div class="vm-partner">
-        <p>Our Partners:</p>
-        <p><img class="partner-icon" src="../../assets/About/target.png">MC Donald’s</p>
-        <p><img class="partner-icon" src="../../assets/About/target.png">Nestle</p>
-        <p><img class="partner-icon" src="../../assets/About/target.png">Organic Food</p>
-      </div>
-    </div>
-  </div>
+
 
 </template>
 
@@ -109,23 +117,17 @@ export default {
   .floating-star-1 { 
     position: absolute;
     right: 0px;
-    top: -30px;
-    font-size: 40px; /* Size of the icon */ 
-    color: gold; /* Color of the icon */ 
+    top: -55px;
     z-index: 10; /* Ensure it is on top */ 
   }
   .floating-star-2 { 
     position: absolute;
     right: 0px ;
-    font-size: 15px; /* Size of the icon */ 
-    color: gold; /* Color of the icon */ 
     z-index: 10; /* Ensure it is on top */ 
   }
   .floating-star-3 { 
     position: absolute;
     left: 0px;
-    font-size: 11px; /* Size of the icon */ 
-    color: gold; /* Color of the icon */ 
     z-index: 10; /* Ensure it is on top */ 
   }
 
@@ -306,6 +308,7 @@ export default {
       line-height: 24px;
       letter-spacing: 0.02em;
       text-align: left;
+      max-width: 830px;
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
     }
@@ -314,12 +317,12 @@ export default {
       display: flex;
       flex-direction: row;
       border-top: 2px dashed black;
-      padding-top: 7px;
+      padding-top: 9px;
       border-color: #9593A4;
       color: #000000;
       column-gap: 0.5vw;
       font-family: Outfit;
-      font-size: 22px;
+      font-size: 26px;
       line-height: 30px;
       font-weight: 700;
       text-align: left;
@@ -353,7 +356,7 @@ export default {
       z-index: 100;
     }
 
-    .partner-icon{ width: 30px; height: 30px; }
+    .partner-icon{ width: 50px; height: 50px; }
 
     .vm-image{
       top: 18px;

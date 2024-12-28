@@ -1,18 +1,21 @@
 <template>
   <div class="hero">
-    <!-- <img src="path/to/your/image.png" class="floating-image"> -->
     <div class="elliptical-gradient"></div>
     <!-- Hero Section -->
       <div class="hero-section">
             <span class="text-wrapper-3">
               Building Brand Image
             </span>
-            <span class="text-wrapper-4">Passionately <i class="fa fa-star floating-star-1"></i></span>
+            <span class="text-wrapper-4">Passionately 
+              <i class="floating-star-1">
+                <img src="../../assets/Star.png" class="floating-star" width="80" height="80">
+              </i>  
+            </span>
               <p class="hero-txt">We increase revenue and ensure sustainable long-term growth for your business through powerful Webflow websites.</p>
               <button class="cta-button" @click="exploreMore">
-                <i class="fa fa-star floating-star-3"></i>
+                <i class="floating-star-3"><img src="../../assets/Star.png" class="floating-star" width="50" height="50"></i>
                 Explore More 
-                <i class="fa fa-star floating-star-2"></i>
+                <i class="floating-star-2"><img src="../../assets/Star.png" class="floating-star" width="30" height="30"></i>
               </button>
       </div>
 
@@ -24,12 +27,15 @@
         <div class="line-small"></div>
       </div>
       <div class="brand-box">
-        <img src="@/assets/homepage/Hero/1.png">
-        <img src="@/assets/homepage/Hero/2.png">
-        <img src="@/assets/homepage/Hero/3.png">
-        <img src="@/assets/homepage/Hero/4.png">
-        <img src="@/assets/homepage/Hero/5.png">
-      </div>
+      <button class="slider-btn left" @click="prevLogo">‹</button>
+      <img
+        :src="logos[currentLogo]"
+        :key="currentLogo"
+        class="brand-logo"
+        alt="Brand Logo"
+      />
+      <button class="slider-btn right" @click="nextLogo">›</button>
+    </div>
     </div>
 
     <!-- Divider Line -->
@@ -54,14 +60,48 @@
 <script>
 export default {
   name: 'Hero',
-methods: {
-  exploreMore() {
-    const target = document.querySelector('.hero-section2');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-}
+  data() {
+    return {
+      logos: [
+        require('@/assets/homepage/Hero/1.png'),
+        require('@/assets/homepage/Hero/2.png'),
+        require('@/assets/homepage/Hero/3.png'),
+        require('@/assets/homepage/Hero/4.png'),
+        require('@/assets/homepage/Hero/5.png'),
+      ],
+      currentLogo: 0,
+    };
+  },
+  methods: {
+    exploreMore() {
+      const target = document.querySelector('.hero-section2');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+    },
+    nextLogo() {
+      this.currentLogo = (this.currentLogo + 1) % this.logos.length;
+    },
+    prevLogo() {
+      this.currentLogo =
+        (this.currentLogo - 1 + this.logos.length) % this.logos.length;
+    },
+    startAutoSlide() {
+      this.slideInterval = setInterval(() => {
+        this.nextLogo();
+      }, 5000); // 5 seconds
+    },
+    stopAutoSlide() {
+      clearInterval(this.slideInterval);
+      this.slideInterval = null;
+    },
+  },
+  mounted() {
+    this.startAutoSlide();
+  },
+  beforeDestroy() {
+    this.stopAutoSlide();
+  },
 };
 </script>
 
@@ -94,24 +134,18 @@ methods: {
   position: absolute;
   left: 100%;
   margin-left: 5px;
-  font-size: 40px; /* Size of the icon */ 
-  color: gold; /* Color of the icon */ 
   z-index: 10; /* Ensure it is on top */ 
 }
 .floating-star-2 { 
   position: absolute;
   left: 100%;
   margin-left: 10vw;
-  font-size: 15px; /* Size of the icon */ 
-  color: gold; /* Color of the icon */ 
   z-index: 10; /* Ensure it is on top */ 
 }
 .floating-star-3 { 
   position: absolute;
   right: 100%;
   margin-right: 10vw;
-  font-size: 11px; /* Size of the icon */ 
-  color: gold; /* Color of the icon */ 
   z-index: 10; /* Ensure it is on top */ 
 }
 
@@ -232,24 +266,40 @@ background: #F0E002;
 }
 
 .brand-box {
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: center; /* Centers items horizontally */ 
-  align-items: center; 
-  width: 100%; 
-  background-color: #222222; 
-  border: 1px solid #333; 
-  padding: 2px; 
-  margin: 0 0; 
-  border-radius: 20px; 
-  column-gap: 7vw; /* Gap proportional to the viewport width */ 
-  row-gap: 2vw;
-} 
-.brand-box img { 
-  width: 8vw; /* Width proportional to the viewport width */ 
-  min-width: 80px; /* Minimum width to ensure images don't get too small */ 
-  padding: 1vw; /* Padding proportional to the viewport width */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px; /* Adjust as needed for the logo size */
+  height: 140px; /* Adjust as needed for the logo size */
+  overflow: visible;
+  border-radius: 10px;
+  background-color: #222222;
+  border: 1px solid #333;
 }
+
+.brand-logo {
+  width: 100px;
+  height: auto;
+  transition: transform 3s ease-in-out;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0);
+  color: #F0E002;
+  border: none;
+  font-size: 50px;
+  font-weight: 1000;
+  cursor: pointer;
+  z-index: 10;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.slider-btn.left {  left: -30px; } 
+.slider-btn.right {  right: -30px; }
 
 .line {
   border-bottom: 3px solid #F0E002;
