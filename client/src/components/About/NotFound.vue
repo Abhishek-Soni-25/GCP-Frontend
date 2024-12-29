@@ -3,35 +3,59 @@
     <div class="row align-items-center">
       <!-- Left Image -->
       <div class="col-md-4 text-center">
-        <img :src="require('@/assets/About/image444.png')" alt="Box Image" class="img-fluid">
+        <img
+          :src="require('@/assets/About/image444.png')"
+          alt="Box Image"
+          class="img-fluid"
+        />
       </div>
 
       <!-- Right Content -->
       <div class="col-md-7 content">
-        <h2 class="contact-heading">Did Not Find Your Questions? Contact Us!</h2>
+        <h2 class="contact-heading">
+          Did Not Find Your Questions? Contact Us!
+        </h2>
         <p class="contact-subtext">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio ducimus repellendus esse, odit molestiae quos culpa laborum quam veritatis distinctio accusantium voluptate unde animi reiciendis quo possimus eos?
+          Didn’t find the answers you were looking for? No worries! Our team is
+          here to help. Whether you have specific questions or need more
+          information, feel free to contact us. We’re dedicated to providing
+          prompt and thorough assistance to ensure all your queries are
+          addressed. Reach out today, and we’ll provide the support you need to
+          move forward with confidence!
         </p>
         <div class="contact-info">
           <!-- Phone Info -->
-          <div class="info-box phone" style="background-color: #f9f9f9f9;">
+          <div class="info-box phone" style="background-color: #f9f9f9f9">
             <div class="imagephoto">
-              <img src="@/assets/About/call.png" alt="Phone Icon" class="phone-icon">
+              <img
+                src="@/assets/About/call.png"
+                alt="Phone Icon"
+                class="phone-icon"
+              />
             </div>
             <div class="info-content">
-              <strong>+91 959865****</strong><br>
-              <small>Lorem Ipsum is simply dummy</small>
+              <strong>+91 9269572229</strong><br />
+              <small
+                >Contact us at 91 9269572229 for any inquiries or
+                support.</small
+              >
             </div>
           </div>
 
           <!-- Email Info -->
-          <div class="info-box email" style="background-color: yellow;">
+          <div class="info-box email" style="background-color: yellow">
             <div class="imagephoto">
-              <img src="@/assets/About/email.png" alt="Email Icon" class="phone-icon">
+              <img
+                src="@/assets/About/email.png"
+                alt="Email Icon"
+                class="phone-icon"
+              />
             </div>
             <div class="info-content">
-              <strong>mail@pack.com</strong><br>
-              <small>Lorem Ipsum is simply dummy</small>
+              <strong>mail@pack.com</strong><br />
+              <small>
+                Mail us at mail@pack.com for any inquiries or support.</small
+              >
             </div>
           </div>
         </div>
@@ -47,15 +71,13 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css");
 
 .contact-section {
   padding: 40px 20px;
   border-radius: 10px;
-  margin-bottom: 0; /* Removed bottom margin */
-  
-  
+  margin-bottom: 0;
 }
 
 .contact-heading {
@@ -63,7 +85,7 @@ export default {
   font-weight: bold;
   text-align: center;
   color: #343a40;
-  margin-top: 0; /* Removed top margin */
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -78,7 +100,7 @@ export default {
   align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 0; /* Removed top margin */
+  margin-top: 0;
 }
 
 .contact-info .info-box {

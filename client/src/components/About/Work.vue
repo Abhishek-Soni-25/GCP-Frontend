@@ -206,25 +206,22 @@
 
 /* Media Queries */
 @media (max-width: 475px) {
-  /* Cards centered for all sizes up to 475px */
   .work-main .d-flex {
     flex-direction: column;
   }
 
   .card {
     width: 90%;
-    /* Adjust card width to ensure responsiveness */
+
     margin: 10px auto;
   }
 
   .arrow-container {
     margin: 10px 0;
-    /* Center the arrow containers */
   }
 
   .arrow-container i {
     transform: rotate(90deg);
-    /* Make the arrows point downward */
   }
 }
 </style>

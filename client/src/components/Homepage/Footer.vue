@@ -7,7 +7,12 @@
         <div class="col-md-6 mb-4">
           <div class="d-flex align-items-center">
             <router-link to="/" class="d-inline-block">
-              <img src="@/assets/logo.png" alt="Logo" class="img-fluid" style="height: 60px;" />
+              <img
+                src="@/assets/logo.png"
+                alt="Logo"
+                class="img-fluid"
+                style="height: 60px"
+              />
             </router-link>
           </div>
           <p class="mt-3">
@@ -19,33 +24,45 @@
         <!-- Right Section -->
         <div class="col-md-6 text-md-end mb-4">
           <p class="mb-2">
-            <a href="mailto:info@gripchain.com"
-              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end">
+            <a
+              href="mailto:info@gripchain.com"
+              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end"
+            >
               <i class="bi bi-envelope-fill me-2"></i> info@gripchain.com
             </a>
           </p>
           <p class="mb-2">
-            <a href="tel:+00112313435"
-              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end">
-              <i class="bi bi-telephone-fill me-2"></i> (001) 1231 3435
+            <a
+              href="tel:+00112313435"
+              class="text-white text-decoration-none d-flex align-items-center justify-content-md-end"
+            >
+              <i class="bi bi-telephone-fill me-2"></i> +91 9269572229
             </a>
           </p>
           <div class="d-flex justify-content-md-end">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
-              class="text-white text-decoration-none me-3">
-              <i class="bi bi-facebook fs-4"></i>
+            <a
+              href="https://www.justdial.com/jdmart/Greater-Noida/Grip-Chain-Packtech-Pvt-Ltd-Kasna/011P1218036037F6G8R8_BZDET/catalogue?trkid=2300031412&newAddress=Kasna&galtype=All&cname=Grip+Chain+Packtech+Pvt+Ltd&paid=0&ds=0&datacity=&catalogueType="
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white text-decoration-none me-3"
+            >
+              <i class="bi bi-telephone fs-4"></i>
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
-              class="text-white text-decoration-none me-3">
-              <i class="bi bi-instagram fs-4"></i>
+            <a
+              href="https://m.indiamart.com/grip-chain-packtech-private-limited/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white text-decoration-none me-3"
+            >
+              <i class="bi bi-shop fs-4"></i>
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
-              class="text-white text-decoration-none me-3">
-              <i class="bi bi-linkedin fs-4"></i>
-            </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
-              class="text-white text-decoration-none">
-              <i class="bi bi-twitter fs-4"></i>
+            <a
+              href=https://www.tofler.in/grip-chain-packtech-private-limited/company/U74999UP2017PTC091079
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white text-decoration-none me-3"
+            >
+              <i class="bi bi-gear fs-4"></i>
             </a>
           </div>
         </div>
@@ -58,31 +75,55 @@
       <div class="row">
         <!-- Pages Links -->
         <div class="col-md-6 mb-3">
-          <ul class="list-inline mb-0">
+          <ul class="list-inline mb-0 text-center">
             <li class="list-inline-item me-3">
-              <router-link to="/" class="text-white text-decoration-none">Home</router-link>
+              <router-link to="/" class="text-white text-decoration-none"
+                >Home</router-link
+              >
             </li>
             <li class="list-inline-item me-3">
-              <router-link to="/about" class="text-white text-decoration-none">About</router-link>
+              <router-link to="/about" class="text-white text-decoration-none"
+                >About</router-link
+              >
             </li>
             <li class="list-inline-item me-3">
-              <router-link to="/products" class="text-white text-decoration-none">Products</router-link>
+              <router-link
+                to="/products"
+                class="text-white text-decoration-none"
+                >Products</router-link
+              >
             </li>
             <li class="list-inline-item me-3">
-              <router-link to="/services" class="text-white text-decoration-none">Services</router-link>
+              <router-link
+                to="/services"
+                class="text-white text-decoration-none"
+                >Services</router-link
+              >
             </li>
             <li class="list-inline-item me-3">
-              <router-link to="/contact" class="text-white text-decoration-none">Contact</router-link>
+              <router-link to="/contact" class="text-white text-decoration-none"
+                >Contact</router-link
+              >
             </li>
             <li class="list-inline-item">
-              <router-link to="/faq" class="text-white text-decoration-none">FAQ</router-link>
+              <router-link to="/faq" class="text-white text-decoration-none"
+                >FAQ</router-link
+              >
+            </li>
+            <li class="list-inline-item">
+              <router-link
+                to="/blog"
+                class="text-white text-decoration-none"
+                exact
+                >Blog</router-link
+              >
             </li>
           </ul>
         </div>
 
         <!-- Copyright -->
         <div class="col-md-6 text-md-end">
-          <small>© 2024 Companyname - All Rights Reserved</small>
+          <small>© 2024 Grip Chain Packtech - All Rights Reserved</small>
         </div>
       </div>
     </div>
@@ -98,12 +139,12 @@ export default {
 <style scoped>
 footer {
   font-size: 0.9rem;
-  background: #22220d; /* Same as header background */
+  background: #22220d;
 }
 
 /* Increased Upper Space */
 .custom-footer {
-  padding-top: 5rem; /* Increased padding on top */
+  padding-top: 5rem;
 }
 
 /* Logo Hover Effect */
@@ -139,27 +180,27 @@ footer {
 
 /* Facebook Hover Color */
 .social-icon.facebook:hover {
-  color: #3b5998 !important; /* Facebook color */
+  color: #3b5998 !important;
 }
 
 /* Instagram Hover Color */
 .social-icon.instagram:hover {
-  color: #e1306c !important; /* Instagram color */
+  color: #e1306c !important;
 }
 
 /* LinkedIn Hover Color */
 .social-icon.linkedin:hover {
-  color: #0077b5 !important; /* LinkedIn color */
+  color: #0077b5 !important;
 }
 
 /* Twitter Hover Color */
 .social-icon.twitter:hover {
-  color: #1da1f2 !important; /* Twitter color */
+  color: #1da1f2 !important;
 }
 
 /* Divider Styling */
 .footer-bottom-space {
-  height: 40px; /* Extra spacing at the bottom */
+  height: 40px;
 }
 
 /* Responsive Design */
@@ -177,5 +218,3 @@ footer {
   }
 }
 </style>
-
-

@@ -1,57 +1,42 @@
 <template>
   <div class="main-container">
-      <!-- Render the Header component -->
-      <Header />
+    <!-- Render the Header component -->
+    <Header />
 
-      <!-- Render the API response in a paragraph -->
-      <p v-if="message">{{ message }}</p> <!-- This will display the message from the API -->
+    <!-- Render the API response in a paragraph -->
+    <p v-if="message">{{ message }}</p>
+    <!-- This will display the message from the API -->
 
-      <Servicesmain />
-      <Services2 />
+    <Servicesmain />
+    <Services2 />
 
-      <!-- Render the Footer component -->
-      <Footer />
+    <!-- Render the Footer component -->
+    <Footer />
   </div>
 </template>
 
 <script>
 // Import the component
-import Header from '@/components/Homepage/Header.vue';
-import Servicesmain from '@/components/Servicespage/Servicesmain.vue';
-import Services2 from '@/components/Servicespage/Services2.vue';
-import Footer from '@/components/Homepage/Footer.vue';
+import Header from "@/components/Homepage/Header.vue";
+import Servicesmain from "@/components/Servicespage/Servicesmain.vue";
+import Services2 from "@/components/Servicespage/Services2.vue";
+import Footer from "@/components/Homepage/Footer.vue";
 
 // Import Axios
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  name: 'ServicesPageView',
+  name: "ServicesPageView",
   components: {
-      Header,
-      Servicesmain,
-      Services2,
-      Footer
+    Header,
+    Servicesmain,
+    Services2,
+    Footer,
   },
   data() {
-      return {
-          message: null, // This will hold the message fetched from the API
-      };
-  },
-  methods: {
-      // Method to fetch data from the API
-      fetchMessage() {
-          axios.get('/api/message') // This will be proxied to http://localhost:7000/api/message
-              .then(response => {
-                  this.message = response.data.message; // Set the message data from the API
-              })
-              .catch(error => {
-                  console.error('Error fetching the message:', error);
-              });
-      },
-  },
-  created() {
-      // Call the fetchMessage method when the component is created
-      this.fetchMessage();
+    return {
+      message: null, // This will hold the message fetched from the API
+    };
   },
 };
 </script>

@@ -281,7 +281,6 @@ export default {
   width: 100%;
   height: 300px;
   margin-right: 8px;
-  /* Adds some space between the icon and the text */
 }
 
 .company {
@@ -341,7 +340,6 @@ form button {
   border-radius: 5px;
   font-size: 14px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-  /* Box shadow for inputs */
 }
 
 form input.input-error,
@@ -358,7 +356,6 @@ form button {
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-  /* Box shadow for button */
 }
 
 form button:hover {
@@ -392,7 +389,6 @@ form textarea {
   .form,
   .map {
     width: 100%;
-    /* Each div takes full width */
   }
 
   .form {
