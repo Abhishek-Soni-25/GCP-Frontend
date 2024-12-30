@@ -54,27 +54,23 @@ app.listen(port, () => {
 // const express = require('express');
 // const path = require('path');
 // const cors = require('cors');
-// const apiRoutes = require('./routes/api'); // Import API routes
+// const apiRoutes = require('./routes/api');
 // const app = express();
 
-// // Set the port to the default HTTP port (80) or the one assigned by the hosting environment
 // const port = process.env.PORT || 80;
 
-// // Enable CORS
 // app.use(cors());
-
-// // Middleware for parsing JSON
 // app.use(express.json());
-
-// // Use API routes (e.g., /api)
 // app.use('/api', apiRoutes);
 
-// // Serve the Vue.js app from the "dist" folder
+// // Serve the Vue.js app and other static files from the "dist" folder
 // app.use(express.static(path.join(__dirname, 'dist')));
+
+// // Serve media files from the "media" folder
+// app.use('/media', express.static(path.join(__dirname, 'media')));
 
 // // Catch-all route to handle frontend routing and serve index.html
 // app.get('*', (req, res) => {
-//   // Ensure non-API requests serve the Vue.js app
 //   if (!req.originalUrl.startsWith('/api')) {
 //     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 //   } else {
@@ -86,3 +82,4 @@ app.listen(port, () => {
 // app.listen(port, () => {
 //   console.log(`Server is running at https://gcp.agratasinfotech.com`);
 // });
+
