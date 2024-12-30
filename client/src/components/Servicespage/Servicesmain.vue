@@ -45,31 +45,31 @@ export default {
   }
 
   .elliptical-gradient { 
-    position: absolute; /* Absolute positioning within the parent */ 
-    top: 0px; /* Adjust top position relative to the parent */ 
-    left: 0%; /* Adjust left position relative to the parent */ 
-    width: 100%; /* Width of the gradient area */ 
-    height: 100%; /* Height of the gradient area */ 
+    position: absolute;
+    top: 0px;
+    left: 0%;  
+    width: 100%;  
+    height: 100%; 
     background: radial-gradient(ellipse 25vw 25vw at 50% 50%, #A1CDFF99, #000000); 
-    z-index: 3; /* Ensure it appears on top */ 
-    opacity: 0.6; /* Optional: Set opacity for blending effect */ 
+    z-index: 3; 
+    opacity: 0.6; 
   }
 
   .floating-star-1 { 
     position: absolute;
     right: 0px;
     top: -55px;
-    z-index: 10; /* Ensure it is on top */ 
+    z-index: 10; 
   }
   .floating-star-2 { 
     position: absolute;
     right: 0px ;
-    z-index: 10; /* Ensure it is on top */ 
+    z-index: 10; 
   }
   .floating-star-3 { 
     position: absolute;
     left: 0px;
-    z-index: 10; /* Ensure it is on top */ 
+    z-index: 10; 
   }
 
   .service-section{ 
@@ -100,7 +100,7 @@ export default {
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    position: relative; /* Relative positioning for the parent */
+    position: relative; 
   }
 
   .text-wrapper-4 {

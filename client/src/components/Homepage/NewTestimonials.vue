@@ -1,11 +1,13 @@
-
 <template>
   <div>
     <section class="sectioon_container">
       <div class="testimonial-header">
         <h2>TESTIMONIAL</h2>
-        <h1 class="fw-bold">Customer is Our Top<br>Priority</h1>
-        <p>We survey all of our clients, the results of which go directly<br>to our CEO.</p>
+        <h1 class="fw-bold">Customer is Our Top<br />Priority</h1>
+        <p>
+          We survey all of our clients, the results of which go directly<br />to
+          our CEO.
+        </p>
       </div>
 
       <!-- Testimonial Slider -->
@@ -17,14 +19,21 @@
             v-for="(testimonial, index) in testimonials"
             :key="index"
             class="container_card"
-            :style="{ transform: `translateX(-${currentIndex * 100}%)`, transition: 'transform 0.5s ease' }"
-            >
+            :style="{
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: 'transform 0.5s ease',
+            }"
+          >
             <!-- @mouseenter="stopAutoSlide" -->
-            <div class="container_card_content" >
-              <img :src="testimonial.companyLogo" alt="Company Logo" class="company-logo" />
-              <h4 style="font-weight: bold;">{{ testimonial.title }}</h4>
-              <p style="text-align: justify;">{{ testimonial.description }}</p>
-              <h4 style="font-weight: bold;">{{ testimonial.name }}</h4>
+            <div class="container_card_content">
+              <img
+                :src="testimonial.companyLogo"
+                alt="Company Logo"
+                class="company-logo"
+              />
+              <h4 style="font-weight: bold">{{ testimonial.title }}</h4>
+              <p style="text-align: justify">{{ testimonial.description }}</p>
+              <h4 style="font-weight: bold">{{ testimonial.name }}</h4>
               <p class="position">{{ testimonial.position }}</p>
             </div>
             <div class="container_card_pofilephoto">
@@ -39,39 +48,38 @@
   </div>
 </template>
 
-  <script>
+<script>
 export default {
   data() {
     return {
       testimonials: [
         {
           // companyLogo: require('@/assets/homepage/Brand/testimonial/CompanyLogo.png'),
-          companyLogo: require('@/assets/homepage/testimonial/CompanyLogo.png'),
-          title: "Ideapeel Is The Best Digital Agency I Have Ever Seen! Highly Recommended!",
-          description:
-            "Ideapeel is an exceptional digital agency that delivers innovative, results-driven solutions. Their expertise in web design, branding, and digital marketing ensures your business stands out. Highly recommended for anyone seeking top-notch digital services!.",
-          name: "Shivam Tripathi 1",
-          position: "Director of COMPANY NAME",
-          profileImage:require('@/assets/homepage/testimonial/shivam.png'),
+          companyLogo: require("@/assets/homepage/testimonial/CompanyLogo.png"),
 
+          description:
+            "As a client of Grip Chain Packtech, we have been thoroughly impressed with their exceptional service and high-quality packaging solutions. Their products have significantly enhanced our operational efficiency, and their team’s dedication to customer satisfaction is truly commendable. We highly value our partnership with Grip Chain Packtech and look forward to continued success together.",
+          name: "Mr. Arnav Bajaj",
+          position: "Business Developer at Amrit Food",
+          profileImage: require("@/assets/homepage/testimonial/Arnav_bajaj.jpg"),
         },
         {
-          companyLogo: require('@/assets/homepage/testimonial/CompanyLogo.png'),
-          title: "Ideapeel Is The Best Digital Agency I Have Ever Seen! Highly Recommended!",
+          companyLogo: require("@/assets/homepage/testimonial/CompanyLogo.png"),
+
           description:
-            "Ideapeel is an exceptional digital agency that delivers innovative, results-driven solutions. Their expertise in web design, branding, and digital marketing ensures your business stands out. Highly recommended for anyone seeking top-notch digital services!.",
-          name: "Shivam Tripathi 2",
-          position: "Director of COMPANY NAME",
-          profileImage:require('@/assets/homepage/testimonial/shivam.png'),
+            "As the Director of Shakuntala Industries, we’ve had the pleasure of working with Grip Chain Packtech, and their packaging solutions have been pivotal in enhancing the efficiency of our operations. Their commitment to quality and customer satisfaction is outstanding, and we truly appreciate their professional approach. We look forward to a continued and successful partnership with Grip Chain Packtech.",
+          name: "Mr. Rahul Chaudhary",
+          position: "Director at Shakuntala Industries",
+          profileImage: require("@/assets/homepage/testimonial/testimonial_2.jpg"),
         },
         {
-          companyLogo: require('@/assets/homepage/testimonial/CompanyLogo.png'),
-          title: "Ideapeel Is The Best Digital Agency I Have Ever Seen! Highly Recommended!",
+          companyLogo: require("@/assets/homepage/testimonial/CompanyLogo.png"),
+
           description:
-            "Ideapeel is an exceptional digital agency that delivers innovative, results-driven solutions. Their expertise in web design, branding, and digital marketing ensures your business stands out. Highly recommended for anyone seeking top-notch digital services!.",
-          name: "Shivam Tripathi 3",
-          position: "Director of COMPANY NAME",
-          profileImage:require('@/assets/homepage/testimonial/shivam.png'),
+            "Working with Grip Chain Packtech has been a fantastic experience for us at Ruma Natural LLP. Their dedication to delivering high-quality packaging solutions has greatly enhanced our product presentation and ensured the safe delivery of our goods. Their team is highly reliable and customer-focused, and we are proud to be their clients. We look forward to a long-lasting collaboration.",
+          name: "Mr. Rakesh Aggarwal",
+          position: "Vice Chairperson at Ruma Natural LLP",
+          profileImage: require("@/assets/homepage/testimonial/testimonial_3.jpg"),
         },
       ],
       currentIndex: 0,
@@ -84,8 +92,9 @@ export default {
   methods: {
     goPrev() {
       this.currentIndex =
-        (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
-        this.restartAutoSlide();
+        (this.currentIndex - 1 + this.testimonials.length) %
+        this.testimonials.length;
+      this.restartAutoSlide();
     },
     goNext() {
       this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
@@ -115,15 +124,11 @@ export default {
     // Clean up the interval when the component is destroyed
     this.stopAutoSlide();
   },
-  
-
-  
 };
 </script>
 
-
 <style scoped>
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css");
 /* body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -179,8 +184,6 @@ export default {
   justify-content: center;
   cursor: pointer;
   /* font-weight: bold; */
-  
-  
 }
 .right-btn {
   font-weight: bold;
@@ -191,7 +194,7 @@ export default {
 }
 
 .slider-btn:hover {
-  background:#F9F9F9
+  background: #f9f9f9;
   /* color: #fff; */
 }
 
@@ -228,9 +231,7 @@ export default {
   text-align: left;
   /* background-color: aqua; */
   /* border-radius: 18px; */
-  
 }
-
 
 .company-logo {
   width: 80px;
@@ -282,7 +283,6 @@ export default {
     font-size: 25px;
     font-weight: bold;
   }
-  
 }
 
 @media screen and (max-width: 480px) {
@@ -290,13 +290,12 @@ export default {
     font-size: 20px;
   }
 
-  .testimonial-slider{
+  .testimonial-slider {
     width: 100%;
   }
-.card_main
-{
-  width: 100%;
-}
+  .card_main {
+    width: 100%;
+  }
   .container_card {
     flex-direction: column;
     align-items: center;
@@ -328,5 +327,4 @@ export default {
     font-weight: bold;
   }
 }
-
 </style>

@@ -9,9 +9,14 @@
           <span class="text-wrapper-3">We Create...</span>
         </p>
         <p>
-          Our mission is to redefine creativity by providing exceptional design solutions tailored to your unique needs. We aim to inspire, innovate, and empower businesses to tell their stories through impactful visuals.
+          At Grip Chain Packtech, we dream of a world where innovation meets
+          sustainability, simplicity drives growth, challenges become
+          opportunities, and progress is guided by responsibility, creativity,
+          and meaningful impact.
         </p>
-        <button class="cta-button" @click="exploreMore"><i class="fa fa-spinner"></i> Load More</button>
+        <button class="cta-button" @click="exploreMore">
+          <i class="fa fa-spinner"></i> Load More
+        </button>
       </div>
     </div>
 
@@ -22,11 +27,16 @@
     <div class="dream-section2">
       <div class="half">
         <h5>BENEFITS</h5>
-        <p class="big">The design subscription that connects you to your dream team</p>
+        <p class="big">
+          The design subscription that connects you to your dream team
+        </p>
       </div>
       <div class="half">
         <p class="normal">
-          Experience seamless collaboration and unmatched expertise with a dedicated design team at your fingertips. Elevate your brand with designs that truly reflect your vision and values.
+          Our design subscription connects you to expert creatives, delivering
+          tailored, high-quality visuals, solutions, and user experiences to
+          elevate your brand—without the hassle of managing a full team. Your
+          vision, realized.
         </p>
         <button class="cta-button" @click="exploreMore">See More</button>
       </div>
@@ -50,55 +60,99 @@
   </div>
 </template>
 
-
 <script>
 export default {
-  name: 'Dream', 
+  name: "Dream",
   methods: {
     exploreMore() {
-      const target = document.querySelector('.dream-section2');
+      const target = document.querySelector(".dream-section2");
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: "smooth" });
       }
     },
     getBorderClass(index) {
       const borderClasses = [
         // First row (index 0 to 2)
-        ['border-right', 'border-bottom'],   // 1st cell
-        ['border-left', 'border-right', 'border-bottom'],  // 2nd cell
-        ['border-left', 'border-bottom'],   // 3rd cell
+        ["border-right", "border-bottom"], // 1st cell
+        ["border-left", "border-right", "border-bottom"], // 2nd cell
+        ["border-left", "border-bottom"], // 3rd cell
 
         // Second row (index 3 to 5)
-        ['border-top', 'border-right', 'border-bottom'], // 4th cell
-        ['border-all'],  // 5th cell
-        ['border-top', 'border-bottom', 'border-left'],  // 6th cell
+        ["border-top", "border-right", "border-bottom"], // 4th cell
+        ["border-all"], // 5th cell
+        ["border-top", "border-bottom", "border-left"], // 6th cell
 
         // Third row (index 6 to 8)
-        ['border-top', 'border-right'], // 7th cell
-        ['border-top', 'border-left', 'border-right'], // 8th cell
-        ['border-top', 'border-left'], // 9th cell
+        ["border-top", "border-right"], // 7th cell
+        ["border-top", "border-left", "border-right"], // 8th cell
+        ["border-top", "border-left"], // 9th cell
       ];
 
-
       return borderClasses[index] || [];
-    }
-  },name: "MatrixPage",
+    },
+  },
+  name: "MatrixPage",
   data() {
     return {
       cells: [
-      { logolink: require('@/assets/homepage/Dream/logo1.png'), headline: "1. Any volume is possible", message: "No matter the scale, we deliver solutions tailored to meet any production volume efficiently and effectively." },
-      { logolink: require('@/assets/homepage/Dream/logo2.png'), headline: "2. Fastest Product Launch Technology", message: "Accelerate your time to market with cutting-edge technology that ensures swift and seamless product launches." },
-      { logolink: require('@/assets/homepage/Dream/logo3.png'), headline: "3. 3D Prototyping and Digi Sleeve Mock-Ups", message: "Visualize your concepts with precision through advanced 3D prototyping and digital mock-ups for optimal decision-making." },
-      { logolink: require('@/assets/homepage/Dream/logo4.png'), headline: "4. Lower layers of corporate bureaucracy", message: "Streamline your processes and eliminate unnecessary hurdles for a more agile and efficient workflow." },
-      { logolink: require('@/assets/homepage/Dream/logo5.png'), headline: "5. Order auto-information system", message: "Stay informed at every step with an intelligent system that provides real-time updates on your orders." },
-      { logolink: require('@/assets/homepage/Dream/logo6.png'), headline: "6. Great value for money", message: "Achieve unparalleled quality and innovation without breaking the bank, ensuring exceptional value in every project." },
-      { logolink: require('@/assets/homepage/Dream/logo7.png'), headline: "7. Customized for you", message: "Receive tailor-made solutions that align perfectly with your unique goals and requirements." },
-      { logolink: require('@/assets/homepage/Dream/logo8.png'), headline: "8. Creative paying", message: "Innovative payment solutions designed to suit your financial needs and business objectives." },
-      { logolink: require('@/assets/homepage/Dream/logo9.png'), headline: "9. Expert turnovers", message: "Leverage our expertise to achieve smooth transitions and exceptional results every time." }
-    ],
+        {
+          logolink: require("@/assets/homepage/Dream/logo1.png"),
+          headline: "1. Any volume is possible",
+          message:
+            "At Grip Chain Packtech, we believe in limitless possibilities. Whether it's a single unit or bulk production, we are equipped to handle any volume with precision and excellence.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo2.png"),
+          headline: "2. Fastest Product Launch Technology",
+          message:
+            "At Grip Chain Packtech, speed meets innovation. Our advanced technology ensures your products hit the market faster, enabling you to stay ahead of the competition without compromising on quality.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo3.png"),
+          headline: "3. 3D Prototyping and Digi Sleeve Mock-Ups",
+          message:
+            "Experience precision like never before with 3D prototyping and digital sleeve mock-ups. Visualize your designs in detail, make informed decisions, and bring your ideas to life effortlessly.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo4.png"),
+          headline: "4. Lower layers of corporate bureaucracy",
+          message:
+            "Streamline your journey with minimal corporate red tape. We prioritize efficiency and agility, ensuring swift decisions and seamless processes to help you achieve your goals faster and with ease.",
+        },
+
+        {
+          logolink: require("@/assets/homepage/Dream/logo5.png"),
+          headline: "5. Order Auto-Information System",
+          message:
+            "Streamline your operations with our automated system that ensures quick and accurate order processing, reducing manual intervention and boosting efficiency.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo6.png"),
+          headline: "6. Great Value for Money",
+          message:
+            "Get more for less with our cost-effective solutions that deliver exceptional value, without compromising on quality or performance.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo7.png"),
+          headline: "7. Customized for You",
+          message:
+            "Our services are tailored to meet your unique needs, ensuring a personalized experience that aligns with your specific requirements and business goals.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo8.png"),
+          headline: "8. Creative Paying",
+          message:
+            "Experience innovative payment options that offer flexibility and creativity, making transactions easier and more accessible for your business.",
+        },
+        {
+          logolink: require("@/assets/homepage/Dream/logo9.png"),
+          headline: "9. Expert Turnovers",
+          message:
+            "Leverage the expertise of our team to ensure quick and smooth turnovers, ensuring that your projects are completed on time and exceed expectations.",
+        },
+      ],
     };
   },
-
 };
 </script>
 
@@ -137,7 +191,6 @@ export default {
 .dream-content .building-brand-image {
   text-align: center;
   margin-top: 40px;
-
 }
 
 .dream-content .text-wrapper-3 {
@@ -149,7 +202,7 @@ export default {
 
 .dream-content .text-wrapper-4 {
   font-size: 20.1px;
-  color: #F0E002;
+  color: #f0e002;
   letter-spacing: -0.98px;
 }
 
@@ -170,18 +223,18 @@ export default {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  background: #F0E002;
+  background: #f0e002;
   transition: all 0.3s ease;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cta-button:hover {
-  background: #F0E002;
+  background: #f0e002;
 }
 
 /* Divider Line */
 .line {
-  border-bottom: 3px solid #F0E002;
+  border-bottom: 3px solid #f0e002;
   margin-top: 60px;
   margin-bottom: 40px;
   width: 90%;
@@ -195,7 +248,7 @@ export default {
 
 .dream-section2 h5 {
   font-size: 1rem;
-  color: #F0E002;
+  color: #f0e002;
   margin-bottom: 10px;
 }
 
@@ -217,7 +270,8 @@ export default {
     font-size: calc(57.1px * 0.8);
     line-height: calc(59.8px * 0.8);
   }
-  .dream-content .text-wrapper-4, .text-wrapper-3 {
+  .dream-content .text-wrapper-4,
+  .text-wrapper-3 {
     font-size: calc(57.1px * 0.8);
   }
   .dream-section2 h5 {
@@ -227,7 +281,8 @@ export default {
     font-size: calc(2rem * 0.8);
   }
 
-  .dream-section, .dream-section2 {
+  .dream-section,
+  .dream-section2 {
     flex-direction: column;
     gap: 15px;
   }
@@ -236,7 +291,8 @@ export default {
     font-size: 2rem;
   }
 
-  .dream-content p, .normal {
+  .dream-content p,
+  .normal {
     font-size: 1rem;
   }
 }
@@ -257,7 +313,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
   width: 90%;
-  border: 0.39px solid #b8fd5000
+  border: 0.39px solid #b8fd5000;
 }
 
 .cell {
@@ -273,75 +329,70 @@ export default {
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-bottom: 1px; /* Add spacing below the logo */
+  margin-bottom: 1px;
 }
 
 .icon img {
-  max-width: 15px; /* Set a maximum width for logos */
-  max-height: 15px; /* Set a maximum height for logos */
-  object-fit: contain; /* Ensure logos fit within bounds without distortion */
+  max-width: 15px;
+  max-height: 15px;
+  object-fit: contain;
 }
-
 
 /* Headline styles */
 .headline {
-  color: #FFFFFF;
-  font-size: 1.2em; /* Slightly bigger than message */
+  color: #ffffff;
+  font-size: 1.2em;
   margin-bottom: 8px;
 }
 
 /* Message styles */
 .message {
-  color: #9593A4;
-  font-size: 1em; /* Default size */
+  color: #9593a4;
+  font-size: 1em;
 }
 
 /* Border styles */
 .border-right {
-  border-right:1px solid #B9FD5017  !important;
+  border-right: 1px solid #b9fd5017 !important;
 }
 
 .border-left {
-  border-left: 1px solid #B9FD5017 !important;
-
+  border-left: 1px solid #b9fd5017 !important;
 }
 
 .border-top {
-  border-top: 1px solid #B9FD5017 !important;
-
+  border-top: 1px solid #b9fd5017 !important;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #B9FD5017 !important;
+  border-bottom: 1px solid #b9fd5017 !important;
 }
 
 .border-all {
-  border: 1px solid #B9FD5017  !important;
-
+  border: 1px solid #b9fd5017 !important;
 }
 
 /* Responsive Design for Matrix */
 @media (max-width: 460px) {
   .matrix-container {
     display: grid;
-    grid-template-columns: 1fr; /* Single column layout */
-    gap: 10px; /* Add spacing between rows */
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .cell {
-    padding: 10px; /* Adjust padding for smaller screens */
-    text-align: center; /* Center align for better presentation */
-    border: none; /* Remove all borders */
-    border-top: 2px solid #B9FD5017; /* Add top border */
-    border-bottom: 2px solid #B9FD5017; /* Add bottom border */
+    padding: 10px;
+    text-align: center;
+    border: none;
+    border-top: 2px solid #b9fd5017;
+    border-bottom: 2px solid #b9fd5017;
   }
 
   /* Remove additional borders from specific classes */
   .border-right,
   .border-left,
   .border-all {
-    border: none !important; /* Override with no borders */
+    border: none !important;
   }
 }
-
 </style>

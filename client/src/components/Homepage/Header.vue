@@ -87,7 +87,6 @@ export default {
 /* Adjusted Logo Positioning */
 .navbar-brand {
   margin-left: -80px;
-  /* Moves the logo further left */
 }
 
 /* Navbar Links Styling */
