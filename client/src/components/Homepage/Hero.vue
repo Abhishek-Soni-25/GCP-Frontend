@@ -40,22 +40,25 @@
 
     <!-- Brand Box -->
     <div class="brand-container">
-      <div class="brand-txt">
-        <div class="line-small"></div>
-        TRUSTED BY AMAZING BRANDS
-        <div class="line-small"></div>
-      </div>
-      <div class="brand-box">
-        <button class="slider-btn left" @click="prevLogo">‹</button>
+    <div class="brand-txt">
+      <div class="line-small"></div>
+      TRUSTED BY AMAZING BRANDS
+      <div class="line-small"></div>
+    </div>
+    <div class="brand-box">
+      <button class="slider-btn left" @click="prevSlide">‹</button>
+      <div class="brand-images">
         <img
-          :src="logos[currentLogo]"
-          :key="currentLogo"
+          v-for="(logo, index) in visibleLogos"
+          :key="index"
+          :src="logo"
           class="brand-logo"
           alt="Brand Logo"
         />
-        <button class="slider-btn right" @click="nextLogo">›</button>
       </div>
+      <button class="slider-btn right" @click="nextSlide">›</button>
     </div>
+  </div>
 
     <!-- Divider Line -->
     <div class="line"></div>
@@ -92,37 +95,44 @@ export default {
         require("@/assets/homepage/Hero/4.png"),
         require("@/assets/homepage/Hero/5.png"),
       ],
-      currentLogo: 0,
+      currentIndex: 0,
+      visibleCount: 5, // Number of visible logos at a time
     };
   },
+  computed: {
+    visibleLogos() {
+      return this.logos
+        .concat(this.logos) // Duplicate the array for seamless wrapping
+        .slice(this.currentIndex, this.currentIndex + this.visibleCount);
+    },
+  },
   methods: {
-    exploreMore() {
-      const target = document.querySelector(".hero-section2");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+    nextSlide() {
+      this.currentIndex = (this.currentIndex + 1) % this.logos.length;
     },
-    nextLogo() {
-      this.currentLogo = (this.currentLogo + 1) % this.logos.length;
+    prevSlide() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.logos.length) % this.logos.length;
     },
-    prevLogo() {
-      this.currentLogo =
-        (this.currentLogo - 1 + this.logos.length) % this.logos.length;
+    updateVisibleCount() {
+      this.visibleCount = window.innerWidth < 520 ? 3 : 5;
     },
     startAutoSlide() {
       this.slideInterval = setInterval(() => {
-        this.nextLogo();
+        this.nextSlide();
       }, 5000); // 5 seconds
     },
     stopAutoSlide() {
       clearInterval(this.slideInterval);
-      this.slideInterval = null;
     },
   },
   mounted() {
+    this.updateVisibleCount(); // Set initial visibleCount based on screen size
+    window.addEventListener("resize", this.updateVisibleCount);
     this.startAutoSlide();
   },
   beforeDestroy() {
+    window.removeEventListener("resize", this.updateVisibleCount);
     this.stopAutoSlide();
   },
 };
@@ -278,9 +288,6 @@ export default {
   font-family: "Outfit-Bold", Helvetica;
   font-size: 17.8px;
   font-weight: 700;
-  letter-spacing: 0px;
-  line-height: 0.3px;
-  text-align: center;
   align-items: center;
   width: 100%;
   padding: 1px;
@@ -293,17 +300,19 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20vw;
-  height: 140px;
-  overflow: visible;
-  border-radius: 10px;
-  transition: 1s ease-in;
+  width: 100%;
+  overflow: hidden;
+}
+
+.brand-images {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.5s ease-in-out;
 }
 
 .brand-logo {
   width: 100px;
   height: auto;
-  transition: transform 3s ease-in-out;
 }
 
 .slider-btn {
@@ -318,13 +327,12 @@ export default {
   cursor: pointer;
   z-index: 10;
   padding: 5px 10px;
-  border-radius: 5px;
 }
 .slider-btn.left {
-  left: -30px;
+  left: 3px;
 }
 .slider-btn.right {
-  right: -30px;
+  right: 3px;
 }
 
 .line {
@@ -378,6 +386,10 @@ export default {
   }
 }
 
+@media (min-width: 559px) and (max-width: 1068px) {
+  .slider-btn.left {  left: 10px; }
+  .slider-btn.right {  right: 10px; }
+}
 @media (max-width: 568px) {
   .hero {
     padding: 8px;
@@ -411,6 +423,7 @@ export default {
     font-size: calc(13.2px);
     line-height: calc(9.3px * 0.8);
   }
+  
   .hero-section2 h5 {
     font-size: calc(1.5rem * 0.8);
   }
@@ -436,4 +449,15 @@ export default {
     text-align: center;
   }
 }
+@media (max-width: 423px) {
+  .floating-star-1 {
+  position: absolute;
+  left: 100%;
+  margin-top: 28px;
+  margin-left: -28px;
+  z-index: 10;
+}
+
+}
+
 </style>
