@@ -1,13 +1,14 @@
 <template>
-  <div class="search-bar-container">
-    <input 
-      type="text" 
-      placeholder="Search products..." 
+  <!-- <div class="search-bar-container">
+    <input
+      type="text"
+      placeholder="Search products..."
       class="search-bar"
       v-model="searchQuery"
-      @input="filterProducts" />
+      @input="filterProducts"
+    />
     <i class="far fa-user-circle" style="font-size: 5vh; margin-left: 6px"></i>
-  </div>
+  </div> -->
 
   <div class="head">Product</div>
   <section class="container">
@@ -17,7 +18,10 @@
       :key="product.id"
       @click="navigateToProduct(product.id)">
       <div class="Productimage">
-        <img :src="`https://gcp.agratasinfotech.com/${product.images[0]}`" :alt="product.name">
+        <img
+          :src="`https://gcp.agratasinfotech.com/${product.images[0]}`"
+          :alt="product.name"
+        />
       </div>
       <div class="Productcontent">
         <h3>{{ product.name }}</h3>
@@ -28,7 +32,11 @@
         <div class="price">
           <span class="amount">₹{{ product.mrp }}</span>
           <span class="original">₹{{ product.original_price }}</span>
-          <span class="discount">{{ ((1 - product.mrp / product.original_price) * 100).toFixed(0) }}% Off</span>
+          <span class="discount"
+            >{{
+              ((1 - product.mrp / product.original_price) * 100).toFixed(0)
+            }}% Off</span
+          >
         </div>
         <p class="delivery">{{ product.delivery }}</p>
       </div>
@@ -55,7 +63,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -68,7 +76,9 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get("https://gcp.agratasinfotech.com/api/product/");
+        const response = await axios.get(
+          "https://gcp.agratasinfotech.com/api/product/"
+        );
         this.products = response.data.products; // Adjust according to the API response structure
         this.filteredProducts = this.products; // Initially show all products
       } catch (error) {
@@ -321,7 +331,7 @@ export default {
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
   .Product {
-    width: 48%;  /* Show two products per row */
+    width: 48%; /* Show two products per row */
   }
 
   .container {
@@ -330,45 +340,46 @@ export default {
   }
 
   .pagination {
-    flex-direction: column;  /* Stack pagination elements vertically on small screens */
+    flex-direction: column; /* Stack pagination elements vertically on small screens */
     align-items: center;
   }
 
   .pagination-left, .pagination-center {
     text-align: center;
-    font-size: 14px;  /* Adjust font size for mobile view */
+    font-size: 14px; /* Adjust font size for mobile view */
   }
 
   .page-number {
-    font-size: 16px;  /* Smaller font size for mobile view */
+    font-size: 16px; /* Smaller font size for mobile view */
     /* margin: 0px 10px; */
   }
 
   .next {
-    font-size: 14px;  /* Adjust font size for mobile view */
+    font-size: 14px; /* Adjust font size for mobile view */
   }
 }
 
 /* Responsive Design for Smaller Devices */
 @media (max-width: 480px) {
   .Product {
-    width: 100%;  /* Show one product per row on very small screens */
+    width: 100%; /* Show one product per row on very small screens */
   }
 
   .pagination {
     flex-direction: column;
   }
 
-  .pagination-left, .pagination-center {
-    font-size: 12px;  /* Further reduce font size for very small screens */
+  .pagination-left,
+  .pagination-center {
+    font-size: 12px; /* Further reduce font size for very small screens */
   }
 
   .page-number {
-    font-size: 12px;  /* Further reduce font size for very small screens */
+    font-size: 12px; /* Further reduce font size for very small screens */
   }
 
   .next {
-    font-size: 12px;  /* Further reduce font size for very small screens */
+    font-size: 12px; /* Further reduce font size for very small screens */
   }
 }
   

@@ -1,171 +1,153 @@
 <template>
-    <div class="main pb-4">
-        <!-- Section One -->
-        <div class="section-one text-center py-4">
-            <h3 class="text-warning">BLOGS</h3>
-            <h1 class="fw-bold">News & Articles</h1>
-            <h4 class="text-white">Best Articles to get started</h4>
-        </div>
-
-        <!-- Section Two -->
-        <div class="container section-two">
-            <div class="row g-4">
-                <!-- First Row -->
-                <div class="col-md-6">
-                    <div class="card d-flex flex-row align-items-center custom-border bg-transparent">
-                        <img :src="require('@/assets/homepage/News_&_Articles/newsarticle_one.jpeg')"
-                            class="card-img flex-shrink-0 rounded-3 me-4" alt="Sample Image">
-                        <div class="card-body">
-                            <h5 class="text-warning">BRANDING</h5>
-                            <h4 class="card-title">What is branding, and why do we need it?</h4>
-                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card d-flex flex-row align-items-center custom-border bg-transparent">
-                        <img :src="require('@/assets/homepage/News_&_Articles/newsarticle_two.jpeg')"
-                            class="card-img flex-shrink-0 rounded-3 me-4" alt="Sample Image">
-                        <div class="card-body">
-                            <h5 class="text-warning">TIKTOK</h5>
-                            <h4 class="card-title">TikTok and its impact on digital branding.</h4>
-                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Second Row -->
-                <div class="col-md-6">
-                    <div class="card d-flex flex-row align-items-center custom-border bg-transparent">
-                        <img :src="require('@/assets/homepage/News_&_Articles/newsarticle_three.jpeg')"
-                            class="card-img flex-shrink-0 rounded-3 me-4" alt="Sample Image">
-                        <div class="card-body">
-                            <h5 class="text-warning">DESIGNING</h5>
-                            <h4 class="card-title">Innovative designs for a competitive edge.</h4>
-                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card d-flex flex-row align-items-center custom-border bg-transparent">
-                        <img :src="require('@/assets/homepage/News_&_Articles/newsarticle_four.jpeg')"
-                            class="card-img flex-shrink-0 rounded-3 me-4" alt="Sample Image">
-                        <div class="card-body">
-                            <h5 class="text-warning">FACEBOOK</h5>
-                            <h4 class="card-title">Facebook Ads: Do they still work in 2024?</h4>
-                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Load More Button -->
-        <div class="text-center mt-4">
-            <button class="btn btn-outline-warning px-5 py-2">LOAD MORE</button>
-        </div>
+  <div class="main pb-4">
+    <!-- Section One -->
+    <div class="section-one text-center py-4">
+      <h3 class="text-warning">BLOGS</h3>
     </div>
+
+    <!-- Section Two -->
+    <div class="container section-two">
+      <div class="row g-4">
+        <!-- Blog 1 -->
+        <div class="col-12">
+          <div
+            class="card d-flex flex-column flex-md-row align-items-center custom-border bg-transparent"
+          >
+            <div class="card-body text-justify text-md-start">
+              <h1 class="card-title">
+                Innovative Packaging Solutions for a Greener Tomorrow
+              </h1>
+              <p class="card-text">
+                Innovative packaging solutions are key to reducing environmental
+                impact. By adopting eco-friendly materials and cutting-edge
+                designs, businesses can minimize waste while maintaining product
+                integrity. These sustainable practices not only drive innovation
+                but also contribute to a greener future, promoting a responsible
+                approach to packaging in industries worldwide.
+              </p>
+              <button class="btn btn-outline-warning">Read More</button>
+            </div>
+            <img
+              :src="
+                require('@/assets/homepage/News_&_Articles/newsarticle_one.jpeg')
+              "
+              class="card-img rounded-3 mb-3 mb-md-0 me-md-4"
+              alt="Sample Image"
+            />
+          </div>
+        </div>
+
+        <!-- Blog 2 -->
+        <div class="col-12">
+          <div
+            class="card d-flex flex-column flex-md-row align-items-center custom-border bg-transparent"
+          >
+            <div class="card-body text-justify text-md-start">
+              <h1 class="card-title">
+                Grip Chain Packtech : Driving Innovation in Sustainable
+                Packaging Tomorrow
+              </h1>
+              <p class="card-text">
+                Grip Chain Packtech leads the way in innovative, eco-friendly
+                packaging solutions. Committed to reducing environmental impact,
+                they offer cutting-edge designs and biodegradable materials that
+                set a new standard for sustainability. Driving change today,
+                Grip Chain Packtech is shaping a greener, more responsible
+                future for the packaging industry.
+              </p>
+              <button class="btn btn-outline-warning">Read More</button>
+            </div>
+            <img
+              :src="require('@/assets/homepage/News_&_Articles/one.gif')"
+              class="card-img rounded-3 mb-3 mb-md-0 me-md-4"
+              alt="Sample Image"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'NewsArticle',
+  name: "NewsArticle",
 };
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Love+Light&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 .main {
-    font-family: 'Outfit', sans-serif;
-    background-color: #111204;
-    color: #ffffff;
+  font-family: "Outfit", sans-serif;
+  background-color: #111204;
+  color: #ffffff;
 }
 
-.section-one,
-.card-title {
-    font-family: 'Outfit', sans-serif;
-}
-
-.card-text {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
-    color: #ABAAB2
-}
-
-
-
-.text-warning {
-    color: #F0E002 !important;
-    font-family: 'Outfit', sans-serif !important;
-
-}
-
-.btn {
-    color: #F0E002 !important;
-    font-family: 'Outfit', sans-serif !important;
-    border: 1px solid #F0E002;
-
-}
-
-.btn:hover {
-    color: #000 !important;
-    background-color: #F0E002;
-}
-
-.text-white {
-    color: #ffffff;
+.section-one h3 {
+  font-family: "Outfit", sans-serif;
 }
 
 .card {
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+  transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
-    transform: scale(1.02);
-}
+/* .card:hover {
+  transform: scale(1.02);
+} */
 
 .card-img {
-    object-fit: cover;
-    height: 125px;
-    width: 130px;
-    border-radius: 10px 0 0 10px;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  /* max-width: 200px; */
 }
 
 .card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 15px;
+  flex: 1;
 }
 
-.custom-border {
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
+.card-text {
+  font-weight: 400;
+  color: #ffff;
+}
+
+.text-warning {
+  color: #f0e002 !important;
+}
+
+.btn {
+  color: #f0e002 !important;
+  border: 1px solid #f0e002;
+}
+
+.btn:hover {
+  color: #000 !important;
+  background-color: #f0e002;
 }
 
 @media (max-width: 768px) {
-    .card {
-        width: auto;
-        height: auto;
-    }
+  .card {
+    flex-direction: column;
+    text-align: justify;
+  }
 
-    .card-img {
-        height: 305px;
-        width: 135px;
-
-    }
+  .card-img {
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 100%;
+  }
 }
 
-@media (width: 1024px) {
-    .card-img {
-        height: 175px;
-        width: 160px;
-    }
+@media (min-width: 769px) {
+  .card {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .card-img {
+    width: 200px;
+    height: auto;
+  }
 }
 </style>
