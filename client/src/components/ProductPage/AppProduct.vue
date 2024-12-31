@@ -1,14 +1,14 @@
 <template>
-  <div class="search-bar-container">
+  <!-- <div class="search-bar-container">
     <input
       type="text"
       placeholder="Search products..."
       class="search-bar"
       v-model="searchQuery"
+      @input="filterProducts"
     />
-    <!-- <button class="search-button" @click="filterProducts">Search</button> -->
     <i class="far fa-user-circle" style="font-size: 5vh; margin-left: 6px"></i>
-  </div>
+  </div> -->
 
   <div class="head">Product</div>
   <section class="container">
@@ -19,18 +19,25 @@
       @click="navigateToProduct(product.id)"
     >
       <div class="Productimage">
-        <img :src="product.image" :alt="product.name" />
+        <img
+          :src="`https://gcp.agratasinfotech.com/${product.images[0]}`"
+          :alt="product.name"
+        />
       </div>
       <div class="Productcontent">
         <h3>{{ product.name }}</h3>
-        <p>{{ product.description }}</p>
+        <p>{{ product.stock }}</p>
         <div class="rating">
           <span>{{ product.rating }} ★</span>
         </div>
         <div class="price">
-          <span class="amount">₹{{ product.amount }}</span>
-          <span class="original">₹{{ product.original }}</span>
-          <span class="discount">{{ product.discount }}% Off</span>
+          <span class="amount">₹{{ product.mrp }}</span>
+          <span class="original">₹{{ product.original_price }}</span>
+          <span class="discount"
+            >{{
+              ((1 - product.mrp / product.original_price) * 100).toFixed(0)
+            }}% Off</span
+          >
         </div>
         <p class="delivery">{{ product.delivery }}</p>
       </div>
@@ -57,6 +64,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -66,9 +75,16 @@ export default {
     };
   },
   methods: {
-    addProduct(product) {
-      this.products.push(product);
-      this.filterProducts(); // Update filtered list
+    async fetchProducts() {
+      try {
+        const response = await axios.get(
+          "https://gcp.agratasinfotech.com/api/product/"
+        );
+        this.products = response.data.products; // Adjust according to the API response structure
+        this.filteredProducts = this.products; // Initially show all products
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     },
     filterProducts() {
       const query = this.searchQuery.toLowerCase();
@@ -83,99 +99,7 @@ export default {
     },
   },
   mounted() {
-    // Initialize with sample data
-    const initialProducts = [
-      {
-        id: 1,
-        image: require("@/assets/product/p1.jpeg"),
-        name: "Fundoosh Energy ",
-        description: "250 ml",
-        rating: 3.8,
-        amount: 121,
-        original: 300,
-        discount: 55,
-        delivery: "Free Delivery",
-      },
-      {
-        id: 2,
-        image: require("@/assets/product/p2.jpeg"),
-        name: "Fundoosh SPICY NIMBU Shikanji",
-        description: "200 ml",
-        rating: 4.0,
-        amount: 135,
-        original: 500,
-        discount: 44,
-        delivery: "Free Delivery",
-      },
-      {
-        id: 3,
-        image: require("@/assets/product/p3.jpeg"),
-        name: "JUST Orange",
-        description: "400 ml",
-        rating: 4.5,
-        amount: 120,
-        original: 400,
-        discount: 32,
-        delivery: "Free Delivery",
-      },
-      {
-        id: 4,
-        image: require("@/assets/product/p4.jpeg"),
-        name: "Eco-Friendly Kraft Paper Bags",
-        description: "400 ml",
-        rating: 3.7,
-        amount: 193,
-        original: 1000,
-        discount: 84,
-        delivery: "Free Delivery",
-      },
-      {
-        id: 5,
-        image: require("@/assets/product/p5.jpeg"),
-        name: "NEW Ice Club ENERGY Drink",
-        description: "200 * 150 ml",
-        rating: 4.2,
-        amount: 120,
-        original: 200,
-        discount: 14,
-        delivery: "Free Delivery",
-      },
-      {
-        id: 6,
-        image: require("@/assets/product/p6.jpeg"),
-        name: "JOY",
-        description: "150 ml",
-        rating: 3.8,
-        amount: 30,
-        original: 90,
-        discount: 14,
-        delivery: "Free Delivery",
-      },
-      {
-        id: 7,
-        image: require("@/assets/product/p7.jpeg"),
-        name: "JOY Fruitca",
-        description: "400 * 4 ml",
-        rating: 4.1,
-        amount: 580,
-        original: 1700,
-        discount: 74,
-        delivery: "Delivery Charge 45+",
-      },
-      {
-        id: 8,
-        image: require("@/assets/product/p8.jpeg"),
-        name: "CITY-DA ZEERA",
-        description: "300 ml",
-        rating: 4.0,
-        amount: 120,
-        original: 500,
-        discount: 94,
-        delivery: "Free Delivery",
-      },
-    ];
-
-    initialProducts.forEach((product) => this.addProduct(product));
+    this.fetchProducts();
   },
 };
 </script>
@@ -398,7 +322,7 @@ export default {
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
   .Product {
-    width: 48%;
+    width: 48%; /* Show two products per row */
   }
 
   .container {
@@ -407,30 +331,30 @@ export default {
   }
 
   .pagination {
-    flex-direction: column;
+    flex-direction: column; /* Stack pagination elements vertically on small screens */
     align-items: center;
   }
 
   .pagination-left,
   .pagination-center {
     text-align: center;
-    font-size: 14px;
+    font-size: 14px; /* Adjust font size for mobile view */
   }
 
   .page-number {
-    font-size: 16px;
+    font-size: 16px; /* Smaller font size for mobile view */
     /* margin: 0px 10px; */
   }
 
   .next {
-    font-size: 14px;
+    font-size: 14px; /* Adjust font size for mobile view */
   }
 }
 
 /* Responsive Design for Smaller Devices */
 @media (max-width: 480px) {
   .Product {
-    width: 100%;
+    width: 100%; /* Show one product per row on very small screens */
   }
 
   .pagination {
@@ -439,15 +363,15 @@ export default {
 
   .pagination-left,
   .pagination-center {
-    font-size: 12px;
+    font-size: 12px; /* Further reduce font size for very small screens */
   }
 
   .page-number {
-    font-size: 12px;
+    font-size: 12px; /* Further reduce font size for very small screens */
   }
 
   .next {
-    font-size: 12px;
+    font-size: 12px; /* Further reduce font size for very small screens */
   }
 }
 </style>

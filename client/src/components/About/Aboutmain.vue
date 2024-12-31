@@ -1,69 +1,5 @@
 <template>
-  <div class="about">
-    <!-- <img src="path/to/your/image.png" class="floating-image">-->
-    <div class="elliptical-gradient"></div>
-    <!-- about Section -->
-    <div class="about-section">
-      <span class="text-wrapper-4">About</span><br />
-      <span class="text-wrapper-3"
-        >Innovating packaging, sustaining tomorrow.<i
-          class="fa fa-star floating-star-1"
-        ></i
-      ></span>
-      <p class="about-txt">
-        <i class="fa fa-star floating-star-3"></i>
-        Discover, design and buy packaging that respects the planet
-        <i class="fa fa-star floating-star-2"></i>
-      </p>
-    </div>
-    <div class="box-container">
-      <div class="box">
-        <div class="space">
-          <img
-            class="p-photo"
-            alt="Ai generated"
-            src="../../assets/About/person1.png"
-          />
-        </div>
-        <div class="text-wrapper">Pooja Gupta</div>
-        <div class="text-wrapper-2">Custom SEO Services</div>
-        <p class="p">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </p>
-      </div>
-      <div class="box-m">
-        <div class="space">
-          <img
-            class="p-photo"
-            alt="Ai generated"
-            src="../../assets/About/person1.png"
-          />
-        </div>
-        <div class="text-wrapper">Pooja Gupta</div>
-        <div class="text-wrapper-2">Custom SEO Services</div>
-        <p class="p">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </p>
-      </div>
-      <div class="box">
-        <div class="space">
-          <img
-            class="p-photo"
-            alt="Ai generated"
-            src="../../assets/About/person1.png"
-          />
-        </div>
-        <div class="text-wrapper">Pooja Gupta</div>
-        <div class="text-wrapper-2">Custom SEO Services</div>
-        <p class="p">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </p>
-      </div>
-    </div>
-  </div>
+  <Hero />
   <div class="vm">
     <div class="vm-box-container">
       <div class="vm-box">
@@ -122,8 +58,12 @@
 </template>
 
 <script>
+import Hero from "../Homepage/Hero.vue";
 export default {
   name: "about",
+  components: {
+    Hero,
+  },
 };
 </script>
 

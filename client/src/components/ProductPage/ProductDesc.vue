@@ -1,25 +1,33 @@
 <template>
   <div class="product-search">
-    <!-- Search Bar -->
+    <!-- Search Bar
     <div class="search-bar">
-      <input 
-        v-model="searchQuery" 
-        type="text" 
-        placeholder="Search products..." 
-        @input="filterProducts" 
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search products..."
+        @input="filterProducts"
       />
       <button class="search-button" @click="filterProducts">
-        <img class="search-icon" src="https://img.icons8.com/ios/50/000000/search--v1.png" alt="Search Icon">
+        <img
+          class="search-icon"
+          src="https://img.icons8.com/ios/50/000000/search--v1.png"
+          alt="Search Icon"
+        />
       </button>
-    </div>
+    </div> -->
 
     <!-- Product Title -->
     <h2 class="product-title">Product</h2>
 
     <!-- Single Product Details -->
-    <div class="single-product">
+    <div class="single-product" v-if="product">
       <div class="left-half">
-        <img :src="product.image" alt="Product Image" class="product-image">
+        <img
+          :src="`https://gcp.agratasinfotech.com/${product.images[0]}`"
+          alt="Product Image"
+          class="product-image"
+        />
         <div class="button-container">
           <button class="cart-button">Add to Cart</button>
           <button class="buy-button">Buy Now</button>
@@ -27,14 +35,17 @@
       </div>
       <div class="right-half">
         <h3 class="product-name">{{ product.name }}</h3>
-        <p class="qty">{{ product.quantity }}</p>
+        <p class="qty">{{ product.stock }}</p>
         <p class="rating">{{ product.rating }}★</p>
         <div class="p-box">
-          <p class="price">₹ {{ product.amount }}</p>
-          <p class="MRP">₹ {{ product.original }}</p>
-          <p class="discount">{{ product.discount }}% off</p>
+          <p class="price">₹ {{ product.mrp }}</p>
+          <p class="MRP">₹ {{ product.original_price }}</p>
+          <p class="discount">
+            {{ ((1 - product.mrp / product.original_price) * 100).toFixed(0) }}%
+            off
+          </p>
         </div>
-        
+
         <div class="offer">
           <h4>Available Offers:</h4>
           <ul>
@@ -44,17 +55,19 @@
         </div>
 
         <div class="row-kit">
-          <h4>Delivery </h4>
+          <h4>Delivery</h4>
           <div class="pin-box">
-            <input type="text" placeholder="PIN code" class="pin-input">
+            <input type="text" placeholder="PIN code" class="pin-input" />
             <p class="pin-change">Change</p>
           </div>
-          </div>
+        </div>
 
-        <div class="row-kit"><p class="expected">Delivery by 22 Dec 2024, Sunday</p></div>
-        
+        <div class="row-kit">
+          <p class="expected">Delivery by 22 Dec 2024, Sunday</p>
+        </div>
+
         <div class="row-kit1">
-          <h4>Highlights </h4>
+          <h4>Highlights</h4>
           <ul>
             <li>Highlight 1</li>
             <li>Highlight 2</li>
@@ -65,7 +78,7 @@
         </div>
 
         <div class="row-kit2">
-          <h4>Easy<br/>Payment<br/>Options </h4>
+          <h4>Easy<br />Payment<br />Options</h4>
           <ul>
             <li>Cash on Delivery</li>
             <li>Credit/Debit Card</li>
@@ -74,35 +87,42 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <p>Loading product details...</p>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: 'ProductDetails',
+  name: "ProductDetails",
   data() {
     return {
       product: null, // To store the specific product details
     };
   },
-  created() {
-    // Initial product data
-    const initialProducts = [
-      { id: 1, image: require('@/assets/product/p1.jpeg'), name: "Fundoosh Energy ",              description: "250 ml",      rating: 3.8, amount: 121, original: 300,  discount: 55, delivery: "Free Delivery",      },
-      { id: 2, image: require('@/assets/product/p2.jpeg'), name: "Fundoosh SPICY NIMBU Shikanji", description: "200 ml",      rating: 4.0, amount: 135, original: 500,  discount: 44, delivery: "Free Delivery",      },
-      { id: 3, image: require('@/assets/product/p3.jpeg'), name: "JUST Orange",                   description: "400 ml",      rating: 4.5, amount: 120, original: 400,  discount: 32, delivery: "Free Delivery",      },
-      { id: 4, image: require('@/assets/product/p4.jpeg'), name: "Eco-Friendly Kraft Paper Bags",  description: "400 ml",      rating: 3.7, amount: 193, original: 1000, discount: 84, delivery: "Free Delivery",      },
-      { id: 5, image: require('@/assets/product/p5.jpeg'), name: "NEW Ice Club ENERGY Drink",     description: "200 * 150 ml",rating: 4.2, amount: 120, original: 200,  discount: 14, delivery: "Free Delivery",      },
-      { id: 6, image: require('@/assets/product/p6.jpeg'), name: "JOY",                           description: "150 ml",      rating: 3.8, amount: 30,  original: 90,   discount: 14, delivery: "Free Delivery",      },
-      { id: 7, image: require('@/assets/product/p7.jpeg'), name: "JOY Fruitca",                   description: "400 * 4 ml",  rating: 4.1, amount: 580, original: 1700, discount: 74, delivery: "Delivery Charge 45+",},
-      { id: 8, image: require('@/assets/product/p8.jpeg'), name: "CITY-DA ZEERA",                 description: "300 ml",      rating: 4.0, amount: 120, original: 500,  discount: 94, delivery: "Free Delivery",      },
-          ];
+  async created() {
+    const productId = this.$route.params.id; // Get product ID from route
+    try {
+      // Fetch all products
+      const response = await axios.get(
+        "https://gcp.agratasinfotech.com/api/product"
+      );
+      console.log("API Response:", response.data); // Log the API response
 
-    // Get the product ID from the route path
-    const productId = parseInt(this.$route.params.id, 10);
+      const allProducts = response.data.products; // Access the 'products' array
 
-    // Find the product by ID
-    this.product = initialProducts.find((p) => p.id === productId) || null;
+      // Find the specific product by ID
+      this.product = allProducts.find((p) => p.id === parseInt(productId, 10));
+
+      if (!this.product) {
+        console.error("Product not found");
+      }
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
   },
 };
 </script>
@@ -112,7 +132,7 @@ export default {
   width: 100%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #F4F3F3;
+  background-color: #f4f3f3;
   justify-items: center;
 }
 
@@ -144,9 +164,9 @@ export default {
   cursor: pointer;
 }
 
-.search-icon { 
-  width: 30px; 
-  height: 30px; 
+.search-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .search-button:hover {
@@ -171,19 +191,19 @@ export default {
   justify-content: center;
   border-radius: 10px;
   padding: 20px;
-  background-color: #FFFFFF;
-  border: 3px solid #DCDCDC;
+  background-color: #ffffff;
+  border: 3px solid #dcdcdc;
 }
 
 .left-half {
-  flex: 0 0 50%; 
+  flex: 0 0 50%;
   display: flex;
   height: 100%;
   flex-direction: column;
 }
 
 .right-half {
-  flex: 0 0 50%; 
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
 }
@@ -191,8 +211,8 @@ export default {
 .product-image {
   width: 100%;
   max-height: 800px;
-  border-color: #EBEBEB;
-  border-style: solid ;
+  border-color: #ebebeb;
+  border-style: solid;
   border-radius: 10px;
   border-width: 3px;
   object-fit: contain;
@@ -202,7 +222,8 @@ export default {
   margin-top: 10px;
 }
 
-.cart-button, .buy-button {
+.cart-button,
+.buy-button {
   padding: 10px 20px;
   margin-top: 20px;
   margin-left: 5px;
@@ -215,25 +236,25 @@ export default {
 }
 
 .cart-button {
-  background-color: #FF9F00;
+  background-color: #ff9f00;
   color: white;
 }
 
 .buy-button {
-  background-color: #FB641B;
+  background-color: #fb641b;
   color: white;
 }
 
 .product-name {
   font-size: 24px;
   font-weight: bold;
-  color: #2B06FF;
+  color: #2b06ff;
   margin-bottom: 5px;
   text-align: left;
 }
 
 .qty {
-  color: #7E7E7E;
+  color: #7e7e7e;
   margin-bottom: 10px;
   font-size: 14px;
   text-align: left;
@@ -241,7 +262,7 @@ export default {
 
 .rating {
   color: #ffffff;
-  background-color: #388E3C;
+  background-color: #388e3c;
   border-radius: 5px;
   width: 56px;
   padding-left: 9px;
@@ -261,17 +282,19 @@ export default {
 
 .MRP {
   text-decoration: line-through;
-  color: #A1A0A0;
+  color: #a1a0a0;
   margin-top: 6px;
   font-size: 14px;
 }
 
 .discount {
-  color: #388E3C;
+  color: #388e3c;
 }
 
-.row-kit, .row-kit1, .row-kit2 {
-  color: #7E7E7E;
+.row-kit,
+.row-kit1,
+.row-kit2 {
+  color: #7e7e7e;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -280,9 +303,13 @@ export default {
   gap: 15px;
   margin-bottom: 0px;
 }
-.row-kit2{gap:25px;}
+.row-kit2 {
+  gap: 25px;
+}
 
-.row-kit h4, .row-kit1 h4, .row-kit2 h4 {
+.row-kit h4,
+.row-kit1 h4,
+.row-kit2 h4 {
   font-family: Outfit;
   font-size: 17.26px;
   font-weight: 400;
@@ -300,9 +327,19 @@ export default {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
-.offer{ font-weight: 600; padding-bottom: 0px; margin-bottom: 0px;}
-.offer ul{ margin-left: 15px; }
-.offer li{ margin: 0px; padding: 0px; text-align: left;}
+.offer {
+  font-weight: 600;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.offer ul {
+  margin-left: 15px;
+}
+.offer li {
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
 
 .row-kit ul {
   list-style-type: disc;
@@ -332,21 +369,29 @@ export default {
   border-bottom: 3px solid #000000;
   border-radius: 5px;
 }
-.pin-change{ 
-  position: absolute;  
+.pin-change {
+  position: absolute;
   left: 140px;
   top: 10px;
   font-weight: 500;
-  color: #2B06FF;
+  color: #2b06ff;
 }
-.pin-box{ position: relative; }
-
-@media (max-width:720px) {
-  .single-product{flex-direction: column;}
-}
-@media (max-width:455px ) {
-  .row-kit{ flex-direction: column;}
-  .cart-button, .buy-button { width: 150px;}
+.pin-box {
+  position: relative;
 }
 
+@media (max-width: 720px) {
+  .single-product {
+    flex-direction: column;
+  }
+}
+@media (max-width: 455px) {
+  .row-kit {
+    flex-direction: column;
+  }
+  .cart-button,
+  .buy-button {
+    width: 150px;
+  }
+}
 </style>

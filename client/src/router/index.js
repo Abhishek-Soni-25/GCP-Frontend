@@ -3,7 +3,7 @@ import HomePageView from "../views/homePageView.vue";
 import Contactusview from "../views/contactusview.vue";
 import AboutPageView from "@/views/AboutPageView.vue";
 import FaqPageView from "@/views/FaqPageView.vue";
-import productpageview from "@/views/productpageview.vue";
+import productpageview from "@/views/ProductPageView.vue";
 import productdetails from "@/components/ProductPage/ProductDesc.vue";
 import ServicesPageView from "@/views/ServicesPageView.vue";
 import Blogview from "@/views/Blogview.vue";
