@@ -17,9 +17,9 @@
     <h2 class="product-title">Product</h2>
 
     <!-- Single Product Details -->
-    <div class="single-product">
+    <div class="single-product" v-if="product">
       <div class="left-half">
-        <img :src="product.image" alt="Product Image" class="product-image">
+        <img :src="`https://gcp.agratasinfotech.com/${product.images[0]}`" alt="Product Image" class="product-image">
         <div class="button-container">
           <button class="cart-button">Add to Cart</button>
           <button class="buy-button">Buy Now</button>
@@ -27,12 +27,13 @@
       </div>
       <div class="right-half">
         <h3 class="product-name">{{ product.name }}</h3>
-        <p class="qty">{{ product.quantity }}</p>
+        <p class="qty">{{ product.stock }}</p>
         <p class="rating">{{ product.rating }}★</p>
         <div class="p-box">
-          <p class="price">₹ {{ product.amount }}</p>
-          <p class="MRP">₹ {{ product.original }}</p>
-          <p class="discount">{{ product.discount }}% off</p>
+          <p class="price">₹ {{ product.mrp }}</p>
+          <p class="MRP">₹ {{ product.original_price }}</p>
+          <p class="discount">{{ ((1 - product.mrp / product.original_price) * 100).toFixed(0) }}% off
+          </p>
         </div>
         
         <div class="offer">
@@ -49,7 +50,7 @@
             <input type="text" placeholder="PIN code" class="pin-input">
             <p class="pin-change">Change</p>
           </div>
-          </div>
+        </div>
 
         <div class="row-kit"><p class="expected">Delivery by 22 Dec 2024, Sunday</p></div>
         
@@ -74,38 +75,45 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <p>Loading product details...</p>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: 'ProductDetails',
+  name: "ProductDetails",
   data() {
     return {
       product: null, // To store the specific product details
     };
   },
-  created() {
-    // Initial product data
-    const initialProducts = [
-      { id: 1, image: require('@/assets/product/p1.jpeg'), name: "Fundoosh Energy ",              description: "250 ml",      rating: 3.8, amount: 121, original: 300,  discount: 55, delivery: "Free Delivery",      },
-      { id: 2, image: require('@/assets/product/p2.jpeg'), name: "Fundoosh SPICY NIMBU Shikanji", description: "200 ml",      rating: 4.0, amount: 135, original: 500,  discount: 44, delivery: "Free Delivery",      },
-      { id: 3, image: require('@/assets/product/p3.jpeg'), name: "JUST Orange",                   description: "400 ml",      rating: 4.5, amount: 120, original: 400,  discount: 32, delivery: "Free Delivery",      },
-      { id: 4, image: require('@/assets/product/p4.jpeg'), name: "Eco-Friendly Kraft Paper Bags",  description: "400 ml",      rating: 3.7, amount: 193, original: 1000, discount: 84, delivery: "Free Delivery",      },
-      { id: 5, image: require('@/assets/product/p5.jpeg'), name: "NEW Ice Club ENERGY Drink",     description: "200 * 150 ml",rating: 4.2, amount: 120, original: 200,  discount: 14, delivery: "Free Delivery",      },
-      { id: 6, image: require('@/assets/product/p6.jpeg'), name: "JOY",                           description: "150 ml",      rating: 3.8, amount: 30,  original: 90,   discount: 14, delivery: "Free Delivery",      },
-      { id: 7, image: require('@/assets/product/p7.jpeg'), name: "JOY Fruitca",                   description: "400 * 4 ml",  rating: 4.1, amount: 580, original: 1700, discount: 74, delivery: "Delivery Charge 45+",},
-      { id: 8, image: require('@/assets/product/p8.jpeg'), name: "CITY-DA ZEERA",                 description: "300 ml",      rating: 4.0, amount: 120, original: 500,  discount: 94, delivery: "Free Delivery",      },
-          ];
+  async created() {
+  const productId = this.$route.params.id; // Get product ID from route
+  try {
+    // Fetch all products
+    const response = await axios.get("https://gcp.agratasinfotech.com/api/product");
+    console.log("API Response:", response.data); // Log the API response
 
-    // Get the product ID from the route path
-    const productId = parseInt(this.$route.params.id, 10);
+    const allProducts = response.data.products; // Access the 'products' array
 
-    // Find the product by ID
-    this.product = initialProducts.find((p) => p.id === productId) || null;
-  },
+    // Find the specific product by ID
+    this.product = allProducts.find((p) => p.id === parseInt(productId, 10));
+
+    if (!this.product) {
+      console.error("Product not found");
+    }
+  } catch (error) {
+    console.error("Error fetching product details:", error);
+  }
+},
 };
 </script>
+
+
 
 <style scoped>
 .product-search {
