@@ -20,6 +20,7 @@
 import Header from "@/components/Homepage/Header.vue";
 import Footer from "@/components/Homepage/Footer.vue";
 import AppProduct from "@/components/ProductPage/AppProduct.vue";
+// Import Axios
 
 export default {
   name: "Productview",

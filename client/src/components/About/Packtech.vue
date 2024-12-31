@@ -55,8 +55,9 @@
         <div class="left-section">
           <h2>Why <span>Choose Us</span></h2>
           <p>
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout.
+            Grip Chain Packtech offers innovative, sustainable packaging
+            solutions that reduce environmental impact, ensuring quality,
+            reliability, and eco-conscious practices.
           </p>
           <button class="learn-more-btn">Learn More</button>
         </div>
