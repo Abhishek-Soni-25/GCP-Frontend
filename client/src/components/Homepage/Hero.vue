@@ -301,12 +301,15 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow: hidden;
 }
 
 .brand-images {
   display: flex;
-  gap: 10px;
+  gap: clamp(10px, 5vw, 80px); 
+  height: auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -329,10 +332,10 @@ export default {
   padding: 5px 10px;
 }
 .slider-btn.left {
-  left: 3px;
+  left: -50px;
 }
 .slider-btn.right {
-  right: 3px;
+  right: -50px;
 }
 
 .line {
@@ -386,10 +389,6 @@ export default {
   }
 }
 
-@media (min-width: 559px) and (max-width: 1068px) {
-  .slider-btn.left {  left: 10px; }
-  .slider-btn.right {  right: 10px; }
-}
 @media (max-width: 568px) {
   .hero {
     padding: 8px;
@@ -423,6 +422,13 @@ export default {
     font-size: calc(13.2px);
     line-height: calc(9.3px * 0.8);
   }
+  .slider-btn.left {
+  left: 5px;
+  }
+  .slider-btn.right {
+    right: 5px;
+  }
+
   
   .hero-section2 h5 {
     font-size: calc(1.5rem * 0.8);
