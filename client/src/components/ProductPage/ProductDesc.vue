@@ -127,6 +127,8 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 .product-search {
   width: 100%;
