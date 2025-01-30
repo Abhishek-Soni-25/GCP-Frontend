@@ -178,7 +178,7 @@ export default {
       this.isSubmitting = true;
       try {
         const response = await axios.post(
-          "https://gcp.agratasinfotech.com/api/contactus",
+          "https://gripchain.in/api/contactus",
           this.formData
         );
         if (response.status === 200) {

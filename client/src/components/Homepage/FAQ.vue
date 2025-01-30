@@ -73,7 +73,7 @@ export default {
 
       try {
         const response = await axios.post(
-          "https://gcp.agratasinfotech.com/api/submit-faq",
+          "https://gripchain.in/api/submit-faq",
           {
             query: this.userQuestion,
           }
@@ -93,7 +93,7 @@ export default {
     async fetchFaqs() {
       try {
         const response = await axios.get(
-          "https://gcp.agratasinfotech.com/api/message"
+          "https://gripchain.in/api/message"
         );
         this.faqs = response.data.faqs; // Store fetched FAQs in `faqs` data
       } catch (error) {

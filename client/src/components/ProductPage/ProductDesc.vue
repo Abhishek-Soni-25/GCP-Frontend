@@ -24,7 +24,7 @@
     <div class="single-product" v-if="product">
       <div class="left-half">
         <img
-          :src="`https://gcp.agratasinfotech.com/${product.images[0]}`"
+          :src="`https://gripchain.in/${product.images[0]}`"
           alt="Product Image"
           class="product-image"
         />
@@ -108,7 +108,7 @@ export default {
     try {
       // Fetch all products
       const response = await axios.get(
-        "https://gcp.agratasinfotech.com/api/product"
+        "https://gripchain.in/api/product"
       );
       console.log("API Response:", response.data); // Log the API response
 
